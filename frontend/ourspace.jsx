@@ -1,7 +1,7 @@
-import createStore from './store/store';
+import configureStore from './store/store';
 
 document.addEventListener('DOMContentLoaded', () => {
-    const store = createStore();
+    const store = configureStore();
     const root = document.getElementById('root');
     
     ReactDOM.render(
