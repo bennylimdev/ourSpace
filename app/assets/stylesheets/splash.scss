@@ -4,11 +4,11 @@
     width: 100vw;
 }
 
-nav, .nav-links, .slogan, .bio {
+nav, .nav__links, .slogan, .bio {
     color: white;
 }
 
-nav, .nav-links {
+nav, .nav__links {
     display: flex;
 }
 
@@ -18,7 +18,7 @@ nav {
     height: 10vh;
 }
 
-.nav-links {
+.nav__links {
     gap: 2rem;
     list-style: none;
     font-size: 1rem;

@@ -9,10 +9,10 @@ class Splash extends React.Component {
     render() {
         return (
             <div className='splash'>
-                <nav id="desktop-nav">
+                <nav>
                     <div class="logo">OurSpace</div>
                     <div>
-                        <ul class="nav-links">
+                        <ul class="nav__links">
                             <li>LOGIN</li>
                             <li>REGISTER</li>
                         </ul>
