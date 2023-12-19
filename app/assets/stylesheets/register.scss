@@ -1,0 +1,53 @@
+.register {
+    background: #465A3D;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    position: fixed;
+    top: 10%;
+    color: white;
+}
+
+.register__form__container {
+    background: linear-gradient(to right, rgba(189,208,159,1) 0%, rgba(164,179,87,1) 80%);
+    box-shadow: 0px 0px 33px 0px rgba(0,0,0,0.75);
+    border-radius: 10px;
+    padding: 12px
+}
+
+.register__form {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+input[type=text], input[type=password] {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    margin: 10px;
+    box-sizing: border-box;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+    border: 3px solid;
+  }
+
+button {
+    color: white;
+    background: linear-gradient(to right, rgba(189,208,159,1) 0%, rgba(131,146,159,1) 100%);
+    align-self: center;
+    padding: 10px 12px;
+    cursor: pointer;
+    border-radius: 10px;
+    border: none;
+}
+
+button:hover {
+    background: #83929F;
+}
