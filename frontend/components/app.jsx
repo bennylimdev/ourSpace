@@ -1,13 +1,13 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Splash from './splash';
-import RegisterForm from './sessions/register';
+import RegisterContainer from './sessions/register_container';
 
 const App = () => (
     <div>
         <Switch>
             <Route exact path='/' component={Splash} />
-            <Route path='/register' component={RegisterForm} />
+            <Route path='/register' component={RegisterContainer} />
         </Switch>
     </div>
 );
