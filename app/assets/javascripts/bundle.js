@@ -33,14 +33,14 @@ var receiveUser = function receiveUser(user) {
 };
 var fetchUsers = function fetchUsers() {
   return function (dispatch) {
-    return fetchUsers().then(function (users) {
+    return _util_user_util__WEBPACK_IMPORTED_MODULE_0__.fetchUsers().then(function (users) {
       return dispatch(recieveUsers(users));
     });
   };
 };
 var fetchUser = function fetchUser(userId) {
   return function (dispatch) {
-    return fetchUser(userId).then(function (user) {
+    return _util_user_util__WEBPACK_IMPORTED_MODULE_0__.fetchUser(userId).then(function (user) {
       return dispatch(recieveUser(user));
     });
   };
