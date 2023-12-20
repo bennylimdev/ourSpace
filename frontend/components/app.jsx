@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Splash from './splash';
-import RegisterContainer from './sessions/register_container';
+import RegisterContainer from './sessions/RegisterContainer';
 import Home from './home';
 
 const App = () => (

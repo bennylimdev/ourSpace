@@ -1,5 +1,6 @@
 import React from 'react';
-import Tasks from './microcomp/tasks';
+import PostForm from './PostForm';
+import LeftNav from './LeftNav';
 
 class Home extends React.Component {
     constructor(props) {
@@ -9,15 +10,15 @@ class Home extends React.Component {
     render() {
         return (
             <div className='home'>
-               <Tasks />
-               <div className='notes'>
-               </div>
-               <div className='upcoming'>
-               </div>
-               <div className="word">
-               </div>
-               <div className='time'>
-               </div>
+                <div className='header'>
+                    <h3>OurSpace</h3>
+                </div>
+                <LeftNav />
+                <PostForm />
+                <div className='news__feed'>
+                </div>
+                <div className='right__nav__bar'>
+                </div>
             </div> 
         );
     };
