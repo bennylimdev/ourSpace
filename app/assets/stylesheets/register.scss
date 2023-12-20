@@ -26,7 +26,7 @@
     margin: 10px;
 }
 
-input[type=text], input[type=password] {
+.register__form > input[type=text], input[type=password] {
     padding: 12px 20px;
     border: none;
     border-radius: 4px;
@@ -34,11 +34,11 @@ input[type=text], input[type=password] {
     box-sizing: border-box;
 }
 
-input[type=text]:focus, input[type=password]:focus {
+.register__form > input[type=text]:focus, input[type=password]:focus {
     border: 3px solid;
   }
 
-button {
+.register__form > button {
     color: white;
     background: linear-gradient(to right, rgba(189,208,159,1) 0%, rgba(131,146,159,1) 100%);
     align-self: center;
@@ -48,6 +48,6 @@ button {
     border: none;
 }
 
-button:hover {
+.register__form > button:hover {
     background: #83929F;
 }

@@ -4,8 +4,7 @@ class RegisterForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            first_name: '',
-            last_name: '',
+            username: '',
             email: '',
             password: '',
         };
@@ -30,28 +29,18 @@ class RegisterForm extends React.Component {
                 <div className='register__form__container'>
                     <form className='register__form'>
                         <input
-                            id='first-name'
                             type='text'
-                            value={this.state.first_name}
-                            onChange={this.update('first_name')}
-                            placeholder='First Name'
+                            value={this.state.username}
+                            onChange={this.update('username')}
+                            placeholder='Username'
                         />
                         <input
-                            id='last-name'
-                            type='text'
-                            value={this.state.last_name}
-                            onChange={this.update('last_name')}
-                            placeholder='Last Name'
-                        />
-                        <input
-                            id='email'
                             type='text'
                             value={this.state.email}
                             onChange={this.update('email')}
                             placeholder='Email'
                         />
                         <input
-                            id='password'
                             type='password'
                             value={this.state.password}
                             onChange={this.update('password')}

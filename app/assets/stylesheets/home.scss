@@ -1,0 +1,45 @@
+.home {
+    background: #465A3D;
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+};
+
+.tasks, .notes, .upcoming, .word, .time {
+    background-color: rgba(131,146,159,1);
+    box-shadow: 0px 0px 33px 0px rgba(0,0,0,0.75);
+    border-radius: 14px;
+    height: 95%;
+    width: 95%;
+    justify-self: center;
+    align-self: center;
+}
+
+.tasks {
+    grid-area: 1 / 1 / 5 / 4;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.notes {
+    grid-area: 1 / 4 / 4 / 6;
+}
+
+.upcoming {
+    grid-area: 4 / 4 / 7 / 6;
+}
+
+.word {
+    grid-area: 5 / 3 / 7 / 4;
+}
+
+.time {
+    grid-area: 5 / 1 / 7 / 3;
+}
