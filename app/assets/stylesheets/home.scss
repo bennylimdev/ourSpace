@@ -1,5 +1,5 @@
 .home {
-    background: #465A3D;
+    background: #F0F2F5;
     height: 100vh;
     width: 100vw;
     display: grid;
@@ -11,9 +11,36 @@
 
 .header {
     grid-area: 1 / 1 / 2 / 9;
-    background-color: rgba(189,208,159,1);
-    box-shadow: 0px 0px 33px 0px rgba(0,0,0,0.5);
-    color: white;
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: space-between;
+}
+
+.header__start {
+    margin-left: 15px;
+    color: darkblue;
+}
+
+.header__end {
+    margin-right: 15px;
+}
+
+.header__nav {
+    display: flex;
+    align-items: center;
+    width: 30%;
+    justify-content: space-evenly;
+}
+
+.header__nav > * {
+    padding: 8px;
+    border-radius: 10px;
+}
+
+.header__nav > *:hover {
+    background-color: #E4E6E9;
+    cursor: pointer;
 }
 
 .left__nav {
@@ -31,15 +58,15 @@
 }
 
 .nav__link:hover {
-    background-color: rgba(189,208,159,1);
+    background-color: #E4E6E9;
     cursor: pointer;
 }
 
 .post__form {
     grid-area: 2 / 3 / 3 / 7;
     margin-top: 10px;
-    background-color: rgba(189,208,159,1);
-    box-shadow: 0px 0px 33px 0px rgba(0,0,0,0.5);
+    background-color: white;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
     border-radius: 10px;
     display: grid;
     grid-template-columns: 0.1fr 1fr;
@@ -56,7 +83,7 @@
     border: none;
     align-self: center;
     padding: 12px;
-    background-color: lightgrey;
+    background-color: #F0F2F5;
 }
 
 .news__feed { 
@@ -65,4 +92,44 @@
 
 .right__nav__bar {
     grid-area: 2 / 7 / 4 / 9;
+}
+
+.post {
+    background-color: white;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+    padding: 1px;
+}
+
+.post__buttons {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 5px;
+}
+
+.post__button {
+    width: 80%;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.post__button:hover {
+    background-color: #E4E6E9;
+    cursor: pointer;
+}
+
+.post__header, .post__content, .comment__form {
+    margin-left: 15px;
+    padding-bottom: 5px;
+}
+
+.comment__input {
+    height: 60%;
+    width: 95%;
+    border-radius: 20px;
+    border: none;
+    align-self: center;
+    padding: 5px;
+    background-color: #F0F2F5;
 }

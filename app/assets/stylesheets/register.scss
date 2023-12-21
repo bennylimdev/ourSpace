@@ -1,5 +1,5 @@
 .register {
-    background: #465A3D;
+    background: #F0F2F5;
     height: 100vh;
     width: 100vw;
     display: flex;
@@ -10,12 +10,11 @@
 .logo {
     position: fixed;
     top: 10%;
-    color: white;
 }
 
 .register__form__container {
-    background: linear-gradient(to right, rgba(189,208,159,1) 0%, rgba(164,179,87,1) 80%);
-    box-shadow: 0px 0px 33px 0px rgba(0,0,0,0.75);
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
     border-radius: 10px;
     padding: 12px
 }
@@ -39,7 +38,6 @@
   }
 
 .register__form > button {
-    color: white;
     background: linear-gradient(to right, rgba(189,208,159,1) 0%, rgba(131,146,159,1) 100%);
     align-self: center;
     padding: 10px 12px;
