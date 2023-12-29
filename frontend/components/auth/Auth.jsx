@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const Auth = ({ action }) => {
-    const [form, setForm] = useState(initialState);
+    const [form, setForm] = useState({});
     const [isSignup, setIsSignup] = useState(false);
 
     const handleChange = (e) => {

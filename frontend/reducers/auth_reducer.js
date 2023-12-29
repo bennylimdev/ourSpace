@@ -1,10 +1,10 @@
-import { RECEIVE_CURRENT_USER } from "../actions/session_actions";
+import { RECEIVE_CURRENT_USER } from "../actions/auth_actions";
 
 const _nullUser = {
     id: null
 };
 
-const SessionReducer = (state = _nullUser, action) => {
+const AuthReducer = (state = _nullUser, action) => {
     Object.freeze(state);
     const nextState = Object.assign({}, state);
 
@@ -17,4 +17,4 @@ const SessionReducer = (state = _nullUser, action) => {
     };
 };
 
-export default SessionReducer;
+export default AuthReducer;

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { register } from '../../actions/session_actions';
+import { register } from '../../actions/auth_actions';
 import Auth from './Auth';
 
 // for error handling in future

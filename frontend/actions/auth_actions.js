@@ -1,4 +1,4 @@
-import * as SessionUtil from '../util/session_util';
+import * as AuthUtil from '../util/auth_util';
 
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 
