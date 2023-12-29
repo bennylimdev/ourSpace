@@ -9053,7 +9053,9 @@ var PostForm = /*#__PURE__*/function (_React$Component) {
   }
   _createClass(PostForm, [{
     key: "render",
-    value: function render() {
+    value:
+    //on click modal comes out
+    function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
         className: "post-form"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {

@@ -5,7 +5,7 @@ class PostForm extends React.Component {
     constructor(props) {
         super(props);
     };
-
+    //on click modal comes out
     render() {
         return (
             <div className="post-form">
