@@ -23,13 +23,13 @@ export const fetchPosts = () => dispatch => (
     PostUtil.fetchPosts().then(posts => dispatch(recieveAllPosts(posts)))
 );
 export const fetchPost = () => dispatch => (
-    PostUtil.fetchPost().then(post => dispatch(recievePost(post)))
+    PostUtil.fetchPost().then(post => dispatch(receivePost(post)))
 );
 export const updatePost = () => dispatch => (
-    PostUtil.updatePost().then(post => dispatch(recievePost(post)))
+    PostUtil.updatePost().then(post => dispatch(receivePost(post)))
 );
 export const createPost = () => dispatch => (
-    PostUtil.createPost().then(post => dispatch(recievePost(post)))
+    PostUtil.createPost().then(post => dispatch(receivePost(post)))
 );
 export const deletePosts = () => dispatch => (
     PostUtil.deletePost().then(posts => dispatch(removePost(post)))
