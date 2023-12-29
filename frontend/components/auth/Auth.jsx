@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-const Auth = ({ action }) => {
-    const [form, setForm] = useState({});
+const Auth = ({ user, signUp, logIn }) => {
+    const [form, setForm] = useState(user);
     const [isSignup, setIsSignup] = useState(false);
 
     const handleChange = (e) => {
@@ -10,7 +10,12 @@ const Auth = ({ action }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const { username, password, email } = form;
+        // isSignup compare passwords, if not the same modal pop up 
+        if(isSignup) {
+            signUp(form);
+        } else {
+            logIn(form);
+        }
     };
 
     const switchMode = () => {

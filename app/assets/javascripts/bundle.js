@@ -8982,8 +8982,10 @@ function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" !=
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var Auth = function Auth(_ref) {
-  var action = _ref.action;
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
+  var user = _ref.user,
+    signUp = _ref.signUp,
+    logIn = _ref.logIn;
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(user),
     _useState2 = _slicedToArray(_useState, 2),
     form = _useState2[0],
     setForm = _useState2[1];
@@ -8996,9 +8998,12 @@ var Auth = function Auth(_ref) {
   };
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
-    var username = form.username,
-      password = form.password,
-      email = form.email;
+    // isSignup compare passwords, if not the same modal pop up 
+    if (isSignup) {
+      signUp(form);
+    } else {
+      logIn(form);
+    }
   };
   var switchMode = function switchMode() {
     setIsSignup(function (prevIsSignup) {
@@ -9100,13 +9105,22 @@ __webpack_require__.r(__webpack_exports__);
 // for error handling in future
 var mSTP = function mSTP(state) {
   return {
-    state: {}
+    user: {
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: ''
+    },
+    errors: state.errors.auth
   };
 };
 var mDTP = function mDTP(dispatch) {
   return {
-    register: function register(user) {
-      return dispatch((0,_actions_auth_actions__WEBPACK_IMPORTED_MODULE_1__.register)(user));
+    signUp: function signUp(user) {
+      return dispatch((0,_actions_auth_actions__WEBPACK_IMPORTED_MODULE_1__.signUp)(user));
+    },
+    logIn: function logIn(user) {
+      return dispatch((0,_actions_auth_actions__WEBPACK_IMPORTED_MODULE_1__.logIn)(user));
     }
   };
 };
