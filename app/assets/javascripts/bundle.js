@@ -8537,22 +8537,22 @@ var deletePosts = function deletePosts() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   RECIEVE_CURRENT_USER: () => (/* binding */ RECIEVE_CURRENT_USER),
+/* harmony export */   RECEIVE_CURRENT_USER: () => (/* binding */ RECEIVE_CURRENT_USER),
 /* harmony export */   register: () => (/* binding */ register)
 /* harmony export */ });
 /* harmony import */ var _util_session_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/session_util */ "./frontend/util/session_util.jsx");
 
-var RECIEVE_CURRENT_USER = 'RECIEVE_CURRENT_USER';
-var recieveCurrentUser = function recieveCurrentUser(user) {
+var RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
+var receiveCurrentUser = function receiveCurrentUser(user) {
   return {
-    type: RECIEVE_CURRENT_USER,
+    type: RECEIVE_CURRENT_USER,
     user: user
   };
 };
 var register = function register(user) {
   return function (dispatch) {
     return _util_session_util__WEBPACK_IMPORTED_MODULE_0__.register(user).then(function (user) {
-      return dispatch(recieveCurrentUser(user));
+      return dispatch(receiveCurrentUser(user));
     });
   };
 };
