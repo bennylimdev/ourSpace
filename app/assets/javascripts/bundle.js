@@ -9118,7 +9118,7 @@ var mSTP = function mSTP(state) {
       email: '',
       password: ''
     },
-    errors: state.errors.auth
+    errors: state.errors
   };
 };
 var mDTP = function mDTP(dispatch) {

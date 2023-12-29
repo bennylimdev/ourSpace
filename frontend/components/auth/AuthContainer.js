@@ -10,7 +10,7 @@ const mSTP = state => ({
         email: '',
         password: '',
     },
-    errors: state.errors.auth
+    errors: state.errors
 });
 
 const mDTP = dispatch => ({
