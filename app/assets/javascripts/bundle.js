@@ -8098,6 +8098,85 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./frontend/actions/posts_actions.js":
+/*!*******************************************!*\
+  !*** ./frontend/actions/posts_actions.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   RECEIVE_ALL_POSTS: () => (/* binding */ RECEIVE_ALL_POSTS),
+/* harmony export */   RECEIVE_POST: () => (/* binding */ RECEIVE_POST),
+/* harmony export */   REMOVE_POST: () => (/* binding */ REMOVE_POST),
+/* harmony export */   createPost: () => (/* binding */ createPost),
+/* harmony export */   deletePosts: () => (/* binding */ deletePosts),
+/* harmony export */   fetchPost: () => (/* binding */ fetchPost),
+/* harmony export */   fetchPosts: () => (/* binding */ fetchPosts),
+/* harmony export */   updatePost: () => (/* binding */ updatePost)
+/* harmony export */ });
+/* harmony import */ var _util_post_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/post_util */ "./frontend/util/post_util.js");
+
+var RECEIVE_ALL_POSTS = 'RECEIVE_ALL_POSTS';
+var RECEIVE_POST = 'RECEIVE_POST';
+var REMOVE_POST = 'REMOVE_POST';
+var recieveAllPosts = function recieveAllPosts(posts) {
+  return {
+    type: RECEIVE_ALL_POSTS,
+    posts: posts
+  };
+};
+var receivePost = function receivePost(post) {
+  return {
+    type: RECEIVE_POST,
+    post: post
+  };
+};
+var removePost = function removePost(postId) {
+  return {
+    type: REMOVE_POST,
+    postId: postId
+  };
+};
+var fetchPosts = function fetchPosts() {
+  return function (dispatch) {
+    return _util_post_util__WEBPACK_IMPORTED_MODULE_0__.fetchPosts().then(function (posts) {
+      return dispatch(recieveAllPosts(posts));
+    });
+  };
+};
+var fetchPost = function fetchPost() {
+  return function (dispatch) {
+    return _util_post_util__WEBPACK_IMPORTED_MODULE_0__.fetchPost().then(function (post) {
+      return dispatch(recievePost(post));
+    });
+  };
+};
+var updatePost = function updatePost() {
+  return function (dispatch) {
+    return _util_post_util__WEBPACK_IMPORTED_MODULE_0__.updatePost().then(function (post) {
+      return dispatch(recievePost(post));
+    });
+  };
+};
+var createPost = function createPost() {
+  return function (dispatch) {
+    return _util_post_util__WEBPACK_IMPORTED_MODULE_0__.createPost().then(function (post) {
+      return dispatch(recievePost(post));
+    });
+  };
+};
+var deletePosts = function deletePosts() {
+  return function (dispatch) {
+    return _util_post_util__WEBPACK_IMPORTED_MODULE_0__.deletePost().then(function (posts) {
+      return dispatch(removePost(post));
+    });
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/session_actions.js":
 /*!*********************************************!*\
   !*** ./frontend/actions/session_actions.js ***!
@@ -8841,12 +8920,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./users_reducer */ "./frontend/reducers/users_reducer.js");
+/* harmony import */ var _posts_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./posts_reducer */ "./frontend/reducers/posts_reducer.js");
 
 
-var EntitiesReducer = (0,redux__WEBPACK_IMPORTED_MODULE_1__.combineReducers)({
-  users: _users_reducer__WEBPACK_IMPORTED_MODULE_0__["default"]
+
+var EntitiesReducer = (0,redux__WEBPACK_IMPORTED_MODULE_2__.combineReducers)({
+  users: _users_reducer__WEBPACK_IMPORTED_MODULE_0__["default"],
+  posts: _posts_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (EntitiesReducer);
 
@@ -8874,6 +8956,41 @@ var ErrorsReducer = function ErrorsReducer() {
   ;
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ErrorsReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/posts_reducer.js":
+/*!********************************************!*\
+  !*** ./frontend/reducers/posts_reducer.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _actions_posts_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/posts_actions */ "./frontend/actions/posts_actions.js");
+
+var PostsReducer = function PostsReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+  var nextState = Object.assign({}, state);
+  switch (action.type) {
+    case _actions_posts_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_ALL_POSTS:
+      return action.posts;
+    case _actions_posts_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_POST:
+      nextState[action.post.id] = action.post;
+      return nextState;
+    case _actions_posts_actions__WEBPACK_IMPORTED_MODULE_0__.REMOVE_POST:
+      return nextState;
+    default:
+      return state;
+  }
+  ;
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PostsReducer);
 
 /***/ }),
 
@@ -8997,6 +9114,60 @@ var configureStore = function configureStore() {
   return (0,redux__WEBPACK_IMPORTED_MODULE_2__.createStore)(_reducers_root_reducer__WEBPACK_IMPORTED_MODULE_1__["default"], preloadedState, (0,redux__WEBPACK_IMPORTED_MODULE_2__.applyMiddleware)(redux_thunk__WEBPACK_IMPORTED_MODULE_3__["default"], (redux_logger__WEBPACK_IMPORTED_MODULE_0___default())));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (configureStore);
+
+/***/ }),
+
+/***/ "./frontend/util/post_util.js":
+/*!************************************!*\
+  !*** ./frontend/util/post_util.js ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   createPost: () => (/* binding */ createPost),
+/* harmony export */   deletePost: () => (/* binding */ deletePost),
+/* harmony export */   fetchPost: () => (/* binding */ fetchPost),
+/* harmony export */   fetchPosts: () => (/* binding */ fetchPosts),
+/* harmony export */   updatePost: () => (/* binding */ updatePost)
+/* harmony export */ });
+var fetchPosts = function fetchPosts() {
+  return $.ajax({
+    method: 'GET',
+    url: 'api/posts'
+  });
+};
+var fetchPost = function fetchPost(postId) {
+  return $.ajax({
+    method: 'GET',
+    url: "api/posts/".concat(postId)
+  });
+};
+var createPost = function createPost(post) {
+  return $.ajax({
+    method: 'POST',
+    url: 'api/posts',
+    data: {
+      post: post
+    }
+  });
+};
+var updatePost = function updatePost(post) {
+  return $.ajax({
+    method: 'PATCH',
+    url: "api/posts/".concat(post.id),
+    data: {
+      post: post
+    }
+  });
+};
+var deletePost = function deletePost(postId) {
+  return $.ajax({
+    method: 'DELETE',
+    url: "api/posts/".concat(postId)
+  });
+};
 
 /***/ }),
 
