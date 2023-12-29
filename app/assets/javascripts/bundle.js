@@ -9457,7 +9457,7 @@ var SessionReducer = function SessionReducer() {
   Object.freeze(state);
   var nextState = Object.assign({}, state);
   switch (action.type) {
-    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__.RECIEVE_CURRENT_USER:
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_CURRENT_USER:
       nextState[action.user.id] = action.user;
       return nextState;
     default:
