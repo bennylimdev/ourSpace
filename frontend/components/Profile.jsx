@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from './Header';
-import PostForm from './PostForm'
+import PostForm from './posts/PostForm';
 
 class Profile extends React.Component {
     constructor(props) {

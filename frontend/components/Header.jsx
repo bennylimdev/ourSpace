@@ -2,6 +2,7 @@ import React from 'react';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import { Avatar } from '@mui/material';
 
 function Header({}) {
     return (
@@ -18,7 +19,7 @@ function Header({}) {
                     <AccountCircleOutlinedIcon fontSize='large'/>
                 </div>
             </div>
-            <h3 className='header__end'>Userpic</h3>
+            <Avatar className='header__end'>BL</Avatar>
         </div>
     );
 };

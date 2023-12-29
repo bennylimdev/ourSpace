@@ -1,8 +1,8 @@
 import React from 'react';
 import Header from './Header';
-import PostForm from './PostForm';
+import PostForm from './posts/PostForm';
 import LeftNav from './LeftNav';
-import Post from './post';
+import Post from './posts/Post';
 
 class Home extends React.Component {
     constructor(props) {
