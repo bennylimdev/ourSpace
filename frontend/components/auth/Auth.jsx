@@ -8,11 +8,19 @@ const Auth = ({ user, signUp, logIn }) => {
         setForm({ ...form, [e.target.name]: e.target.value});
     };
 
+    const isPassword = () => {
+        form.password === form.confirmPassword
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        // isSignup compare passwords, if not the same modal pop up 
+        // make sure confirm password is not posted
         if(isSignup) {
-            signUp(form);
+            if(isPassword) {
+                signUp(form);
+            } else {
+                // pop up modal
+            }
         } else {
             logIn(form);
         }

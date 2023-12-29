@@ -8996,11 +8996,18 @@ var Auth = function Auth(_ref) {
   var handleChange = function handleChange(e) {
     setForm(_objectSpread(_objectSpread({}, form), {}, _defineProperty({}, e.target.name, e.target.value)));
   };
+  var isPassword = function isPassword() {
+    form.password === form.confirmPassword;
+  };
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
-    // isSignup compare passwords, if not the same modal pop up 
+    // make sure confirm password is not posted
     if (isSignup) {
-      signUp(form);
+      if (isPassword) {
+        signUp(form);
+      } else {
+        // pop up modal
+      }
     } else {
       logIn(form);
     }
@@ -9355,11 +9362,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _actions_auth_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/auth_actions */ "./frontend/actions/auth_actions.js");
+
 var ErrorsReducer = function ErrorsReducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(state);
   switch (action.type) {
+    case _actions_auth_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_SESSION_ERRORS:
+      return action.errors;
     default:
       return state;
   }
