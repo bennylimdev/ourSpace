@@ -1,7 +1,7 @@
 import * as UserUtil from '../util/user_util';
 
-export const RECEIVE_USERS = 'RECIEVE_USERS';
-export const RECEIVE_USER = 'RECIEVE_USER';
+export const RECEIVE_USERS = 'RECEIVE_USERS';
+export const RECEIVE_USER = 'RECEIVE_USER';
 
 const receiveUsers = users => ({
         type: RECEIVE_USERS,
@@ -14,10 +14,10 @@ const receiveUser = user => ({
 });
 
 export const fetchUsers = () => dispatch => (
-    UserUtil.fetchUsers().then(users => dispatch(recieveUsers(users)))
+    UserUtil.fetchUsers().then(users => dispatch(receiveUsers(users)))
 );
 
 export const fetchUser = userId => dispatch => (
-    UserUtil.fetchUser(userId).then(user => dispatch(recieveUser(user)))
+    UserUtil.fetchUser(userId).then(user => dispatch(receiveUser(user)))
 );
 

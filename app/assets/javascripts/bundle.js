@@ -8575,8 +8575,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _util_user_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/user_util */ "./frontend/util/user_util.jsx");
 
-var RECEIVE_USERS = 'RECIEVE_USERS';
-var RECEIVE_USER = 'RECIEVE_USER';
+var RECEIVE_USERS = 'RECEIVE_USERS';
+var RECEIVE_USER = 'RECEIVE_USER';
 var receiveUsers = function receiveUsers(users) {
   return {
     type: RECEIVE_USERS,
@@ -8592,14 +8592,14 @@ var receiveUser = function receiveUser(user) {
 var fetchUsers = function fetchUsers() {
   return function (dispatch) {
     return _util_user_util__WEBPACK_IMPORTED_MODULE_0__.fetchUsers().then(function (users) {
-      return dispatch(recieveUsers(users));
+      return dispatch(receiveUsers(users));
     });
   };
 };
 var fetchUser = function fetchUser(userId) {
   return function (dispatch) {
     return _util_user_util__WEBPACK_IMPORTED_MODULE_0__.fetchUser(userId).then(function (user) {
-      return dispatch(recieveUser(user));
+      return dispatch(receiveUser(user));
     });
   };
 };
