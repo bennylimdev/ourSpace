@@ -1,0 +1,33 @@
+.header {
+    grid-area: 1 / 1 / 2 / 9;
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: space-between;
+}
+
+.header__start {
+    margin-left: 15px;
+    color: darkblue;
+}
+
+.header__end {
+    margin-right: 15px;
+}
+
+.header__nav {
+    display: flex;
+    align-items: center;
+    width: 30%;
+    justify-content: space-evenly;
+}
+
+.header__nav > * {
+    padding: 8px;
+    border-radius: 10px;
+}
+
+.header__nav > *:hover {
+    background-color: #E4E6E9;
+    cursor: pointer;
+}

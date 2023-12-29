@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './Header';
+import PostForm from './PostForm'
 
 class Profile extends React.Component {
     constructor(props) {
@@ -8,9 +9,18 @@ class Profile extends React.Component {
 
     render() {
         return (
-            <div className='Profile'>
+            <div className='profile'>
                 <Header />
+                <div className='profileinfo'>
                 
+                </div>
+                <div className='friendslist'>
+
+                </div>
+                <PostForm />
+                <div className='newsfeed'>
+                
+                </div>
             </div>
         );
     };
