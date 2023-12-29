@@ -4,7 +4,7 @@ export const RECEIVE_ALL_POSTS = 'RECEIVE_ALL_POSTS';
 export const RECEIVE_POST = 'RECEIVE_POST';
 export const REMOVE_POST = 'REMOVE_POST';
 
-const recieveAllPosts = posts => ({
+const receiveAllPosts = posts => ({
     type: RECEIVE_ALL_POSTS,
     posts
 });
@@ -20,7 +20,7 @@ const removePost = postId => ({
 });
 
 export const fetchPosts = () => dispatch => (
-    PostUtil.fetchPosts().then(posts => dispatch(recieveAllPosts(posts)))
+    PostUtil.fetchPosts().then(posts => dispatch(receiveAllPosts(posts)))
 );
 export const fetchPost = () => dispatch => (
     PostUtil.fetchPost().then(post => dispatch(receivePost(post)))

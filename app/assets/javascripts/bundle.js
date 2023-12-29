@@ -8472,7 +8472,7 @@ __webpack_require__.r(__webpack_exports__);
 var RECEIVE_ALL_POSTS = 'RECEIVE_ALL_POSTS';
 var RECEIVE_POST = 'RECEIVE_POST';
 var REMOVE_POST = 'REMOVE_POST';
-var recieveAllPosts = function recieveAllPosts(posts) {
+var receiveAllPosts = function receiveAllPosts(posts) {
   return {
     type: RECEIVE_ALL_POSTS,
     posts: posts
@@ -8493,7 +8493,7 @@ var removePost = function removePost(postId) {
 var fetchPosts = function fetchPosts() {
   return function (dispatch) {
     return _util_post_util__WEBPACK_IMPORTED_MODULE_0__.fetchPosts().then(function (posts) {
-      return dispatch(recieveAllPosts(posts));
+      return dispatch(receiveAllPosts(posts));
     });
   };
 };
