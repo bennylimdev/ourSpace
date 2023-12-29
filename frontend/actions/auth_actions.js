@@ -1,12 +1,48 @@
 import * as AuthUtil from '../util/auth_util';
 
-export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
+export const LOGIN_CURRENT_USER = 'LOGIN_CURRENT_USER';
+export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
+export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
+export const REMOVE_SESSION_ERRORS = 'REMOVE_SESSION_ERRORS';
 
-const receiveCurrentUser = user => ({
-    type: RECEIVE_CURRENT_USER,
+const loginCurrentUser = user => ({
+    type: LOGIN_CURRENT_USER,
     user
 });
 
-export const register = user => dispatch => (
-    SessionUtil.register(user).then(user => dispatch(receiveCurrentUser(user)))
+const logoutCurrentUser = () => ({
+    type: LOGOUT_CURRENT_USER
+});
+
+const receiveErrors = errors => ({
+    type: RECEIVE_SESSION_ERRORS,
+    errors
+});
+
+const removeErrors = () => ({
+    type: REMOVE_SESSION_ERRORS
+});
+
+export const signUp = user => dispatch => (
+   AuthUtil.signUp(user)
+    .then(
+        user => dispatch(loginCurrentUser(user)),
+        error => dispatch(receiveErrors(error.responseJSON))
+    )
+);
+
+export const logIn = user => dispatch (
+    AuthUtil.logIn(user)
+        .then(
+            user => dispatch(loginCurrentUser(user)),
+            error => dispatch(receiveErrors(error.responseJSON))
+        )
+);
+
+export const logOut = () => dispatch => (
+    AuthUtil.logOut()
+        .then(
+            () => dispatch(logoutCurrentUser),
+            error => dispatch(receiveErrors(error.responseJSON))
+        )
 );

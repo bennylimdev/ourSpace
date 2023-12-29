@@ -8428,22 +8428,64 @@ if (false) {} else {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   RECEIVE_CURRENT_USER: () => (/* binding */ RECEIVE_CURRENT_USER),
-/* harmony export */   register: () => (/* binding */ register)
+/* harmony export */   LOGIN_CURRENT_USER: () => (/* binding */ LOGIN_CURRENT_USER),
+/* harmony export */   LOGOUT_CURRENT_USER: () => (/* binding */ LOGOUT_CURRENT_USER),
+/* harmony export */   RECEIVE_SESSION_ERRORS: () => (/* binding */ RECEIVE_SESSION_ERRORS),
+/* harmony export */   REMOVE_SESSION_ERRORS: () => (/* binding */ REMOVE_SESSION_ERRORS),
+/* harmony export */   logIn: () => (/* binding */ logIn),
+/* harmony export */   logOut: () => (/* binding */ logOut),
+/* harmony export */   signUp: () => (/* binding */ signUp)
 /* harmony export */ });
 /* harmony import */ var _util_auth_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/auth_util */ "./frontend/util/auth_util.jsx");
 
-var RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
-var receiveCurrentUser = function receiveCurrentUser(user) {
+var LOGIN_CURRENT_USER = 'LOGIN_CURRENT_USER';
+var LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
+var RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
+var REMOVE_SESSION_ERRORS = 'REMOVE_SESSION_ERRORS';
+var loginCurrentUser = function loginCurrentUser(user) {
   return {
-    type: RECEIVE_CURRENT_USER,
+    type: LOGIN_CURRENT_USER,
     user: user
   };
 };
-var register = function register(user) {
+var logoutCurrentUser = function logoutCurrentUser() {
+  return {
+    type: LOGOUT_CURRENT_USER
+  };
+};
+var receiveErrors = function receiveErrors(errors) {
+  return {
+    type: RECEIVE_SESSION_ERRORS,
+    errors: errors
+  };
+};
+var removeErrors = function removeErrors() {
+  return {
+    type: REMOVE_SESSION_ERRORS
+  };
+};
+var signUp = function signUp(user) {
   return function (dispatch) {
-    return SessionUtil.register(user).then(function (user) {
-      return dispatch(receiveCurrentUser(user));
+    return _util_auth_util__WEBPACK_IMPORTED_MODULE_0__.signUp(user).then(function (user) {
+      return dispatch(loginCurrentUser(user));
+    }, function (error) {
+      return dispatch(receiveErrors(error.responseJSON));
+    });
+  };
+};
+var logIn = function logIn(user) {
+  return dispatch(_util_auth_util__WEBPACK_IMPORTED_MODULE_0__.logIn(user).then(function (user) {
+    return dispatch(loginCurrentUser(user));
+  }, function (error) {
+    return dispatch(receiveErrors(error.responseJSON));
+  }));
+};
+var logOut = function logOut() {
+  return function (dispatch) {
+    return _util_auth_util__WEBPACK_IMPORTED_MODULE_0__.logOut().then(function () {
+      return dispatch(logoutCurrentUser);
+    }, function (error) {
+      return dispatch(receiveErrors(error.responseJSON));
     });
   };
 };
@@ -8631,6 +8673,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var App = function App() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
+    exact: true,
     path: "/",
     component: _auth_AuthContainer__WEBPACK_IMPORTED_MODULE_1__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
@@ -9478,15 +9521,32 @@ var configureStore = function configureStore() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   register: () => (/* binding */ register)
+/* harmony export */   logIn: () => (/* binding */ logIn),
+/* harmony export */   logOut: () => (/* binding */ logOut),
+/* harmony export */   signUp: () => (/* binding */ signUp)
 /* harmony export */ });
-var register = function register(user) {
-  $.ajax({
+var signUp = function signUp(user) {
+  return $.ajax({
     url: 'api/users',
     method: 'POST',
     data: {
       user: user
     }
+  });
+};
+var logIn = function logIn(user) {
+  return $.ajax({
+    url: 'api/session',
+    method: 'POST',
+    data: {
+      user: user
+    }
+  });
+};
+var logOut = function logOut() {
+  return $.ajax({
+    url: 'api/session',
+    method: 'DELETE'
   });
 };
 

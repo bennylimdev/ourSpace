@@ -8,7 +8,7 @@ import Friends from './Friends';
 const App = () => (
     <div>
         <Switch>
-            <Route path='/' component={AuthContainer} />
+            <Route exact path='/' component={AuthContainer} />
             <Route path='/home' component={Home} />
             <Route path='/profile' component={Profile} />
             <Route path='/friends' component={Friends} />
