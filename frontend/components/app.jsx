@@ -4,20 +4,14 @@ import AuthContainer from './auth/AuthContainer';
 import Home from './Home';
 import Profile from './Profile';
 import Friends from './Friends';
-import Modal from './modal/Modal';
+import ModalContainer from './modal/ModalContainer';
 
 const App = () => {
-    const [showModal, setShowModal] = useState(false)
+    // const [showModal, setShowModal] = useState(false)
 
     return (
     <div>
-        {showModal && (
-            <Modal
-            onCloseButtonClick={() => {
-                setShowModal(false);
-            }}
-            />
-        )}
+        <ModalContainer />
         <Switch>
             <Route exact path='/' component={AuthContainer} />
             <Route path='/home' component={Home} />

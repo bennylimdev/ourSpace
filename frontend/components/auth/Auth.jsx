@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Auth = ({ user, signUp, logIn }) => {
+const Auth = ({ user, signUp, logIn, showModal }) => {
     const [form, setForm] = useState(user);
     const [isSignup, setIsSignup] = useState(false);
 
@@ -8,18 +8,14 @@ const Auth = ({ user, signUp, logIn }) => {
         setForm({ ...form, [e.target.name]: e.target.value});
     };
 
-    const isPassword = () => {
-        form.password === form.confirmPassword
-    };
-
     const handleSubmit = (e) => {
         e.preventDefault();
         // make sure confirm password is not posted
         if(isSignup) {
-            if(isPassword) {
+            if(form.password === form.confirmPassword) {
                 signUp(form);
             } else {
-                //
+                showModal();
             }
         } else {
             logIn(form);

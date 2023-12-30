@@ -31,7 +31,7 @@ export const signUp = user => dispatch => (
     )
 );
 
-export const logIn = user => dispatch (
+export const logIn = user => dispatch => (
     AuthUtil.logIn(user)
         .then(
             user => dispatch(loginCurrentUser(user)),
