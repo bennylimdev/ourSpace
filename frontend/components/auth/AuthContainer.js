@@ -9,6 +9,7 @@ const mSTP = state => ({
         lastName: '',
         email: '',
         password: '',
+        confirmPassword: '',
     },
     errors: state.errors
 });

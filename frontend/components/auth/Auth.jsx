@@ -19,7 +19,7 @@ const Auth = ({ user, signUp, logIn }) => {
             if(isPassword) {
                 signUp(form);
             } else {
-                // pop up modal
+                //
             }
         } else {
             logIn(form);
