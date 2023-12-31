@@ -14,9 +14,9 @@ const App = () => {
         <ModalContainer />
         <Switch>
             <AuthRoute exact path='/' component={AuthContainer} />
-            <ProtectedRoute path='/home' component={Home} />
-            <ProtectedRoute path='/profile' component={Profile} />
-            <ProtectedRoute path='/friends' component={Friends} />
+            <ProtectedRoute exact path='/home' component={Home} />
+            <ProtectedRoute exact path='/profile' component={Profile} />
+            <ProtectedRoute exact path='/friends' component={Friends} />
         </Switch>
     </div>
     );

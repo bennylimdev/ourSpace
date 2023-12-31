@@ -8692,12 +8692,15 @@ var App = function App() {
     path: "/",
     component: _auth_AuthContainer__WEBPACK_IMPORTED_MODULE_2__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.ProtectedRoute, {
+    exact: true,
     path: "/home",
     component: _Home__WEBPACK_IMPORTED_MODULE_3__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.ProtectedRoute, {
+    exact: true,
     path: "/profile",
     component: _Profile__WEBPACK_IMPORTED_MODULE_4__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.ProtectedRoute, {
+    exact: true,
     path: "/friends",
     component: _Friends__WEBPACK_IMPORTED_MODULE_5__["default"]
   })));
@@ -9483,7 +9486,7 @@ var AuthReducer = function AuthReducer() {
   var nextState = Object.assign({}, state);
   switch (action.type) {
     case _actions_auth_actions__WEBPACK_IMPORTED_MODULE_0__.LOGIN_CURRENT_USER:
-      nextState[action.user.id] = action.user;
+      nextState.id = action.user.id;
       return nextState;
     default:
       return state;
@@ -9837,7 +9840,7 @@ var Auth = function Auth(_ref) {
     exact: exact,
     render: function render(props) {
       return !loggedIn ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Component, props) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Redirect, {
-        to: "/"
+        to: "/home"
       });
     }
   });
@@ -9852,7 +9855,7 @@ var Protected = function Protected(_ref2) {
     exact: exact,
     render: function render(props) {
       return loggedIn ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Component, props) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Redirect, {
-        to: "/login"
+        to: "/"
       });
     }
   });
