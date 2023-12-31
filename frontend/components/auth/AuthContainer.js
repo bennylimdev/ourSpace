@@ -6,8 +6,8 @@ import Auth from './Auth';
 // for error handling in future
 const mSTP = state => ({
     user: { 
-        firstName: '',
-        lastName: '',
+        first_name: '',
+        last_name: '',
         email: '',
         password: '',
         confirmPassword: '',

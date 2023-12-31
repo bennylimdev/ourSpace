@@ -9024,7 +9024,10 @@ var Auth = function Auth(_ref) {
         // showModal();
       }
     } else {
-      logIn(form);
+      logIn({
+        email: form.email,
+        password: form.password
+      });
     }
   };
   var switchMode = function switchMode() {
@@ -9047,7 +9050,7 @@ var Auth = function Auth(_ref) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
     htmlFor: "firstName"
   }, "First Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-    name: "firstName",
+    name: "first_name",
     type: "text",
     placeholder: "First Name",
     onChange: handleChange,
@@ -9057,7 +9060,7 @@ var Auth = function Auth(_ref) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
     htmlFor: "lastName"
   }, "Last Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-    name: "lastName",
+    name: "last_name",
     type: "text",
     placeholder: "Last Name",
     onChange: handleChange,
@@ -9130,8 +9133,8 @@ __webpack_require__.r(__webpack_exports__);
 var mSTP = function mSTP(state) {
   return {
     user: {
-      firstName: '',
-      lastName: '',
+      first_name: '',
+      last_name: '',
       email: '',
       password: '',
       confirmPassword: ''

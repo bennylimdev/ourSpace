@@ -18,7 +18,7 @@ const Auth = ({ errors, user, signUp, logIn, showModal }) => {
                 // showModal();
             }
         } else {
-            logIn(form);
+            logIn({ email: form.email, password: form.password });
         }
     };
 
@@ -36,7 +36,7 @@ const Auth = ({ errors, user, signUp, logIn, showModal }) => {
                             <div className='auth__form-container_fields-content_input'>
                                 <label htmlFor='firstName'>First Name</label>
                                 <input
-                                    name='firstName'
+                                    name='first_name'
                                     type='text'
                                     placeholder='First Name'
                                     onChange={handleChange}
@@ -48,7 +48,7 @@ const Auth = ({ errors, user, signUp, logIn, showModal }) => {
                             <div className='auth__form-container_fields-content_input'>
                                 <label htmlFor='lastName'>Last Name</label>
                                 <input
-                                    name='lastName'
+                                    name='last_name'
                                     type='text'
                                     placeholder='Last Name'
                                     onChange={handleChange}
