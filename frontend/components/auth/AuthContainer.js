@@ -12,13 +12,13 @@ const mSTP = state => ({
         password: '',
         confirmPassword: '',
     },
-    errors: state.errors,
+    errors: state.errors
 });
 
 const mDTP = dispatch => ({
     signUp: user => dispatch(signUp(user)),
     logIn: user => dispatch(logIn(user)),
-    showModal: () => dispatch(showModal())
+    showModal: (form) => dispatch(showModal(form))
 });
 
 export default connect(mSTP, mDTP)(Auth);

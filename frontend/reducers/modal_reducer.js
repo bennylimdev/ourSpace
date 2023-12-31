@@ -1,15 +1,22 @@
 import { SHOW_MODAL, HIDE_MODAL } from "../actions/modal_actions";
 
-const ModalReducer = (state = false, action) => {
+const initialState = {
+    title: '',
+    description: '',
+    show: false
+};
+
+const ModalReducer = (state = initialState, action) => {
     Object.freeze(state);
-    
+    const nextState = Object.assign({}, state);
+
     switch(action.type) {
         case SHOW_MODAL:
-            console.log('bob2')
-            return true;
+            nextState.show = true
+            return nextState
         case HIDE_MODAL:
-            console.log('bob3')
-            return false;
+            nextState.show = false
+            return nextState
         default:
             return state;
     }

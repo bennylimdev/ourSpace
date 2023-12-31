@@ -1,5 +1,4 @@
 import * as AuthUtil from '../util/auth_util';
-
 export const LOGIN_CURRENT_USER = 'LOGIN_CURRENT_USER';
 export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
 export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
@@ -19,7 +18,7 @@ const receiveErrors = errors => ({
     errors
 });
 
-const removeErrors = () => ({
+export const removeErrors = () => ({
     type: REMOVE_SESSION_ERRORS
 });
 

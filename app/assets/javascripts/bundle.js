@@ -8434,6 +8434,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   REMOVE_SESSION_ERRORS: () => (/* binding */ REMOVE_SESSION_ERRORS),
 /* harmony export */   logIn: () => (/* binding */ logIn),
 /* harmony export */   logOut: () => (/* binding */ logOut),
+/* harmony export */   removeErrors: () => (/* binding */ removeErrors),
 /* harmony export */   signUp: () => (/* binding */ signUp)
 /* harmony export */ });
 /* harmony import */ var _util_auth_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/auth_util */ "./frontend/util/auth_util.jsx");
@@ -8505,19 +8506,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   HIDE_MODAL: () => (/* binding */ HIDE_MODAL),
 /* harmony export */   SHOW_MODAL: () => (/* binding */ SHOW_MODAL),
-/* harmony export */   hideModal: () => (/* binding */ hideModal),
+/* harmony export */   hideModaltest: () => (/* binding */ hideModaltest),
 /* harmony export */   showModal: () => (/* binding */ showModal)
 /* harmony export */ });
+/* harmony import */ var _auth_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./auth_actions */ "./frontend/actions/auth_actions.js");
+
 var SHOW_MODAL = 'SHOW_MODAL';
 var HIDE_MODAL = 'HIDE_MODAL';
-var showModal = function showModal() {
+var showModal = function showModal(form) {
   return {
-    type: SHOW_MODAL
+    type: SHOW_MODAL,
+    form: form
   };
 };
 var hideModal = function hideModal() {
   return {
     type: HIDE_MODAL
+  };
+};
+var hideModaltest = function hideModaltest() {
+  return function (dispatch) {
+    dispatch(hideModal());
+    dispatch((0,_auth_actions__WEBPACK_IMPORTED_MODULE_0__.removeErrors)());
   };
 };
 
@@ -8987,7 +8997,8 @@ function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" !=
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var Auth = function Auth(_ref) {
-  var user = _ref.user,
+  var errors = _ref.errors,
+    user = _ref.user,
     signUp = _ref.signUp,
     logIn = _ref.logIn,
     showModal = _ref.showModal;
@@ -8999,6 +9010,7 @@ var Auth = function Auth(_ref) {
     _useState4 = _slicedToArray(_useState3, 2),
     isSignup = _useState4[0],
     setIsSignup = _useState4[1];
+  // pass error handling down from parent
   var handleChange = function handleChange(e) {
     setForm(_objectSpread(_objectSpread({}, form), {}, _defineProperty({}, e.target.name, e.target.value)));
   };
@@ -9009,7 +9021,7 @@ var Auth = function Auth(_ref) {
       if (form.password === form.confirmPassword) {
         signUp(form);
       } else {
-        showModal();
+        // showModal();
       }
     } else {
       logIn(form);
@@ -9135,12 +9147,57 @@ var mDTP = function mDTP(dispatch) {
     logIn: function logIn(user) {
       return dispatch((0,_actions_auth_actions__WEBPACK_IMPORTED_MODULE_1__.logIn)(user));
     },
-    showModal: function showModal() {
-      return dispatch((0,_actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__.showModal)());
+    showModal: function showModal(form) {
+      return dispatch((0,_actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__.showModal)(form));
     }
   };
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mSTP, mDTP)(_Auth__WEBPACK_IMPORTED_MODULE_3__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/modal/Errors.jsx":
+/*!**********************************************!*\
+  !*** ./frontend/components/modal/Errors.jsx ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var Errors = function Errors(_ref) {
+  var errors = _ref.errors;
+  var errorHandler = {};
+  console.log(errors);
+  if (errors.includes("First name can't be blank")) {
+    errorHandler['firstname'] = "First name can't be blank";
+  }
+  ;
+  if (errors.includes("Last name can't be blank")) {
+    errorHandler['lastname'] = "Last name can't be blank";
+  }
+  ;
+  if (errors.includes("Email can't be blank")) {
+    errorHandler['email'] = "Email can't be blank";
+  }
+  ;
+  if (errors.includes("Password is too short (minimum is 6 characters)")) {
+    errorHandler['password'] = "Password is too short (minimum is 6 characters)";
+  }
+  ;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "errors-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, Object.values(errorHandler).map(function (error, i) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+      key: "".concat(i)
+    }, error);
+  })));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Errors);
 
 /***/ }),
 
@@ -9156,24 +9213,52 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _Errors__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Errors */ "./frontend/components/modal/Errors.jsx");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 // dependencies: EditPost, CreatePost, DeletePost, EditComment, EditProfile, EditCoverPhoto
 
 var Modal = function Modal(_ref) {
-  var error = _ref.error,
+  var errors = _ref.errors,
     modal = _ref.modal,
     hideModal = _ref.hideModal;
-  if (!modal) {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState2 = _slicedToArray(_useState, 2),
+    isErrors = _useState2[0],
+    setIsErrors = _useState2[1];
+  if (errors.length !== 0 && !isErrors) {
+    setIsErrors(function (prevIsErrors) {
+      return !prevIsErrors;
+    });
+  }
+  if (!modal && !isErrors) {
     return null;
   }
+  var form;
+  if (isErrors) {
+    form = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Errors__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      errors: errors
+    });
+  }
+  var closeModal = function closeModal(func) {
+    hideModal();
+    setIsErrors(function (prevIsErrors) {
+      return !prevIsErrors;
+    });
+  };
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "modal-overlay"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "modal"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
     className: "modal-close",
-    onClick: hideModal
-  }, "\u2715 "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "Hello Modal")));
+    onClick: closeModal
+  }, "\u2715 "), form));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Modal);
 
@@ -9198,14 +9283,16 @@ __webpack_require__.r(__webpack_exports__);
 
 var mSTP = function mSTP(state) {
   return {
-    error: state.errors,
-    modal: state.modal
+    errors: state.errors,
+    show: state.modal.show,
+    title: state.modal.title,
+    description: state.modal.description
   };
 };
 var mDTP = function mDTP(dispatch) {
   return {
     hideModal: function hideModal() {
-      return dispatch((0,_actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__.hideModal)());
+      return dispatch((0,_actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__.hideModaltest)());
     }
   };
 };
@@ -9392,7 +9479,7 @@ var AuthReducer = function AuthReducer() {
   Object.freeze(state);
   var nextState = Object.assign({}, state);
   switch (action.type) {
-    case _actions_auth_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_CURRENT_USER:
+    case _actions_auth_actions__WEBPACK_IMPORTED_MODULE_0__.LOGIN_CURRENT_USER:
       nextState[action.user.id] = action.user;
       return nextState;
     default:
@@ -9449,6 +9536,8 @@ var ErrorsReducer = function ErrorsReducer() {
   switch (action.type) {
     case _actions_auth_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_SESSION_ERRORS:
       return action.errors;
+    case _actions_auth_actions__WEBPACK_IMPORTED_MODULE_0__.REMOVE_SESSION_ERRORS:
+      return [];
     default:
       return state;
   }
@@ -9471,17 +9560,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/modal_actions */ "./frontend/actions/modal_actions.js");
 
+var initialState = {
+  title: '',
+  description: '',
+  show: false
+};
 var ModalReducer = function ModalReducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
   var action = arguments.length > 1 ? arguments[1] : undefined;
   Object.freeze(state);
+  var nextState = Object.assign({}, state);
   switch (action.type) {
     case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_0__.SHOW_MODAL:
-      console.log('bob2');
-      return true;
+      nextState.show = true;
+      return nextState;
     case _actions_modal_actions__WEBPACK_IMPORTED_MODULE_0__.HIDE_MODAL:
-      console.log('bob3');
-      return false;
+      nextState.show = false;
+      return nextState;
     default:
       return state;
   }

@@ -1,14 +1,16 @@
 import { connect } from 'react-redux';
 import Modal from './Modal';
-import { hideModal, showModal } from '../../actions/modal_actions';
+import { hideModaltest, showModal } from '../../actions/modal_actions';
 
 const mSTP = state => ({
-    error: state.errors,
-    modal: state.modal
+    errors: state.errors,
+    show: state.modal.show,
+    title: state.modal.title,
+    description: state.modal.description
 });
 
 const mDTP = dispatch => ({
-    hideModal: () => dispatch(hideModal())
+    hideModal: () => dispatch(hideModaltest())
 });
 
 export default connect(mSTP, mDTP)(Modal);

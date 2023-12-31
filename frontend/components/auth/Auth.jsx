@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
-const Auth = ({ user, signUp, logIn, showModal }) => {
+const Auth = ({ errors, user, signUp, logIn, showModal }) => {
     const [form, setForm] = useState(user);
-    const [isSignup, setIsSignup] = useState(false);
-
+    const [isSignup, setIsSignup] = useState(false); 
+    // pass error handling down from parent
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value});
     };
@@ -15,7 +15,7 @@ const Auth = ({ user, signUp, logIn, showModal }) => {
             if(form.password === form.confirmPassword) {
                 signUp(form);
             } else {
-                showModal();
+                // showModal();
             }
         } else {
             logIn(form);
@@ -25,7 +25,7 @@ const Auth = ({ user, signUp, logIn, showModal }) => {
     const switchMode = () => {
         setIsSignup((prevIsSignup) => !prevIsSignup);
     };
-
+    
     return (
         <div className='auth__form-container'>
             <h1 className='logo'>ourSpace</h1>
@@ -52,7 +52,7 @@ const Auth = ({ user, signUp, logIn, showModal }) => {
                                     type='text'
                                     placeholder='Last Name'
                                     onChange={handleChange}
-                                    required 
+                                    required
                                 />
                             </div>
                         )}
@@ -63,7 +63,7 @@ const Auth = ({ user, signUp, logIn, showModal }) => {
                                 type='text'
                                 placeholder='email'
                                 onChange={handleChange}
-                                required 
+                                required
                             />
                         </div>
                         <div className='auth__form-container_fields-content_input'>
@@ -73,7 +73,7 @@ const Auth = ({ user, signUp, logIn, showModal }) => {
                                 type='password'
                                 placeholder='Password'
                                 onChange={handleChange}
-                                required 
+                                required
                             />
                         </div>
                         {isSignup && (
