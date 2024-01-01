@@ -2,24 +2,27 @@ import React from 'react';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
-import { Avatar } from '@mui/material';
+import LogoutIcon from '@mui/icons-material/Logout';
+import { blue } from '@mui/material/colors';
+import { Avatar, Tabs, Tab } from '@mui/material';
 
 function Header({}) {
     return (
         <div className='header'>
             <h3 className='header__start'>o(S)</h3>
-            <div className='header__nav'>
-                <div>
-                    <HomeOutlinedIcon fontSize='large'/>
-                </div>
-                <div>
-                    <PersonAddAltOutlinedIcon fontSize='large'/>
-                </div>
-                <div>
-                    <AccountCircleOutlinedIcon fontSize='large'/>
-                </div>
+            <Tabs value={false} className='header__nav'>
+                <Tab icon={<HomeOutlinedIcon fontSize='large' />} />
+                <Tab icon={<PersonAddAltOutlinedIcon fontSize='large' />} />
+                <Tab icon={<AccountCircleOutlinedIcon fontSize='large' />} />
+            </Tabs>
+            <div className='header__end'>
+                <Avatar sx={{ bgcolor: blue[900] }}>
+                    <LogoutIcon />
+                </Avatar>
+                <Avatar sx={{ bgcolor: blue[800] }}>
+                    BL
+                </Avatar>
             </div>
-            <Avatar className='header__end'>BL</Avatar>
         </div>
     );
 };

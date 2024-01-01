@@ -12,23 +12,10 @@
 }
 
 .header__end {
-    margin-right: 15px;
     margin-top: 9px;
-}
-
-.header__nav {
     display: flex;
-    align-items: center;
-    width: 30%;
-    justify-content: space-evenly;
 }
 
-.header__nav > * {
-    padding: 8px;
-    border-radius: 10px;
-}
-
-.header__nav > *:hover {
-    background-color: #E4E6E9;
-    cursor: pointer;
+.header__end > * {
+    margin-right: 10px;
 }

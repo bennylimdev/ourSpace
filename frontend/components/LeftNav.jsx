@@ -1,22 +1,29 @@
 import React from 'react';
+import { Tabs, Tab } from '@mui/material';
+import PeopleOutlineIcon from '@mui/icons-material/PeopleOutline';
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import LogoutIcon from '@mui/icons-material/Logout';
 
-class LeftNav extends React.Component {
-    constructor(props) {
-        super(props);
-    };
-
-    render() {
-        return (
-            <div className='left__nav'>
-              <h3 className='nav__link'>
-                Current User
-              </h3>
-              <h3 className='nav__link'>
-                Find Friends
-              </h3>
-            </div>
-        );
-    };
-};
+const LeftNav = () => {
+  return (
+    <Tabs value={false} className='left__nav' orientation='vertical'>
+      <Tab 
+        icon={<PeopleOutlineIcon />}
+        iconPosition='start'
+        label='My Profile'
+      />
+      <Tab 
+        icon={<AccountCircleOutlinedIcon />}
+        iconPosition='start'
+        label='Friends'
+      />
+      <Tab 
+        icon={<LogoutIcon />}
+        iconPosition='start'
+        label='Logout'
+        />
+    </Tabs>
+  )
+}
 
 export default LeftNav
