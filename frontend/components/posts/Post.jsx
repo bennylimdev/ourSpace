@@ -1,39 +1,40 @@
 import React from 'react';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
+import SendIcon from '@mui/icons-material/Send';
+import { Avatar, ButtonGroup, Button, TextField, IconButton } from '@mui/material';
 
-class Post extends React.Component {
-    constructor(props) {
-        super(props);
-    };
-
-    render() {
-        return (
-            <div className='post'>
-                <div className='post__header'>
-                    <h5>Author 10 hours ago</h5>
-                </div>
-                <div className='post__content'>
-                    <p>Dam today was not fun</p>
-                </div>
-                <div className='post__buttons'>
-                    <div className='post__button'>
-                        <FavoriteBorderIcon />
-                    </div>
-                    <div className='post__button'>
-                        <ChatBubbleOutlineIcon />
-                    </div>
-                </div>
-                <div className='comment__form'>
-                    <input 
-                    className="comment__input"
-                    type='text'
-                    placeholder="Write a comment..."
-                    />
-                </div>
+const Post = ({ likes, comments, edit, destroy, author, postdata }) => {
+    return (
+        <div className='post'>
+            <div className='post__header'>
+                <Avatar sx={{ width: 24, height: 24 }}>B</Avatar>
+                <h5>Author 10 hours ago</h5>
             </div>
-        );
-    };
+            <div className='post__content'>
+                <p>Dam today was not fun</p>
+            </div>
+            <ButtonGroup variant='contained' className='post__btns'>
+                <Button variant='outlined' startIcon={<FavoriteBorderIcon />} className='like-btn' >
+                    Like
+                </Button>
+                <Button startIcon={<ChatBubbleOutlineIcon />} className='comment-btn'>
+                    Comment
+                </Button>            
+            </ButtonGroup>
+            <div className='comment__form'>
+                <Avatar sx={{ width: 30, height: 30 }} className='.comment-form__input__avatar'>BL</Avatar>
+                <TextField 
+                    variant='filled' 
+                    size='small'
+                    label="Leave a comment"
+                />
+                <IconButton>
+                    <SendIcon />
+                </IconButton>
+            </div>
+        </div>
+    );
 };
 
 export default Post;

@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import Home from "./Home";
+import NewsFeed from "./NewsFeed";
 import { getPosts } from "../actions/posts_actions";
 
 const mSTP = state => ({
@@ -10,4 +10,4 @@ const mDTP = dispatch => ({
     getPosts: () => dispatch(getPosts())
 });
 
-export default connect(mSTP, mDTP)(Home);
+export default connect(mSTP, mDTP)(NewsFeed);

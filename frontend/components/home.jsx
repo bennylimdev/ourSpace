@@ -1,8 +1,9 @@
 import React from 'react';
 import Header from './Header';
-import PostForm from './posts/PostForm';
+import PostFormContainer from './posts/PostFormContainer';
 import LeftNav from './LeftNav';
 import Post from './posts/Post';
+import NewsFeedContainer from './NewsFeedContainer';
 
 class Home extends React.Component {
     constructor(props) {
@@ -14,10 +15,10 @@ class Home extends React.Component {
             <div className='home'>
                 <Header />
                 <LeftNav />
-                <PostForm />
-                <div className='news__feed'>
+                <PostFormContainer />
+                <NewsFeedContainer>
                     <Post />
-                </div>
+                </NewsFeedContainer>
                 <div className='right__nav__bar'>
                 </div>
             </div> 

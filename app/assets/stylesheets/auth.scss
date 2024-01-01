@@ -24,6 +24,9 @@
     place-items: center;
     height: auto;
     width: 100%;
+    max-width: 500px;
+    min-width: 400px;
+    justify-self: center;
 }
 
 .auth__form-container_fields-content_input label {

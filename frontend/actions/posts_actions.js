@@ -19,7 +19,7 @@ const removePost = postId => ({
     postId
 });
 
-export const fetchPosts = () => dispatch => (
+export const getPosts = () => dispatch => (
     PostUtil.fetchPosts().then(posts => dispatch(receiveAllPosts(posts)))
 );
 export const fetchPost = () => dispatch => (
@@ -28,8 +28,8 @@ export const fetchPost = () => dispatch => (
 export const updatePost = () => dispatch => (
     PostUtil.updatePost().then(post => dispatch(receivePost(post)))
 );
-export const createPost = () => dispatch => (
-    PostUtil.createPost().then(post => dispatch(receivePost(post)))
+export const createPost = post => dispatch => (
+    PostUtil.createPost(post).then(post => dispatch(receivePost(post)))
 );
 export const deletePosts = () => dispatch => (
     PostUtil.deletePost().then(posts => dispatch(removePost(post)))
