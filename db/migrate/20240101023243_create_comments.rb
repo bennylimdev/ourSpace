@@ -7,7 +7,7 @@ class CreateComments < ActiveRecord::Migration[5.2]
       t.integer :parent_comment_id
       t.timestamps
     end
-    add_index :users, :author_id
-    add_index :posts, :post_id
+    add_index :comments, :author_id
+    add_index :comments, :post_id
   end
 end
