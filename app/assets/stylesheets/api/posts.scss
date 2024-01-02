@@ -46,6 +46,14 @@
     width: 100%;
 }
 
+.post__comments-container {
+    grid-area: 4 / 1 / 5 / 4;
+}
+
+.comment__wrapper {
+    display: flex;
+}
+
 .comment-btn {
     grid-area: 1 / 2 / 2 / 3;
     width: 100%;

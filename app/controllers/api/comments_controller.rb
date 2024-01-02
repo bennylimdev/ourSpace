@@ -1,4 +1,4 @@
-class Api::CommentsControllerController < ApplicationController
+class Api::CommentsController < ApplicationController
     def index
         @comments = Comment.all
         render :index
