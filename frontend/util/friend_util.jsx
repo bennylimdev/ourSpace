@@ -20,6 +20,14 @@ export const createFriend = friend => (
     })
 );
 
+export const updateFriendStatus = friendId => (
+    $.ajax({
+        method: 'PATCH',
+        url: `api/friend/${friendId}`,
+        data: { friend }
+    })
+);
+
 export const deleteFriend = friendId => (
     $.ajax({
         method: 'DELETE',
