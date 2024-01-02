@@ -7,7 +7,7 @@ const Comment = ({ first_name, last_name, body }) => {
         <Avatar> BL </Avatar>
         <div className='comment__content'>
             <h5>{first_name} {last_name}</h5>
-            <body>{body}</body>
+            <p>{body}</p>
         </div>
         <div className='comment__btns'> 
             <ButtonGroup>

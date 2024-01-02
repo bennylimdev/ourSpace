@@ -1,29 +1,27 @@
 import React from 'react';
 import Header from './Header';
 import PostForm from './posts/PostForm';
+import { Avatar } from '@mui/material';
+import NewsFeed from './NewsFeed';
 
-class Profile extends React.Component {
-    constructor(props) {
-        super(props);
-    };
-
-    render() {
-        return (
+const Profile = () => {
+    return (
+        <div className='profile-page'>
+            <Header />
             <div className='profile'>
-                <Header />
-                <div className='profileinfo'>
-                
+                <div className='profile-pic'>
+                    <Avatar sx={{ width: 180, height: 180 }}> BL </Avatar>
                 </div>
-                <div className='friendslist'>
-
+                <div className='profile-bio'>
+                    <p> I Love pie </p>
+                </div>
+                <div className='friends-list'>
                 </div>
                 <PostForm />
-                <div className='newsfeed'>
-                
-                </div>
+                <NewsFeed posts={[]} comments={[]}/>
             </div>
-        );
-    };
+        </div>
+    );
 };
 
 export default Profile;

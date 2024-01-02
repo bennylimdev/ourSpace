@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import Home from "./Home";
+import Home from './Home'
 import { getPosts } from "../actions/posts_actions";
 import { getComments } from "../actions/comment_actions";
 

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import Header from './Header';
 import PostFormContainer from './posts/PostFormContainer';
 import LeftNav from './LeftNav';
-import NewsFeedContainer from './NewsFeedContainer';
+import NewsFeed from './NewsFeed';
 
 const Home = ({ getComments, allComments, getPosts, allPosts }) => {
   useEffect(() => {
@@ -21,7 +21,7 @@ const Home = ({ getComments, allComments, getPosts, allPosts }) => {
       <Header />
       <LeftNav />
       <PostFormContainer />
-      <NewsFeedContainer posts={allPosts} comments={allComments}/>
+      <NewsFeed posts={allPosts} comments={allComments}/>
       <div className='right__nav__bar'>
       </div>
     </div> 
