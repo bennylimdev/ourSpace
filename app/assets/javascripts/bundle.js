@@ -23140,6 +23140,77 @@ var deleteComment = function deleteComment(commentId) {
 
 /***/ }),
 
+/***/ "./frontend/actions/friend_actions.js":
+/*!********************************************!*\
+  !*** ./frontend/actions/friend_actions.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   RECEIVE_ALL_FRIENDS: () => (/* binding */ RECEIVE_ALL_FRIENDS),
+/* harmony export */   RECEIVE_FRIEND: () => (/* binding */ RECEIVE_FRIEND),
+/* harmony export */   REMOVE_FRIEND: () => (/* binding */ REMOVE_FRIEND),
+/* harmony export */   deleteFriend: () => (/* binding */ deleteFriend),
+/* harmony export */   getFriend: () => (/* binding */ getFriend),
+/* harmony export */   getFriends: () => (/* binding */ getFriends),
+/* harmony export */   updateFriendStatus: () => (/* binding */ updateFriendStatus)
+/* harmony export */ });
+/* harmony import */ var _util_friend_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/friend_util */ "./frontend/util/friend_util.jsx");
+
+var RECEIVE_ALL_FRIENDS = 'RECEIVE_ALL_FRIENDS';
+var RECEIVE_FRIEND = 'RECEIVE_FRIEND';
+var REMOVE_FRIEND = 'REMOVE_FRIEND';
+var receiveAllFriends = function receiveAllFriends(friends) {
+  return {
+    type: RECEIVE_ALL_FRIENDS,
+    friends: friends
+  };
+};
+var receiveFriend = function receiveFriend(friendId) {
+  return {
+    type: RECEIVE_FRIEND,
+    friend: friend
+  };
+};
+var removeFriend = function removeFriend(friendId) {
+  return {
+    type: REMOVE_FRIEND,
+    friendId: friendId
+  };
+};
+var getFriends = function getFriends() {
+  return function (dispatch) {
+    return _util_friend_util__WEBPACK_IMPORTED_MODULE_0__.getFriends().then(function (friends) {
+      return dispatch(receiveAllFriends(friends));
+    });
+  };
+};
+var getFriend = function getFriend(friendId) {
+  return function (dispatch) {
+    return _util_friend_util__WEBPACK_IMPORTED_MODULE_0__.getFriend(friendId).then(function (friendId) {
+      return dispatch(receiveFriend(friendId));
+    });
+  };
+};
+var updateFriendStatus = function updateFriendStatus(friendId) {
+  return function (dispatch) {
+    return _util_friend_util__WEBPACK_IMPORTED_MODULE_0__.updateFriendStatus(friendId).then(function (friend) {
+      return dispatch(receiveFriend(friend));
+    });
+  };
+};
+var deleteFriend = function deleteFriend(friendId) {
+  return function (dispatch) {
+    return _util_friend_util__WEBPACK_IMPORTED_MODULE_0__.deleteFriend(friendId).then(function () {
+      return dispatch(removeFriend(friendId));
+    });
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/like_actions.js":
 /*!******************************************!*\
   !*** ./frontend/actions/like_actions.js ***!
@@ -24506,7 +24577,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-Object(function webpackMissingModule() { var e = new Error("Cannot find module '../actions/friends_actions'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+/* harmony import */ var _actions_friend_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/friend_actions */ "./frontend/actions/friend_actions.js");
 
 var FriendsReducer = function FriendsReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
@@ -24514,12 +24585,12 @@ var FriendsReducer = function FriendsReducer() {
   Object.freeze(state);
   var nextState = Object.assign({}, state);
   switch (action.type) {
-    case Object(function webpackMissingModule() { var e = new Error("Cannot find module '../actions/friends_actions'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()):
+    case _actions_friend_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_ALL_FRIENDS:
       return action.friends;
-    case Object(function webpackMissingModule() { var e = new Error("Cannot find module '../actions/friends_actions'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()):
+    case _actions_friend_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_FRIEND:
       nextState[action.friend.id] = action.friend;
       return nextState;
-    case Object(function webpackMissingModule() { var e = new Error("Cannot find module '../actions/friends_actions'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()):
+    case _actions_friend_actions__WEBPACK_IMPORTED_MODULE_0__.REMOVE_FRIEND:
       delete nextState[action.friendId];
       return nextState;
     default:
@@ -24821,6 +24892,60 @@ var deleteComment = function deleteComment(commentId) {
   return $.ajax({
     method: 'DELETE',
     url: "api/comments/".concat(commentId)
+  });
+};
+
+/***/ }),
+
+/***/ "./frontend/util/friend_util.jsx":
+/*!***************************************!*\
+  !*** ./frontend/util/friend_util.jsx ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   createFriend: () => (/* binding */ createFriend),
+/* harmony export */   deleteFriend: () => (/* binding */ deleteFriend),
+/* harmony export */   getFriend: () => (/* binding */ getFriend),
+/* harmony export */   getFriends: () => (/* binding */ getFriends),
+/* harmony export */   updateFriendStatus: () => (/* binding */ updateFriendStatus)
+/* harmony export */ });
+var getFriends = function getFriends() {
+  return $.ajax({
+    method: 'GET',
+    url: 'api/friends'
+  });
+};
+var getFriend = function getFriend(friendId) {
+  return $.ajax({
+    method: 'GET',
+    url: "api/friends/".concat(friendId)
+  });
+};
+var createFriend = function createFriend(friend) {
+  return $.ajax({
+    method: 'POST',
+    url: 'api/friends',
+    data: {
+      friend: friend
+    }
+  });
+};
+var updateFriendStatus = function updateFriendStatus(friendId) {
+  return $.ajax({
+    method: 'PATCH',
+    url: "api/friend/".concat(friendId),
+    data: {
+      friend: friend
+    }
+  });
+};
+var deleteFriend = function deleteFriend(friendId) {
+  return $.ajax({
+    method: 'DELETE',
+    url: "api/friends/".concat(friendId)
   });
 };
 

@@ -1,4 +1,4 @@
-import { RECEIVE_ALL_FRIENDS, RECEIVE_FRIEND, REMOVE_FRIEND } from '../actions/friends_actions';
+import { RECEIVE_ALL_FRIENDS, RECEIVE_FRIEND, REMOVE_FRIEND } from '../actions/friend_actions';
 
 const FriendsReducer = (state = {}, action) => {
     Object.freeze(state);
