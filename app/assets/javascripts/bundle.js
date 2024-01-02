@@ -24370,18 +24370,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./users_reducer */ "./frontend/reducers/users_reducer.js");
 /* harmony import */ var _posts_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./posts_reducer */ "./frontend/reducers/posts_reducer.js");
 /* harmony import */ var _comments_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./comments_reducer */ "./frontend/reducers/comments_reducer.js");
+/* harmony import */ var _friends_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./friends_reducer */ "./frontend/reducers/friends_reducer.js");
+/* harmony import */ var _friends_reducer__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_friends_reducer__WEBPACK_IMPORTED_MODULE_3__);
 
 
 
 
-var EntitiesReducer = (0,redux__WEBPACK_IMPORTED_MODULE_3__.combineReducers)({
+
+var EntitiesReducer = (0,redux__WEBPACK_IMPORTED_MODULE_4__.combineReducers)({
   users: _users_reducer__WEBPACK_IMPORTED_MODULE_0__["default"],
   posts: _posts_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
-  comments: _comments_reducer__WEBPACK_IMPORTED_MODULE_2__["default"]
+  comments: _comments_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
+  friends: (_friends_reducer__WEBPACK_IMPORTED_MODULE_3___default())
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (EntitiesReducer);
 
@@ -24415,6 +24419,16 @@ var ErrorsReducer = function ErrorsReducer() {
   ;
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ErrorsReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/friends_reducer.js":
+/*!**********************************************!*\
+  !*** ./frontend/reducers/friends_reducer.js ***!
+  \**********************************************/
+/***/ (() => {
+
+
 
 /***/ }),
 
