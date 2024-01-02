@@ -3,7 +3,7 @@ import Home from "./Home";
 import { getPosts } from "../actions/posts_actions";
 
 const mSTP = state => ({
-    news: state.entities.posts
+    allPosts: Object.values(state.entities.posts)
 });
 
 const mDTP = dispatch => ({

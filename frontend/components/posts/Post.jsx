@@ -4,15 +4,15 @@ import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import SendIcon from '@mui/icons-material/Send';
 import { Avatar, ButtonGroup, Button, TextField, IconButton } from '@mui/material';
 
-const Post = ({ likes, comments, edit, destroy, author, postdata }) => {
+const Post = ({ first_name, last_name, body }) => {
     return (
         <div className='post'>
             <div className='post__header'>
                 <Avatar sx={{ width: 24, height: 24 }}>B</Avatar>
-                <h5>Author 10 hours ago</h5>
+                <h5>{first_name} {last_name}</h5>
             </div>
             <div className='post__content'>
-                <p>Dam today was not fun</p>
+                <p>{body}</p>
             </div>
             <ButtonGroup variant='contained' className='post__btns'>
                 <Button variant='outlined' startIcon={<FavoriteBorderIcon />} className='like-btn' >
