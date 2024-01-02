@@ -24375,7 +24375,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _posts_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./posts_reducer */ "./frontend/reducers/posts_reducer.js");
 /* harmony import */ var _comments_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./comments_reducer */ "./frontend/reducers/comments_reducer.js");
 /* harmony import */ var _friends_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./friends_reducer */ "./frontend/reducers/friends_reducer.js");
-/* harmony import */ var _friends_reducer__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_friends_reducer__WEBPACK_IMPORTED_MODULE_3__);
 
 
 
@@ -24385,7 +24384,7 @@ var EntitiesReducer = (0,redux__WEBPACK_IMPORTED_MODULE_4__.combineReducers)({
   users: _users_reducer__WEBPACK_IMPORTED_MODULE_0__["default"],
   posts: _posts_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
   comments: _comments_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
-  friends: (_friends_reducer__WEBPACK_IMPORTED_MODULE_3___default())
+  friends: _friends_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (EntitiesReducer);
 
@@ -24426,9 +24425,35 @@ var ErrorsReducer = function ErrorsReducer() {
 /*!**********************************************!*\
   !*** ./frontend/reducers/friends_reducer.js ***!
   \**********************************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+Object(function webpackMissingModule() { var e = new Error("Cannot find module '../actions/friends_actions'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
 
+var FriendsReducer = function FriendsReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+  var nextState = Object.assign({}, state);
+  switch (action.type) {
+    case Object(function webpackMissingModule() { var e = new Error("Cannot find module '../actions/friends_actions'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()):
+      return action.friends;
+    case Object(function webpackMissingModule() { var e = new Error("Cannot find module '../actions/friends_actions'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()):
+      nextState[action.friend.id] = action.friend;
+      return nextState;
+    case Object(function webpackMissingModule() { var e = new Error("Cannot find module '../actions/friends_actions'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()):
+      delete nextState[action.friendId];
+      return nextState;
+    default:
+      return state;
+  }
+  ;
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FriendsReducer);
 
 /***/ }),
 
