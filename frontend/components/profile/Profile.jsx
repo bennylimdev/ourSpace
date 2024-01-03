@@ -6,15 +6,15 @@ import NewsFeed from '../NewsFeed';
 
 const Profile = ({ getComments, allComments, getPosts, allPosts, createPost }) => {
     useEffect(() => {
-        const fetchPosts = async () => {
-          try {
-            await Promise.all([getComments(), getPosts()]);
-          } catch (error) {
-            console.log('dispatch not working')
-          }
-        };
-        fetchPosts();
-      }, [getPosts]);
+      const fetchPosts = async () => {
+        try {
+          await Promise.all([getComments(), getPosts()]);
+        } catch (error) {
+          console.log('dispatch not working')
+        }
+      };
+      fetchPosts();
+    }, [getPosts]);
 
     return (
       <div className='profile-page'>

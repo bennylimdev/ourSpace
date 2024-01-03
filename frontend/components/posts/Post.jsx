@@ -44,7 +44,6 @@ const Post = ({ first_name, last_name, body, createComment, comment, comments, i
                 ))}
                 </Stack>
             </div>
-            </div>
             <form className='comment__form' onSubmit={handleSubmit}>
                 <Avatar sx={{ width: 30, height: 30 }} className='.comment-form__input__avatar'>BL</Avatar>
                 <TextField
@@ -58,6 +57,7 @@ const Post = ({ first_name, last_name, body, createComment, comment, comments, i
                     <SendIcon />
                 </IconButton>
             </form>
+            </div>
         </div>
     );
 };
