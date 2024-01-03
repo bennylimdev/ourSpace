@@ -1,5 +1,5 @@
 import React from 'react'
-import { Avatar, ButtonGroup, Button } from '@mui/material';
+import { Avatar } from '@mui/material';
 
 const Comment = ({ first_name, last_name, body }) => {
   return (

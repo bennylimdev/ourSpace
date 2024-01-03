@@ -23554,14 +23554,17 @@ function Header(_ref) {
     value: false,
     className: "header__nav"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    href: "/#/home",
     icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_icons_material_HomeOutlined__WEBPACK_IMPORTED_MODULE_3__["default"], {
       fontSize: "large"
     })
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    href: "/#/profile",
     icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_icons_material_PersonAddAltOutlined__WEBPACK_IMPORTED_MODULE_4__["default"], {
       fontSize: "large"
     })
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    href: "/#/friends",
     icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_icons_material_AccountCircleOutlined__WEBPACK_IMPORTED_MODULE_5__["default"], {
       fontSize: "large"
     })
