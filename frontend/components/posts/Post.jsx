@@ -7,7 +7,7 @@ import Stack from '@mui/material/Stack';
 
 import Comment from './Comment';
 
-const Post = ({ first_name, last_name, body, createComment, comment, comments, id }) => {
+const Post = ({ first_name, last_name, body, createComment, comment, comments, createLike, likes, id }) => {
     const [form, setForm] = useState(comment);
 
     const handleChange = (e) => {
@@ -17,8 +17,15 @@ const Post = ({ first_name, last_name, body, createComment, comment, comments, i
     const handleSubmit = (e) => {
         e.preventDefault();
         createComment(form);
+        e.target.reset();
     };
     
+    const handleLike = (e) => {
+        createLike(like);
+    };
+
+    let commentCounter = comments.filter((comment) => (comment.post_id === id)).length;
+
     return (
         <div className='post'>
             <div className='post__header'>
@@ -27,14 +34,14 @@ const Post = ({ first_name, last_name, body, createComment, comment, comments, i
             </div>
             <div className='post__content'>
                 <p>{body}</p>
+                <div className='posts__comment-counter'> 
+                    <p>{commentCounter} comment (s)</p>
+                </div>
             </div>
             <ButtonGroup variant='contained' className='post__btns'>
-                <Button variant='outlined' startIcon={<FavoriteBorderIcon />} className='like-btn' >
+                <Button onClick={handleLike} variant='outlined' startIcon={<FavoriteBorderIcon />} className='like-btn' >
                     Like
-                </Button>
-                <Button startIcon={<ChatBubbleOutlineIcon />} className='comment-btn'>
-                    Comment
-                </Button>            
+                </Button>         
             </ButtonGroup>
             <div className='post__comments-container'>
                 <div className='comment__feed'>

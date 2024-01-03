@@ -10,7 +10,7 @@ const mSTP = state => ({
 });
 
 const mDTP = dispatch => ({
-    createPost: post => dispatch(createPost(post))
+    createPost: post => dispatch(createPost(post)),
 });
 
 export default connect(mSTP, mDTP)(PostForm);

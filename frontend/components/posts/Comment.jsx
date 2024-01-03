@@ -6,7 +6,7 @@ const Comment = ({ first_name, last_name, body }) => {
     <div className='comment__wrapper'>
         <Avatar className='comment__pic'> BL </Avatar>
         <div className='comment__content'>
-            <p>{first_name} {last_name}</p>
+            <p className='comment__author'>{first_name} {last_name}</p>
             <p>{body}</p>
         </div>
         <div className='comment__btns'> 

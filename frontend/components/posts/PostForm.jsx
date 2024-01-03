@@ -12,6 +12,7 @@ const PostForm = ({ createPost, post }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         createPost(form);
+        e.target.reset();
     };
 
     return (
