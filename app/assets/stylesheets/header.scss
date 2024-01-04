@@ -19,3 +19,7 @@
 .header__end > * {
     margin-right: 10px;
 }
+
+.header__end > *:hover {
+    cursor: pointer;
+}
