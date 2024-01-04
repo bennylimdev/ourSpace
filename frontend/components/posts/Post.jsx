@@ -8,7 +8,6 @@ import Comment from './Comment';
 
 const Post = ({ first_name, last_name, body, createComment, comment, comments, createPostlike, deletePostlike, postlike, postlikes, id }) => {
     const [form, setForm] = useState(comment);
-    const [isPostlike, setIsPostlike] = useState(false);
 
     const handleChange = (e) => {
         setForm({...form, [e.target.name]: e.target.value});
@@ -19,6 +18,8 @@ const Post = ({ first_name, last_name, body, createComment, comment, comments, c
         createComment(form);
         e.target.reset();
     };
+
+    //fix user auth to pass in user id from state instead when ready
     
     let currentPostlikes = postlikes.filter((postlike) => (postlike.post_id === id));
     let currentUserliked = currentPostlikes.filter((postlike) => postlike.author_id === comment.author_id);
@@ -31,8 +32,7 @@ const Post = ({ first_name, last_name, body, createComment, comment, comments, c
             deletePostlike(currentUserliked.shift().id);
         }
     };
-
-    // if current user has liked post, make createLike, deleteLike.
+    
     let postlikeCounter = currentPostlikes.length;
     let commentCounter = comments.filter((comment) => (comment.post_id === id)).length;
 

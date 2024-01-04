@@ -24203,10 +24203,6 @@ var Post = function Post(_ref) {
     _useState2 = _slicedToArray(_useState, 2),
     form = _useState2[0],
     setForm = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-    _useState4 = _slicedToArray(_useState3, 2),
-    isPostlike = _useState4[0],
-    setIsPostlike = _useState4[1];
   var handleChange = function handleChange(e) {
     setForm(_objectSpread(_objectSpread({}, form), {}, _defineProperty({}, e.target.name, e.target.value)));
   };
@@ -24215,6 +24211,9 @@ var Post = function Post(_ref) {
     createComment(form);
     e.target.reset();
   };
+
+  //fix user auth to pass in user id from state instead when ready
+
   var currentPostlikes = postlikes.filter(function (postlike) {
     return postlike.post_id === id;
   });
@@ -24229,8 +24228,6 @@ var Post = function Post(_ref) {
       deletePostlike(currentUserliked.shift().id);
     }
   };
-
-  // if current user has liked post, make createLike, deleteLike.
   var postlikeCounter = currentPostlikes.length;
   var commentCounter = comments.filter(function (comment) {
     return comment.post_id === id;
@@ -24481,7 +24478,8 @@ var Profile = function Profile(_ref) {
     allComments = _ref.allComments,
     getPosts = _ref.getPosts,
     allPosts = _ref.allPosts,
-    createPost = _ref.createPost;
+    getPostlikes = _ref.getPostlikes,
+    allPostlikes = _ref.allPostlikes;
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var fetchPosts = /*#__PURE__*/function () {
       var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
@@ -24490,7 +24488,7 @@ var Profile = function Profile(_ref) {
             case 0:
               _context.prev = 0;
               _context.next = 3;
-              return Promise.all([getComments(), getPosts()]);
+              return Promise.all([getComments(), getPosts(), getPostlikes()]);
             case 3:
               _context.next = 8;
               break;
@@ -24533,7 +24531,8 @@ var Profile = function Profile(_ref) {
     className: "profile-right"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_posts_PostFormContainer__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_NewsFeed__WEBPACK_IMPORTED_MODULE_3__["default"], {
     posts: allPosts,
-    comments: allComments
+    comments: allComments,
+    postlikes: allPostlikes
   }))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Profile);
@@ -24562,7 +24561,8 @@ __webpack_require__.r(__webpack_exports__);
 var mSTP = function mSTP(state) {
   return {
     allPosts: Object.values(state.entities.posts),
-    allComments: Object.values(state.entities.comments)
+    allComments: Object.values(state.entities.comments),
+    allPostlikes: Object.values(state.entities.postlikes)
   };
 };
 var mDTP = function mDTP(dispatch) {
@@ -24572,7 +24572,18 @@ var mDTP = function mDTP(dispatch) {
     },
     getComments: function getComments() {
       return dispatch((0,_actions_comment_actions__WEBPACK_IMPORTED_MODULE_3__.getComments)());
-    }
+    },
+    getPostlikes: function (_getPostlikes) {
+      function getPostlikes() {
+        return _getPostlikes.apply(this, arguments);
+      }
+      getPostlikes.toString = function () {
+        return _getPostlikes.toString();
+      };
+      return getPostlikes;
+    }(function () {
+      return dispatch(getPostlikes());
+    })
   };
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mSTP, mDTP)(_Profile__WEBPACK_IMPORTED_MODULE_1__["default"]));

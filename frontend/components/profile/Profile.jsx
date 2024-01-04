@@ -4,11 +4,11 @@ import PostFormContainer from '../posts/PostFormContainer';
 import { Avatar } from '@mui/material';
 import NewsFeed from '../NewsFeed';
 
-const Profile = ({ getComments, allComments, getPosts, allPosts, createPost }) => {
+const Profile = ({ getComments, allComments, getPosts, allPosts, getPostlikes, allPostlikes }) => {
     useEffect(() => {
       const fetchPosts = async () => {
         try {
-          await Promise.all([getComments(), getPosts()]);
+          await Promise.all([getComments(), getPosts(), getPostlikes()]);
         } catch (error) {
           console.log('dispatch not working')
         }
@@ -35,7 +35,7 @@ const Profile = ({ getComments, allComments, getPosts, allPosts, createPost }) =
           </div>
           <div className='profile-right'>
             <PostFormContainer />
-            <NewsFeed posts={allPosts} comments={allComments}/>
+            <NewsFeed posts={allPosts} comments={allComments} postlikes={allPostlikes}/>
           </div>
         </div>
       </div>
