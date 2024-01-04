@@ -38,10 +38,10 @@ export const logIn = user => dispatch => (
         )
 );
 
-export const logOut = () => dispatch => (
-    AuthUtil.logOut()
+export const logOut = currentUserId => dispatch => (
+    AuthUtil.logOut(currentUserId)
         .then(
-            () => dispatch(logoutCurrentUser),
+            () => dispatch(logoutCurrentUser()),
             error => dispatch(receiveErrors(error.responseJSON))
         )
 );

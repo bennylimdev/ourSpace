@@ -6,7 +6,11 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import { blue } from '@mui/material/colors';
 import { Avatar, Tabs, Tab } from '@mui/material';
 
-function Header({}) {
+function Header({ currentUser, logOut }) {
+    const handleClick = () => {
+        logOut(currentUser)
+    };
+
     return (
         <div className='header'>
             <h3 className='header__start'>o(S)</h3>
@@ -17,7 +21,7 @@ function Header({}) {
             </Tabs>
             <div className='header__end'>
                 <Avatar sx={{ bgcolor: blue[900] }}>
-                    <LogoutIcon />
+                    <LogoutIcon onClick={handleClick}/>
                 </Avatar>
                 <Avatar sx={{ bgcolor: blue[800] }}>
                     BL

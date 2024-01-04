@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import Header from './Header';
+import HeaderContainer from './header/HeaderContainer';
 import PostFormContainer from './posts/PostFormContainer';
 import LeftNav from './LeftNav';
 import NewsFeed from './NewsFeed';
@@ -18,7 +18,7 @@ const Home = ({ getComments, allComments, getPosts, allPosts, getPostlikes, allP
 
   return (
     <div className='home'>
-      <Header />
+      <HeaderContainer />
       <LeftNav />
       <PostFormContainer />
       <NewsFeed posts={allPosts} comments={allComments} postlikes={allPostlikes} />

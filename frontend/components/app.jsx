@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import AuthContainer from './auth/AuthContainer';
 import HomeContainer from './HomeContainer';
@@ -13,9 +13,9 @@ const App = () => {
         <ModalContainer />
         <Switch>
             <AuthRoute exact path='/' component={AuthContainer} />
-            <Route exact path='/home' component={HomeContainer} />
-            <Route exact path='/profile' component={ProfileContainer} />
-            <Route exact path='/friends' component={Friends} />
+            <ProtectedRoute exact path='/home' component={HomeContainer} />
+            <ProtectedRoute exact path='/profile' component={ProfileContainer} />
+            <ProtectedRoute exact path='/friends' component={Friends} />
         </Switch>
     </div>
     );

@@ -10,7 +10,6 @@ const Comment = ({ first_name, last_name, body }) => {
             <p>{body}</p>
         </div>
         <div className='comment__btns'> 
-            <p>Like</p> 
             <p>Comment</p>
         </div>
     </div>

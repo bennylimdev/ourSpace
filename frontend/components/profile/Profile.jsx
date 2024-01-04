@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import Header from '../Header';
+import HeaderContainer from '../header/HeaderContainer';
 import PostFormContainer from '../posts/PostFormContainer';
 import { Avatar } from '@mui/material';
 import NewsFeed from '../NewsFeed';
@@ -18,7 +18,7 @@ const Profile = ({ getComments, allComments, getPosts, allPosts, getPostlikes, a
 
     return (
       <div className='profile-page'>
-        <Header />
+        <HeaderContainer />
         <div className='profile'>
           <div className='profile-left'>
             <div className='profile-info'>

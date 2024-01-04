@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 const Auth = ({ errors, user, signUp, logIn, showModal }) => {
     const [form, setForm] = useState(user);
     const [isSignup, setIsSignup] = useState(false); 
-    // pass error handling down from parent
+    
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value});
     };
@@ -93,15 +93,15 @@ const Auth = ({ errors, user, signUp, logIn, showModal }) => {
                         </div>
                     </form>
                     <div className='auth__form-container_fields-account'>
-                            <p>
-                                {isSignup 
-                                    ? 'Already have an account? '
-                                    : "Don't have an account? "
-                                }
-                                <span onClick={switchMode}>
-                                    {isSignup ? 'Sign In' : 'Sign Up'}
-                                </span>
-                            </p>
+                        <p>
+                            {isSignup 
+                                ? 'Already have an account? '
+                                : "Don't have an account? "
+                            }
+                            <span onClick={switchMode}>
+                                {isSignup ? 'Sign In' : 'Sign Up'}
+                            </span>
+                        </p>
                     </div>
                 </div>
             </div>
