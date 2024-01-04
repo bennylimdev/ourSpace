@@ -11,11 +11,13 @@ const LeftNav = () => {
         icon={<PeopleOutlineIcon />}
         iconPosition='start'
         label='My Profile'
+        href='/#/profile'
       />
       <Tab 
         icon={<AccountCircleOutlinedIcon />}
         iconPosition='start'
         label='Friends'
+        href='/#/friends'
       />
       <Tab 
         icon={<LogoutIcon />}

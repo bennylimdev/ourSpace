@@ -4,11 +4,11 @@ import PostFormContainer from './posts/PostFormContainer';
 import LeftNav from './LeftNav';
 import NewsFeed from './NewsFeed';
 
-const Home = ({ getComments, allComments, getPosts, allPosts, getLikes, allLikes }) => {
+const Home = ({ getComments, allComments, getPosts, allPosts, getPostlikes, allPostlikes }) => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        await Promise.all([getComments(), getPosts(), getLikes()]);
+        await Promise.all([getComments(), getPosts(), getPostlikes()]);
       } catch (error) {
         console.log('dispatch not working')
       }
@@ -21,7 +21,7 @@ const Home = ({ getComments, allComments, getPosts, allPosts, getLikes, allLikes
       <Header />
       <LeftNav />
       <PostFormContainer />
-      <NewsFeed posts={allPosts} comments={allComments} likes={allLikes} />
+      <NewsFeed posts={allPosts} comments={allComments} postlikes={allPostlikes} />
       <div className='right__nav__bar'>
       </div>
     </div> 

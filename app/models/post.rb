@@ -9,7 +9,7 @@ class Post < ApplicationRecord
         foreign_key: :post_id,
         class_name: :Comment
 
-    has_many :likes,
+    has_many :postlikes,
         foreign_key: :post_id,
-        class_name: :Like
+        class_name: :Postlike
 end

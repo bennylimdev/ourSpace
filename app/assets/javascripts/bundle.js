@@ -23187,77 +23187,6 @@ var deleteFriend = function deleteFriend(friendId) {
 
 /***/ }),
 
-/***/ "./frontend/actions/like_actions.js":
-/*!******************************************!*\
-  !*** ./frontend/actions/like_actions.js ***!
-  \******************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   RECEIVE_LIKE: () => (/* binding */ RECEIVE_LIKE),
-/* harmony export */   RECEIVE_LIKES: () => (/* binding */ RECEIVE_LIKES),
-/* harmony export */   REMOVE_LIKE: () => (/* binding */ REMOVE_LIKE),
-/* harmony export */   createLike: () => (/* binding */ createLike),
-/* harmony export */   deleteLike: () => (/* binding */ deleteLike),
-/* harmony export */   getLike: () => (/* binding */ getLike),
-/* harmony export */   getLikes: () => (/* binding */ getLikes)
-/* harmony export */ });
-/* harmony import */ var _util_like_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/like_util */ "./frontend/util/like_util.jsx");
-
-var RECEIVE_LIKES = 'RECEIVE_LIKES';
-var RECEIVE_LIKE = 'RECEIVE_LIKE';
-var REMOVE_LIKE = 'REMOVE_LIKE';
-var receiveLikes = function receiveLikes(likes) {
-  return {
-    type: RECEIVE_LIKES,
-    likes: likes
-  };
-};
-var receiveLike = function receiveLike(like) {
-  return {
-    type: RECEIVE_LIKE,
-    like: like
-  };
-};
-var removeLike = function removeLike(likeId) {
-  return {
-    type: REMOVE_LIKE,
-    likeId: likeId
-  };
-};
-var getLikes = function getLikes() {
-  return function (dispatch) {
-    return _util_like_util__WEBPACK_IMPORTED_MODULE_0__.getLikes().then(function (likes) {
-      return dispatch(receiveLikes(likes));
-    });
-  };
-};
-var getLike = function getLike() {
-  return function (dispatch) {
-    return _util_like_util__WEBPACK_IMPORTED_MODULE_0__.getLike().then(function (like) {
-      return dispatch(receiveLike(like));
-    });
-  };
-};
-var createLike = function createLike(like) {
-  return function (dispatch) {
-    return _util_like_util__WEBPACK_IMPORTED_MODULE_0__.createLike(like).then(function (like) {
-      return dispatch(receiveLike(like));
-    });
-  };
-};
-var deleteLike = function deleteLike(likeId) {
-  return function (dispatch) {
-    return _util_like_util__WEBPACK_IMPORTED_MODULE_0__.deleteLike(likeId).then(function () {
-      return dispatch(removeLike(likeId));
-    });
-  };
-};
-
-/***/ }),
-
 /***/ "./frontend/actions/modal_actions.js":
 /*!*******************************************!*\
   !*** ./frontend/actions/modal_actions.js ***!
@@ -23291,6 +23220,77 @@ var hideModaltest = function hideModaltest() {
   return function (dispatch) {
     dispatch(hideModal());
     dispatch((0,_auth_actions__WEBPACK_IMPORTED_MODULE_0__.removeErrors)());
+  };
+};
+
+/***/ }),
+
+/***/ "./frontend/actions/postlike_actions.js":
+/*!**********************************************!*\
+  !*** ./frontend/actions/postlike_actions.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   RECEIVE_POST_LIKE: () => (/* binding */ RECEIVE_POST_LIKE),
+/* harmony export */   RECEIVE_POST_LIKES: () => (/* binding */ RECEIVE_POST_LIKES),
+/* harmony export */   REMOVE_POST_LIKE: () => (/* binding */ REMOVE_POST_LIKE),
+/* harmony export */   createPostlike: () => (/* binding */ createPostlike),
+/* harmony export */   deletePostlike: () => (/* binding */ deletePostlike),
+/* harmony export */   getPostlike: () => (/* binding */ getPostlike),
+/* harmony export */   getPostlikes: () => (/* binding */ getPostlikes)
+/* harmony export */ });
+/* harmony import */ var _util_postlike_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/postlike_util */ "./frontend/util/postlike_util.jsx");
+
+var RECEIVE_POST_LIKES = 'RECEIVE_POST_LIKES';
+var RECEIVE_POST_LIKE = 'RECEIVE_POST_LIKE';
+var REMOVE_POST_LIKE = 'REMOVE_POST_LIKE';
+var receivePostlikes = function receivePostlikes(postlikes) {
+  return {
+    type: RECEIVE_POST_LIKES,
+    postlikes: postlikes
+  };
+};
+var receivePostlike = function receivePostlike(postlike) {
+  return {
+    type: RECEIVE_POST_LIKE,
+    postlike: postlike
+  };
+};
+var removePostlike = function removePostlike(postlikeId) {
+  return {
+    type: REMOVE_POST_LIKE,
+    postlikeId: postlikeId
+  };
+};
+var getPostlikes = function getPostlikes() {
+  return function (dispatch) {
+    return _util_postlike_util__WEBPACK_IMPORTED_MODULE_0__.getPostlikes().then(function (postlikes) {
+      return dispatch(receivePostlikes(postlikes));
+    });
+  };
+};
+var getPostlike = function getPostlike() {
+  return function (dispatch) {
+    return _util_postlike_util__WEBPACK_IMPORTED_MODULE_0__.getPostlike().then(function (postlike) {
+      return dispatch(receivePostlike(postlike));
+    });
+  };
+};
+var createPostlike = function createPostlike(postlike) {
+  return function (dispatch) {
+    return _util_postlike_util__WEBPACK_IMPORTED_MODULE_0__.createPostlike(postlike).then(function (postlike) {
+      return dispatch(receivePostlike(postlike));
+    });
+  };
+};
+var deletePostlike = function deletePostlike(postlikeId) {
+  return function (dispatch) {
+    return _util_postlike_util__WEBPACK_IMPORTED_MODULE_0__.deletePostlike(postlikeId).then(function () {
+      return dispatch(removePostlike(postlikeId));
+    });
   };
 };
 
@@ -23591,8 +23591,8 @@ var Home = function Home(_ref) {
     allComments = _ref.allComments,
     getPosts = _ref.getPosts,
     allPosts = _ref.allPosts,
-    getLikes = _ref.getLikes,
-    allLikes = _ref.allLikes;
+    getPostlikes = _ref.getPostlikes,
+    allPostlikes = _ref.allPostlikes;
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var fetchPosts = /*#__PURE__*/function () {
       var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
@@ -23601,7 +23601,7 @@ var Home = function Home(_ref) {
             case 0:
               _context.prev = 0;
               _context.next = 3;
-              return Promise.all([getComments(), getPosts(), getLikes()]);
+              return Promise.all([getComments(), getPosts(), getPostlikes()]);
             case 3:
               _context.next = 8;
               break;
@@ -23626,7 +23626,7 @@ var Home = function Home(_ref) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Header__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_LeftNav__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_posts_PostFormContainer__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_NewsFeed__WEBPACK_IMPORTED_MODULE_4__["default"], {
     posts: allPosts,
     comments: allComments,
-    likes: allLikes
+    postlikes: allPostlikes
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "right__nav__bar"
   }));
@@ -23650,7 +23650,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Home__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Home */ "./frontend/components/Home.jsx");
 /* harmony import */ var _actions_posts_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions/posts_actions */ "./frontend/actions/posts_actions.js");
 /* harmony import */ var _actions_comment_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../actions/comment_actions */ "./frontend/actions/comment_actions.js");
-/* harmony import */ var _actions_like_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../actions/like_actions */ "./frontend/actions/like_actions.js");
+/* harmony import */ var _actions_postlike_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../actions/postlike_actions */ "./frontend/actions/postlike_actions.js");
 
 
 
@@ -23660,7 +23660,7 @@ var mSTP = function mSTP(state) {
   return {
     allPosts: Object.values(state.entities.posts),
     allComments: Object.values(state.entities.comments),
-    allLikes: Object.values(state.entities.likes)
+    allPostlikes: Object.values(state.entities.postlikes)
   };
 };
 var mDTP = function mDTP(dispatch) {
@@ -23671,12 +23671,20 @@ var mDTP = function mDTP(dispatch) {
     getComments: function getComments() {
       return dispatch((0,_actions_comment_actions__WEBPACK_IMPORTED_MODULE_3__.getComments)());
     },
-    getLikes: function getLikes() {
-      return dispatch((0,_actions_like_actions__WEBPACK_IMPORTED_MODULE_4__.getLikes)());
+    getPostlikes: function getPostlikes() {
+      return dispatch((0,_actions_postlike_actions__WEBPACK_IMPORTED_MODULE_4__.getPostlikes)());
     }
   };
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mSTP, mDTP)(_Home__WEBPACK_IMPORTED_MODULE_1__["default"]));
+
+// json.likes do
+//     comment.likes.each do |likes|
+//         json.set! like.id do
+//             json.extract! like, :id, :liked, :comment_id, :user_id
+//         end
+//     end
+// end
 
 /***/ }),
 
@@ -23710,11 +23718,13 @@ var LeftNav = function LeftNav() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material__WEBPACK_IMPORTED_MODULE_2__["default"], {
     icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_icons_material_PeopleOutline__WEBPACK_IMPORTED_MODULE_3__["default"], null),
     iconPosition: "start",
-    label: "My Profile"
+    label: "My Profile",
+    href: "/#/profile"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material__WEBPACK_IMPORTED_MODULE_2__["default"], {
     icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_icons_material_AccountCircleOutlined__WEBPACK_IMPORTED_MODULE_4__["default"], null),
     iconPosition: "start",
-    label: "Friends"
+    label: "Friends",
+    href: "/#/friends"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material__WEBPACK_IMPORTED_MODULE_2__["default"], {
     icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_icons_material_Logout__WEBPACK_IMPORTED_MODULE_5__["default"], null),
     iconPosition: "start",
@@ -23747,7 +23757,7 @@ __webpack_require__.r(__webpack_exports__);
 var NewsFeed = function NewsFeed(_ref) {
   var posts = _ref.posts,
     comments = _ref.comments,
-    likes = _ref.likes;
+    postlikes = _ref.postlikes;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "news__feed"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material_Stack__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -23757,7 +23767,7 @@ var NewsFeed = function NewsFeed(_ref) {
     direction: "column-reverse"
   }, posts.map(function (post) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_posts_PostContainer__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      likes: likes,
+      postlikes: postlikes,
       comments: comments,
       key: post.id,
       id: post.id,
@@ -24177,7 +24187,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-
 var Post = function Post(_ref) {
   var first_name = _ref.first_name,
     last_name = _ref.last_name,
@@ -24185,13 +24194,19 @@ var Post = function Post(_ref) {
     createComment = _ref.createComment,
     comment = _ref.comment,
     comments = _ref.comments,
-    createLike = _ref.createLike,
-    likes = _ref.likes,
+    createPostlike = _ref.createPostlike,
+    deletePostlike = _ref.deletePostlike,
+    postlike = _ref.postlike,
+    postlikes = _ref.postlikes,
     id = _ref.id;
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(comment),
     _useState2 = _slicedToArray(_useState, 2),
     form = _useState2[0],
     setForm = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState4 = _slicedToArray(_useState3, 2),
+    isPostlike = _useState4[0],
+    setIsPostlike = _useState4[1];
   var handleChange = function handleChange(e) {
     setForm(_objectSpread(_objectSpread({}, form), {}, _defineProperty({}, e.target.name, e.target.value)));
   };
@@ -24200,9 +24215,23 @@ var Post = function Post(_ref) {
     createComment(form);
     e.target.reset();
   };
-  var handleLike = function handleLike(e) {
-    createLike(like);
+  var currentPostlikes = postlikes.filter(function (postlike) {
+    return postlike.post_id === id;
+  });
+  var currentUserliked = currentPostlikes.filter(function (postlike) {
+    return postlike.author_id === comment.author_id;
+  });
+  console.log(currentUserliked);
+  var handlePostlike = function handlePostlike() {
+    if (currentUserliked.length === 0) {
+      createPostlike(postlike);
+    } else {
+      deletePostlike(currentUserliked.shift().id);
+    }
   };
+
+  // if current user has liked post, make createLike, deleteLike.
+  var postlikeCounter = currentPostlikes.length;
   var commentCounter = comments.filter(function (comment) {
     return comment.post_id === id;
   }).length;
@@ -24218,13 +24247,15 @@ var Post = function Post(_ref) {
   }, "B"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h5", null, first_name, " ", last_name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "post__content"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, body), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "posts__like-counter"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, postlikeCounter, " like (s)")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "posts__comment-counter"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, commentCounter, " comment (s)"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material__WEBPACK_IMPORTED_MODULE_3__["default"], {
     variant: "contained",
     className: "post__btns"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    onClick: handleLike,
-    variant: "outlined",
+    onClick: handlePostlike,
+    variant: "text",
     startIcon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_icons_material_FavoriteBorder__WEBPACK_IMPORTED_MODULE_5__["default"], null),
     className: "like-btn"
   }, "Like")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -24281,7 +24312,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_comment_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/comment_actions */ "./frontend/actions/comment_actions.js");
-/* harmony import */ var _actions_like_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/like_actions */ "./frontend/actions/like_actions.js");
+/* harmony import */ var _actions_postlike_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/postlike_actions */ "./frontend/actions/postlike_actions.js");
 /* harmony import */ var _Post__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Post */ "./frontend/components/posts/Post.jsx");
 
 
@@ -24291,8 +24322,12 @@ var mSTP = function mSTP(state, ownProps) {
   return {
     comment: {
       post_id: ownProps.id,
-      author_id: 156,
+      author_id: 2,
       body: ''
+    },
+    postlike: {
+      post_id: ownProps.id,
+      author_id: 2
     }
   };
 };
@@ -24301,8 +24336,11 @@ var mDTP = function mDTP(dispatch) {
     createComment: function createComment(comment) {
       return dispatch((0,_actions_comment_actions__WEBPACK_IMPORTED_MODULE_1__.createComment)(comment));
     },
-    createLike: function createLike(like) {
-      return dispatch((0,_actions_like_actions__WEBPACK_IMPORTED_MODULE_2__.createLike)(like));
+    createPostlike: function createPostlike(postlike) {
+      return dispatch((0,_actions_postlike_actions__WEBPACK_IMPORTED_MODULE_2__.createPostlike)(postlike));
+    },
+    deletePostlike: function deletePostlike(postlikeId) {
+      return dispatch((0,_actions_postlike_actions__WEBPACK_IMPORTED_MODULE_2__.deletePostlike)(postlikeId));
     }
   };
 };
@@ -24668,7 +24706,7 @@ var EntitiesReducer = (0,redux__WEBPACK_IMPORTED_MODULE_5__.combineReducers)({
   posts: _posts_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
   comments: _comments_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
   friends: _friends_reducer__WEBPACK_IMPORTED_MODULE_3__["default"],
-  likes: _likes_reducer__WEBPACK_IMPORTED_MODULE_4__["default"]
+  postlikes: _likes_reducer__WEBPACK_IMPORTED_MODULE_4__["default"]
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (EntitiesReducer);
 
@@ -24752,7 +24790,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _actions_like_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/like_actions */ "./frontend/actions/like_actions.js");
+/* harmony import */ var _actions_postlike_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/postlike_actions */ "./frontend/actions/postlike_actions.js");
 
 var LikesReducer = function LikesReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
@@ -24760,13 +24798,13 @@ var LikesReducer = function LikesReducer() {
   Object.freeze(state);
   var nextState = Object.assign({}, state);
   switch (action.type) {
-    case _actions_like_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_LIKES:
-      return action.likes;
-    case _actions_like_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_LIKE:
-      nextState[action.like.id] = action.like;
+    case _actions_postlike_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_POST_LIKES:
+      return action.postlikes;
+    case _actions_postlike_actions__WEBPACK_IMPORTED_MODULE_0__.RECEIVE_POST_LIKE:
+      nextState[action.postlike.id] = action.postlike;
       return nextState;
-    case _actions_like_actions__WEBPACK_IMPORTED_MODULE_0__.REMOVE_LIKE:
-      delete nextState[action.likeId];
+    case _actions_postlike_actions__WEBPACK_IMPORTED_MODULE_0__.REMOVE_POST_LIKE:
+      delete nextState[action.postlikeId];
       return nextState;
     default:
       return state;
@@ -25090,50 +25128,6 @@ var deleteFriend = function deleteFriend(friendId) {
 
 /***/ }),
 
-/***/ "./frontend/util/like_util.jsx":
-/*!*************************************!*\
-  !*** ./frontend/util/like_util.jsx ***!
-  \*************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   createLike: () => (/* binding */ createLike),
-/* harmony export */   deleteLike: () => (/* binding */ deleteLike),
-/* harmony export */   getLike: () => (/* binding */ getLike),
-/* harmony export */   getLikes: () => (/* binding */ getLikes)
-/* harmony export */ });
-var getLikes = function getLikes() {
-  return $.ajax({
-    method: 'GET',
-    url: 'api/likes'
-  });
-};
-var getLike = function getLike(likeId) {
-  return $.ajax({
-    method: 'GET',
-    url: "api/likes/".concat(likeId)
-  });
-};
-var createLike = function createLike(like) {
-  return $.ajax({
-    method: 'POST',
-    url: 'api/likes',
-    data: {
-      like: like
-    }
-  });
-};
-var deleteLike = function deleteLike(likeId) {
-  return $.ajax({
-    method: 'DELETE',
-    url: "api/likes/".concat(likeId)
-  });
-};
-
-/***/ }),
-
 /***/ "./frontend/util/post_util.js":
 /*!************************************!*\
   !*** ./frontend/util/post_util.js ***!
@@ -25183,6 +25177,50 @@ var deletePost = function deletePost(postId) {
   return $.ajax({
     method: 'DELETE',
     url: "api/posts/".concat(postId)
+  });
+};
+
+/***/ }),
+
+/***/ "./frontend/util/postlike_util.jsx":
+/*!*****************************************!*\
+  !*** ./frontend/util/postlike_util.jsx ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   createPostlike: () => (/* binding */ createPostlike),
+/* harmony export */   deletePostlike: () => (/* binding */ deletePostlike),
+/* harmony export */   getPostlike: () => (/* binding */ getPostlike),
+/* harmony export */   getPostlikes: () => (/* binding */ getPostlikes)
+/* harmony export */ });
+var getPostlikes = function getPostlikes() {
+  return $.ajax({
+    method: 'GET',
+    url: 'api/postlikes'
+  });
+};
+var getPostlike = function getPostlike(postlikeId) {
+  return $.ajax({
+    method: 'GET',
+    url: "api/postlikes/".concat(postlikeId)
+  });
+};
+var createPostlike = function createPostlike(postlike) {
+  return $.ajax({
+    method: 'POST',
+    url: 'api/postlikes',
+    data: {
+      postlike: postlike
+    }
+  });
+};
+var deletePostlike = function deletePostlike(postlikeId) {
+  return $.ajax({
+    method: 'DELETE',
+    url: "api/postlikes/".concat(postlikeId)
   });
 };
 

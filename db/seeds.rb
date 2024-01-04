@@ -9,7 +9,7 @@ User.destroy_all
 Post.destroy_all
 Comment.destroy_all
 Friend.destroy_all
-Like.destroy_all
+Postlike.destroy_all
 
 User.create!([
     {

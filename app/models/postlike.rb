@@ -1,4 +1,4 @@
-class Like < ApplicationRecord
+class Postlike < ApplicationRecord
     belongs_to :user,
         foreign_key: :author_id,
         class_name: :User
@@ -6,8 +6,4 @@ class Like < ApplicationRecord
     belongs_to :post,
         foreign_key: :post_id,
         class_name: :Post
-
-    belongs_to :comment,
-        foreign_key: :comment_id,
-        class_name: :Comment
 end

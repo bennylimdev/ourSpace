@@ -33,6 +33,13 @@
     position: relative;
 }
 
+.post__content > .posts__like-counter {
+    position: absolute;
+    bottom: 0;
+    left: 1vw;
+    font-size: 13px;
+}
+
 .post__content > .posts__comment-counter {
     position: absolute;
     bottom: 0;

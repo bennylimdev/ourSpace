@@ -10,7 +10,7 @@ const EntitiesReducer = combineReducers({
     posts: PostsReducer,
     comments: CommentsReducer,
     friends: FriendsReducer,
-    likes: LikesReducer
+    postlikes: LikesReducer
 });
 
 export default EntitiesReducer;

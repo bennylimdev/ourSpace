@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import SendIcon from '@mui/icons-material/Send';
 import { Avatar, ButtonGroup, Button, TextField, IconButton } from '@mui/material';
 import Stack from '@mui/material/Stack';
 
 import Comment from './Comment';
 
-const Post = ({ first_name, last_name, body, createComment, comment, comments, createLike, likes, id }) => {
+const Post = ({ first_name, last_name, body, createComment, comment, comments, createPostlike, deletePostlike, postlike, postlikes, id }) => {
     const [form, setForm] = useState(comment);
+    const [isPostlike, setIsPostlike] = useState(false);
 
     const handleChange = (e) => {
         setForm({...form, [e.target.name]: e.target.value});
@@ -20,10 +20,20 @@ const Post = ({ first_name, last_name, body, createComment, comment, comments, c
         e.target.reset();
     };
     
-    const handleLike = (e) => {
-        createLike(like);
+    let currentPostlikes = postlikes.filter((postlike) => (postlike.post_id === id));
+    let currentUserliked = currentPostlikes.filter((postlike) => postlike.author_id === comment.author_id);
+    console.log(currentUserliked);
+
+    const handlePostlike = () => {
+        if(currentUserliked.length === 0) {
+            createPostlike(postlike);
+        } else {
+            deletePostlike(currentUserliked.shift().id);
+        }
     };
 
+    // if current user has liked post, make createLike, deleteLike.
+    let postlikeCounter = currentPostlikes.length;
     let commentCounter = comments.filter((comment) => (comment.post_id === id)).length;
 
     return (
@@ -34,12 +44,15 @@ const Post = ({ first_name, last_name, body, createComment, comment, comments, c
             </div>
             <div className='post__content'>
                 <p>{body}</p>
+                <div className='posts__like-counter'>
+                    <p>{postlikeCounter} like (s)</p>
+                </div>
                 <div className='posts__comment-counter'> 
                     <p>{commentCounter} comment (s)</p>
                 </div>
             </div>
             <ButtonGroup variant='contained' className='post__btns'>
-                <Button onClick={handleLike} variant='outlined' startIcon={<FavoriteBorderIcon />} className='like-btn' >
+                <Button onClick={handlePostlike} variant='text' startIcon={<FavoriteBorderIcon />} className='like-btn' >
                     Like
                 </Button>         
             </ButtonGroup>
