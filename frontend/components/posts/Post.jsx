@@ -5,6 +5,7 @@ import { Avatar, ButtonGroup, Button, TextField, IconButton } from '@mui/materia
 import Stack from '@mui/material/Stack';
 
 import Comment from './Comment';
+import EditMenu from './EditMenu';
 
 const Post = ({ first_name, last_name, body, createComment, comment, comments, createPostlike, deletePostlike, postlike, postlikes, id }) => {
     const [form, setForm] = useState(comment);
@@ -41,6 +42,9 @@ const Post = ({ first_name, last_name, body, createComment, comment, comments, c
             <div className='post__header'>
                 <Avatar sx={{ width: 24, height: 24 }}>B</Avatar>
                 <h5>{first_name} {last_name}</h5>
+                <div className='post__menu'>
+                    <EditMenu />
+                </div>
             </div>
             <div className='post__content'>
                 <p>{body}</p>

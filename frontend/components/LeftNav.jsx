@@ -2,7 +2,6 @@ import React from 'react';
 import { Tabs, Tab } from '@mui/material';
 import PeopleOutlineIcon from '@mui/icons-material/PeopleOutline';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
-import LogoutIcon from '@mui/icons-material/Logout';
 
 const LeftNav = () => {
   return (
@@ -19,13 +18,8 @@ const LeftNav = () => {
         label='Friends'
         href='/#/friends'
       />
-      <Tab 
-        icon={<LogoutIcon />}
-        iconPosition='start'
-        label='Logout'
-        />
     </Tabs>
-  )
-}
+  );
+};
 
-export default LeftNav
+export default LeftNav;

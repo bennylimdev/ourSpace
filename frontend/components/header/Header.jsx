@@ -16,8 +16,8 @@ function Header({ currentUser, logOut }) {
             <h3 className='header__start'>o(S)</h3>
             <Tabs value={false} className='header__nav'>
                 <Tab href='/#/home'icon={<HomeOutlinedIcon fontSize='large' />} />
-                <Tab href='/#/profile' icon={<PersonAddAltOutlinedIcon fontSize='large' />} />
-                <Tab href='/#/friends' icon={<AccountCircleOutlinedIcon fontSize='large' />} />
+                <Tab href='/#/friends' icon={<PersonAddAltOutlinedIcon fontSize='large' />} />
+                <Tab href='/#/profile' icon={<AccountCircleOutlinedIcon fontSize='large' />} />
             </Tabs>
             <div className='header__end'>
                 <Avatar sx={{ bgcolor: blue[900] }}>

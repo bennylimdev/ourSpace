@@ -21,10 +21,18 @@
     margin-left: 12px;
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .post__header h5 {
     margin-left: 10px;
+}
+
+.post__header > .post__menu {
+    position: absolute;
+    top: 5;
+    right: 1vw;
+    font-size: 9px;
 }
 
 .post__content {

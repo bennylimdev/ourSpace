@@ -35,15 +35,15 @@ User.create!([
     },
 ])
 
-50.times do |index|
-    User.create!(
-        first_name: Faker::Name.first_name, 
-        last_name: Faker::Name.last_name, 
-        email: Faker::Name.unique.first_name + '@email.com',
-        password: 'password', 
-        bio: Faker::Lorem.paragraph 
-    )
-end
+# 50.times do |index|
+#     User.create!(
+#         first_name: Faker::Name.first_name, 
+#         last_name: Faker::Name.last_name, 
+#         email: Faker::Name.unique.first_name + '@email.com',
+#         password: 'password', 
+#         bio: Faker::Lorem.paragraph 
+#     )
+# end
 
 20.times do |index|
     Post.create!(
