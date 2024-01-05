@@ -26,7 +26,6 @@
 # Ignore master key for decrypting credentials and more.
 /config/database.yml
 /config/master.key
+/config/credentials.yml.enc
 
 /db/seeds.rb
-
-.env

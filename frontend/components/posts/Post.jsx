@@ -7,7 +7,7 @@ import Stack from '@mui/material/Stack';
 import Comment from './Comment';
 import EditMenu from './EditMenu';
 
-const Post = ({ first_name, last_name, body, createComment, comment, comments, createPostlike, deletePostlike, postlike, postlikes, id }) => {
+const Post = ({ profilepicUrl, first_name, last_name, body, createComment, comment, comments, createPostlike, deletePostlike, postlike, postlikes, id }) => {
     const [form, setForm] = useState(comment);
     // fix overflow styling bug
     const handleChange = (e) => {
@@ -24,7 +24,6 @@ const Post = ({ first_name, last_name, body, createComment, comment, comments, c
     
     let currentPostlikes = postlikes.filter((postlike) => (postlike.post_id === id));
     let currentUserliked = currentPostlikes.filter((postlike) => postlike.author_id === comment.author_id);
-    console.log(currentUserliked);
 
     const handlePostlike = () => {
         if(currentUserliked.length === 0) {
@@ -40,7 +39,10 @@ const Post = ({ first_name, last_name, body, createComment, comment, comments, c
     return (
         <div className='post'>
             <div className='post__header'>
-                <Avatar sx={{ width: 24, height: 24 }}></Avatar>
+                <Avatar 
+                    sx={{ width: 24, height: 24 }} 
+                    src={profilepicUrl}
+                    />
                 <h5>{first_name} {last_name}</h5>
                 <div className='post__menu'>
                     <EditMenu />

@@ -1,4 +1,4 @@
-import  React, { useState, useEffect } from 'react';
+import  React from 'react';
 import Stack from '@mui/material/Stack';
 import PostContainer from './posts/PostContainer';
 
@@ -9,7 +9,7 @@ const NewsFeed = ({ posts, comments, postlikes }) => {
     <div className='news__feed'>
       <Stack spacing={{ xs: 3 }} direction='column-reverse'>
         {posts.map((post) => (
-          <PostContainer postlikes={postlikes} comments={comments} key={post.id} id={post.id} first_name={post.first_name} last_name={post.last_name} body={post.body}/>
+          <PostContainer postlikes={postlikes} comments={comments} key={post.id} id={post.id} first_name={post.first_name} last_name={post.last_name} body={post.body} profilepicUrl={post.profilepicUrl}/>
         ))}
       </Stack>
     </div>

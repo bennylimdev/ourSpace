@@ -1,13 +1,9 @@
 import { connect } from 'react-redux';
 
 import ProfileForm from './ProfileForm';
-import { editUser } from '../../actions/user_actions';
+import { editUser, getUser } from '../../actions/user_actions';
 
 const mSTP = state => ({
-    user: {
-        id: 2,
-        profile_pic: ''
-    }
 });
 
 const mDTP = dispatch => ({

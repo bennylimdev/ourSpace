@@ -29,15 +29,26 @@
     border-radius: 18px;
     border: none;
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+    background-color: white;
     max-width: 425px;
     min-width: 425px;
 }
 
-.friend-wrapper * {
-    margin-left: 10px;
+.friend__avatar-wrapper {
+    display: flex;
+}
+
+.friend__avatar-wrapper {
+    margin: 10px;
+}
+
+.friend__avatar-wrapper h5 {
+    margin-left: 12px;
+    margin-top: 14px;
 }
 
 .friend-wrapper p {
     font-size: small;
+    margin-left: 12px;
 }
 

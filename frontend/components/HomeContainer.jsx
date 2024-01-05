@@ -17,11 +17,3 @@ const mDTP = dispatch => ({
 });
 
 export default connect(mSTP, mDTP)(Home);
-
-// json.likes do
-//     comment.likes.each do |likes|
-//         json.set! like.id do
-//             json.extract! like, :id, :liked, :comment_id, :user_id
-//         end
-//     end
-// end

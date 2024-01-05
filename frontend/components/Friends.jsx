@@ -5,7 +5,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import HeaderContainer from './header/HeaderContainer';
 import Friend from './Friend';
 
-const Friends = ({ users, getUsers, getUser }) => {
+const Friends = ({ users, getUsers }) => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
