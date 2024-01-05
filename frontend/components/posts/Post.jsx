@@ -9,7 +9,7 @@ import EditMenu from './EditMenu';
 
 const Post = ({ first_name, last_name, body, createComment, comment, comments, createPostlike, deletePostlike, postlike, postlikes, id }) => {
     const [form, setForm] = useState(comment);
-
+    // fix overflow styling bug
     const handleChange = (e) => {
         setForm({...form, [e.target.name]: e.target.value});
     };
@@ -40,7 +40,7 @@ const Post = ({ first_name, last_name, body, createComment, comment, comments, c
     return (
         <div className='post'>
             <div className='post__header'>
-                <Avatar sx={{ width: 24, height: 24 }}>B</Avatar>
+                <Avatar sx={{ width: 24, height: 24 }}></Avatar>
                 <h5>{first_name} {last_name}</h5>
                 <div className='post__menu'>
                     <EditMenu />
@@ -48,6 +48,8 @@ const Post = ({ first_name, last_name, body, createComment, comment, comments, c
             </div>
             <div className='post__content'>
                 <p>{body}</p>
+            </div>
+            <div className='posts__counter-wrapper'>
                 <div className='posts__like-counter'>
                     <p>{postlikeCounter} like (s)</p>
                 </div>
@@ -69,7 +71,7 @@ const Post = ({ first_name, last_name, body, createComment, comment, comments, c
                 </Stack>
             </div>
             <form className='comment__form' onSubmit={handleSubmit}>
-                <Avatar sx={{ width: 30, height: 30 }} className='.comment-form__input__avatar'>BL</Avatar>
+                <Avatar sx={{ width: 30, height: 30 }} className='.comment-form__input__avatar'></Avatar>
                 <TextField
                     name='body'
                     variant='filled' 

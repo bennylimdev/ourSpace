@@ -18,7 +18,7 @@ const PostForm = ({ createPost, post }) => {
     return (
         <div className="post-form">
             <form className="post-form__input__wrapper" onSubmit={handleSubmit}>
-                <Avatar className='post-form__input__avatar'>BL</Avatar>
+                <Avatar className='post-form__input__avatar'></Avatar>
                 <TextField
                     name='body'
                     variant='filled'

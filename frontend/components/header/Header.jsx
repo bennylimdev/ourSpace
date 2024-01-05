@@ -23,9 +23,7 @@ function Header({ currentUser, logOut }) {
                 <Avatar sx={{ bgcolor: blue[900] }}>
                     <LogoutIcon onClick={handleClick}/>
                 </Avatar>
-                <Avatar sx={{ bgcolor: blue[800] }}>
-                    BL
-                </Avatar>
+                <Avatar sx={{ bgcolor: blue[800] }} />
             </div>
         </div>
     );

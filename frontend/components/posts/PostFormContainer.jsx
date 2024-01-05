@@ -4,7 +4,7 @@ import PostForm from './PostForm';
 
 const mSTP = state => ({
     post: {
-        author_id: 156,
+        author_id: 2,
         body: ''
     }
 });

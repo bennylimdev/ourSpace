@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import HeaderContainer from '../header/HeaderContainer';
 import PostFormContainer from '../posts/PostFormContainer';
-import ProfileForm from './ProfileForm';
+import ProfileFormContainer from './ProfileFormContainer';
 import NewsFeed from '../NewsFeed';
 
 const Profile = ({ getComments, allComments, getPosts, allPosts, getPostlikes, allPostlikes, editUser }) => {
@@ -23,7 +23,7 @@ const Profile = ({ getComments, allComments, getPosts, allPosts, getPostlikes, a
           <div className='profile-left'>
             <div className='profile-info'>
               <div className='profile-pic'>
-                  <ProfileForm editUser={editUser}/>
+                  <ProfileFormContainer />
               </div>
               <div className='profile-bio'>
               <p> I Love pie </p>

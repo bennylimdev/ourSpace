@@ -5,7 +5,7 @@ import { editUser } from '../../actions/user_actions';
 
 const mSTP = state => ({
     user: {
-        id: state.sessions.id,
+        id: 2,
         profile_pic: ''
     }
 });
@@ -14,4 +14,4 @@ const mDTP = dispatch => ({
     editUser: user => dispatch(editUser(user))
 });
 
-connect(mSTP, mDTP)(ProfileForm);
+export default connect(mSTP, mDTP)(ProfileForm);
