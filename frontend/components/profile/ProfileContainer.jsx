@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+
 import Profile from './Profile'
 import { getPosts } from '../../actions/posts_actions'
 import { getComments } from "../../actions/comment_actions";

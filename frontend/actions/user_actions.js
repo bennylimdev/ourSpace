@@ -21,3 +21,6 @@ export const getUser = userId => dispatch => (
     UserUtil.getUser(userId).then(user => dispatch(receiveUser(user)))
 );
 
+export const editUser = user => dispatch => (
+    UserUtil.updateUser(user).then(user => dispatch(receiveUser(user)))
+);
