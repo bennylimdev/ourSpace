@@ -13,7 +13,7 @@ const mSTP = (state, ownProps) => ({
         post_id: ownProps.id,
         author_id: state.session.id,
     },
-    currentUser: state.session.user,
+    currentUser: state.session.user
 });
 
 const mDTP = dispatch => ({

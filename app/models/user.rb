@@ -15,17 +15,16 @@ class User < ApplicationRecord
         foreign_key: :author_id,
         class_name: :Comment
     
-    has_many :friends,
-        foreign_key: :user_id,
-        class_name: :Friend
-
-    has_many :friended,
-        foreign_key: :friend_id,
-        class_name: :Friend
-    
     has_many :postlikes,
         foreign_key: :author_id,
         class_name: :Postlike
+
+    has_many :friendrequests
+
+    has_many :pending_friendrequests, 
+        -> { where confirmed: false }, 
+        class_name: :Friendrequest, 
+        foreign_key: :friend_id
 
     has_one_attached :profile_pic, dependent: :destroy
     
@@ -61,6 +60,21 @@ class User < ApplicationRecord
         unless acceptable_types.include?(profile_pic.content_type)
             errors.add(:profile_pic, 'Picture must be png or jpg')
         end
+    end
+
+    def friends
+        sent_friendreq = Friendrequest.where(user_id: id, confirmed: true).pluck(:friend_id)
+        got_friendreq = Friendrequest.where(friend_id: id, confirmed: true).pluck(:user_id)
+        ids = sent_friendreq + got_friendreq
+        User.where(id: ids)
+    end
+
+    def friend_with?(user)
+        Friendrequest.confirmed_record?(id, user.id)
+    end
+    
+    def send_friendreq(user)
+        Friendrequest.create(friend_id: user.id)
     end
 
     private 

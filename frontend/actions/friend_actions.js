@@ -31,6 +31,14 @@ export const getFriend = friendId => dispatch => (
     )
 );
 
+export const createFriend = friend => (
+    $.ajax({
+        method: 'POST',
+        url: 'api/friends',
+        data: { friend }
+    })
+);
+
 export const updateFriendStatus = friendId => dispatch => (
     FriendUtil.updateFriendStatus(friendId).then(
         friend => dispatch(receiveFriend(friend))

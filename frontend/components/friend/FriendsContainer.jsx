@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 
-import { getUsers, getUser } from '../actions/user_actions';
+import { getUsers, getUser } from '../../actions/user_actions';
 import Friends from "./Friends";
 
 

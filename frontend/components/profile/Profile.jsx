@@ -16,7 +16,7 @@ const Profile = ({ getComments, allComments, getPostlikes, allPostlikes, getUser
     fetchUser();
     fetchUser();
   }, []);
-  
+
   let userProfile = null;
   let posts = [];
   let profilepicUrl = '';

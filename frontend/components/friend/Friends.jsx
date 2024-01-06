@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Paper, Divider, InputBase, IconButton, Stack } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 
-import HeaderContainer from './header/HeaderContainer';
+import HeaderContainer from '../header/HeaderContainer';
 import Friend from './Friend';
 
 const Friends = ({ users, getUsers }) => {
