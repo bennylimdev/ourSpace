@@ -6,13 +6,14 @@ import Post from './Post';
 const mSTP = (state, ownProps) => ({
     comment: {
         post_id: ownProps.id,
-        author_id: 2,
+        author_id: state.session.id,
         body: ''
     },
     postlike: {
         post_id: ownProps.id,
-        author_id: 2,
-    }
+        author_id: state.session.id,
+    },
+    currentUser: state.session.user,
 });
 
 const mDTP = dispatch => ({

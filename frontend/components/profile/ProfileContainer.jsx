@@ -7,18 +7,17 @@ import { getComments } from "../../actions/comment_actions";
 import { getUser } from "../../actions/user_actions";
 
 const mSTP = state => ({
-    allPosts: Object.values(state.entities.posts),
+    currentUserId: state.session.id,
+    currentUser: state.session.user,
+    posts: Object.values(state.session.user.posts),
     allComments: Object.values(state.entities.comments),
-    allPostlikes: Object.values(state.entities.postlikes),
-    user: Object.values(state.entities.users),
-    currentUserId: 2
+    allPostlikes: Object.values(state.entities.postlikes)
 });
 
 const mDTP = dispatch => ({
-    getPosts: () => dispatch(getPosts()),
     getComments: () => dispatch(getComments()),
     getPostlikes: () => dispatch(getPostlikes()),
-    getUser: userId => dispatch(getUser(userId))
+    getUser: currentUserId => dispatch(getUser(currentUserId))
 });
 
 export default connect(mSTP, mDTP)(Profile);

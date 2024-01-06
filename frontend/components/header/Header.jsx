@@ -6,9 +6,9 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import { blue } from '@mui/material/colors';
 import { Avatar, Tabs, Tab } from '@mui/material';
 
-function Header({ currentUser, logOut }) {
+function Header({ currentUserId, logOut, currentUser }) {
     const handleClick = () => {
-        logOut(currentUser)
+        logOut(currentUserId)
     };
 
     return (
@@ -23,7 +23,7 @@ function Header({ currentUser, logOut }) {
                 <Avatar sx={{ bgcolor: blue[900] }}>
                     <LogoutIcon onClick={handleClick}/>
                 </Avatar>
-                <Avatar sx={{ bgcolor: blue[800] }} />
+                <Avatar sx={{ bgcolor: blue[800] }} src={currentUser.profilepicUrl}/>
             </div>
         </div>
     );

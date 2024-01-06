@@ -4,7 +4,7 @@ import PostFormContainer from '../posts/PostFormContainer';
 import ProfileFormContainer from './ProfileFormContainer';
 import NewsFeed from '../NewsFeed';
 
-const Profile = ({ getComments, allComments, getPostlikes, allPostlikes, getUser, currentUserId, user }) => {
+const Profile = ({ getComments, allComments, getPostlikes, allPostlikes, getUser, currentUserId, currentUser, posts }) => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
@@ -17,20 +17,6 @@ const Profile = ({ getComments, allComments, getPostlikes, allPostlikes, getUser
     fetchUser();
   }, []);
 
-  let userProfile = null;
-  let posts = [];
-  let profilepicUrl= '';
-  let bio = '';
-
-  if (user[0]) {
-    userProfile = user[0];
-    posts = Object.values(userProfile.posts);
-    profilepicUrl = userProfile.profilepicUrl;
-    bio = userProfile.bio;
-  };
-
-  console.log(posts);
-
   return (
     <div className='profile-page'>
       <HeaderContainer />
@@ -38,10 +24,10 @@ const Profile = ({ getComments, allComments, getPostlikes, allPostlikes, getUser
         <div className='profile-left'>
           <div className='profile-info'>
             <div className='profile-pic'>
-                <ProfileFormContainer profilepicUrl={profilepicUrl}/>
+                <ProfileFormContainer profilepicUrl={currentUser.profilepicUrl}/>
             </div>
             <div className='profile-bio'>
-              <p>{bio}</p>
+              <p>{currentUser.bio}</p>
             </div>
           </div>  
           <div className='friends-list'>

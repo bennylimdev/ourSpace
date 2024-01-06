@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Avatar, TextField, IconButton } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 
-const PostForm = ({ createPost, post }) => {
+const PostForm = ({ createPost, post, currentUser }) => {
     const [form, setForm] = useState(post);
 
     const handleChange = (e) => {
@@ -18,7 +18,10 @@ const PostForm = ({ createPost, post }) => {
     return (
         <div className="post-form">
             <form className="post-form__input__wrapper" onSubmit={handleSubmit}>
-                <Avatar className='post-form__input__avatar'></Avatar>
+                <Avatar 
+                className='post-form__input__avatar'
+                src={currentUser.profilepicUrl}
+                />
                 <TextField
                     name='body'
                     variant='filled'

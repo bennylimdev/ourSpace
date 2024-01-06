@@ -11,6 +11,7 @@ const AuthReducer = (state = _nullUser, action) => {
     switch(action.type) {
         case LOGIN_CURRENT_USER:
             nextState.id = action.user.id;
+            nextState.user = action.user
             return nextState;
         case LOGOUT_CURRENT_USER:
             nextState.id = null;

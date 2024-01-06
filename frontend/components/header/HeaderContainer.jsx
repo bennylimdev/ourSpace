@@ -4,7 +4,8 @@ import { logOut } from '../../actions/auth_actions';
 
 // for error handling in future
 const mSTP = state => ({
-    currentUser: state.session.id
+    currentUserId: state.session.id,
+    currentUser: state.session.user
 });
 
 const mDTP = dispatch => ({

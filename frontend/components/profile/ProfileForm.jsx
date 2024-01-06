@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Button, Box, Avatar } from '@mui/material/';
 
-const ProfileForm = ({ editUser, profilepicUrl}) => {
+const ProfileForm = ({ editUser, profilepicUrl, currentUserId }) => {
 
     const handleChange = (e) => {
         e.preventDefault;
@@ -10,7 +10,7 @@ const ProfileForm = ({ editUser, profilepicUrl}) => {
 
         let file = e.currentTarget.files[0];
 
-        form.append('user[id]', 2);
+        form.append('user[id]', currentUserId);
         form.append('user[profile_pic]', file);
 
         editUser(form);

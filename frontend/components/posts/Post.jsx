@@ -7,7 +7,7 @@ import Stack from '@mui/material/Stack';
 import Comment from './Comment';
 import EditMenu from './EditMenu';
 
-const Post = ({ profilepicUrl, first_name, last_name, body, createComment, comment, comments, createPostlike, deletePostlike, postlike, postlikes, id }) => {
+const Post = ({ currentUser, profilepicUrl, first_name, last_name, body, createComment, comment, comments, createPostlike, deletePostlike, postlike, postlikes, id }) => {
     const [form, setForm] = useState(comment);
     // fix overflow styling bug
     const handleChange = (e) => {
@@ -68,12 +68,16 @@ const Post = ({ profilepicUrl, first_name, last_name, body, createComment, comme
                 <div className='comment__feed'>
                 <Stack spacing={{ xs: 1 }} >
                 {comments.filter((comment) => (comment.post_id === id)).map((comment) => (
-                    <Comment key={comment.id} id={comment.id} first_name={comment.first_name} last_name={comment.last_name} body={comment.body}/>
+                    <Comment key={comment.id} profilepicUrl={comment.profilepicUrl} id={comment.id} first_name={comment.first_name} last_name={comment.last_name} body={comment.body}/>
                 ))}
                 </Stack>
             </div>
             <form className='comment__form' onSubmit={handleSubmit}>
-                <Avatar sx={{ width: 30, height: 30 }} className='.comment-form__input__avatar'></Avatar>
+                <Avatar 
+                sx={{ width: 30, height: 30 }} 
+                className='.comment-form__input__avatar'
+                src={currentUser.profilepicUrl}
+                />
                 <TextField
                     name='body'
                     variant='filled' 

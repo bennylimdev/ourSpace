@@ -4,9 +4,10 @@ import PostForm from './PostForm';
 
 const mSTP = state => ({
     post: {
-        author_id: 2,
+        author_id: state.session.id,
         body: ''
-    }
+    },
+    currentUser: state.session.user
 });
 
 const mDTP = dispatch => ({

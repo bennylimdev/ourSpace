@@ -24287,15 +24287,15 @@ var App = function App() {
     exact: true,
     path: "/",
     component: _auth_AuthContainer__WEBPACK_IMPORTED_MODULE_2__["default"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.ProtectedRoute, {
     exact: true,
     path: "/home",
     component: _HomeContainer__WEBPACK_IMPORTED_MODULE_3__["default"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.ProtectedRoute, {
     exact: true,
     path: "/profile",
     component: _profile_ProfileContainer__WEBPACK_IMPORTED_MODULE_4__["default"]
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_1__.ProtectedRoute, {
     exact: true,
     path: "/friends",
     component: _FriendsContainer__WEBPACK_IMPORTED_MODULE_5__["default"]
@@ -24664,8 +24664,8 @@ var NewsFeed = function NewsFeed(_ref) {
     direction: "column-reverse"
   }, posts.map(function (post) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_posts_PostContainer__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      postlikes: postlikes,
       comments: comments,
+      postlikes: postlikes,
       key: post.id,
       id: post.id,
       first_name: post.first_name,
@@ -24894,10 +24894,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Header(_ref) {
-  var currentUser = _ref.currentUser,
-    logOut = _ref.logOut;
+  var currentUserId = _ref.currentUserId,
+    logOut = _ref.logOut,
+    currentUser = _ref.currentUser;
   var handleClick = function handleClick() {
-    logOut(currentUser);
+    logOut(currentUserId);
   };
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "header"
@@ -24932,7 +24933,8 @@ function Header(_ref) {
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material__WEBPACK_IMPORTED_MODULE_6__["default"], {
     sx: {
       bgcolor: _mui_material_colors__WEBPACK_IMPORTED_MODULE_7__["default"][800]
-    }
+    },
+    src: currentUser.profilepicUrl
   })));
 }
 ;
@@ -24961,7 +24963,8 @@ __webpack_require__.r(__webpack_exports__);
 // for error handling in future
 var mSTP = function mSTP(state) {
   return {
-    currentUser: state.session.id
+    currentUserId: state.session.id,
+    currentUser: state.session.user
   };
 };
 var mDTP = function mDTP(dispatch) {
@@ -25137,11 +25140,13 @@ __webpack_require__.r(__webpack_exports__);
 var Comment = function Comment(_ref) {
   var first_name = _ref.first_name,
     last_name = _ref.last_name,
-    body = _ref.body;
+    body = _ref.body,
+    profilepicUrl = _ref.profilepicUrl;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "comment__wrapper"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    className: "comment__pic"
+    className: "comment__pic",
+    src: profilepicUrl
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "comment__content"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
@@ -25257,7 +25262,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var Post = function Post(_ref) {
-  var profilepicUrl = _ref.profilepicUrl,
+  var currentUser = _ref.currentUser,
+    profilepicUrl = _ref.profilepicUrl,
     first_name = _ref.first_name,
     last_name = _ref.last_name,
     body = _ref.body,
@@ -25343,6 +25349,7 @@ var Post = function Post(_ref) {
   }).map(function (comment) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Comment__WEBPACK_IMPORTED_MODULE_1__["default"], {
       key: comment.id,
+      profilepicUrl: comment.profilepicUrl,
       id: comment.id,
       first_name: comment.first_name,
       last_name: comment.last_name,
@@ -25356,7 +25363,8 @@ var Post = function Post(_ref) {
       width: 30,
       height: 30
     },
-    className: ".comment-form__input__avatar"
+    className: ".comment-form__input__avatar",
+    src: currentUser.profilepicUrl
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material__WEBPACK_IMPORTED_MODULE_8__["default"], {
     name: "body",
     variant: "filled",
@@ -25394,13 +25402,14 @@ var mSTP = function mSTP(state, ownProps) {
   return {
     comment: {
       post_id: ownProps.id,
-      author_id: 2,
+      author_id: state.session.id,
       body: ''
     },
     postlike: {
       post_id: ownProps.id,
-      author_id: 2
-    }
+      author_id: state.session.id
+    },
+    currentUser: state.session.user
   };
 };
 var mDTP = function mDTP(dispatch) {
@@ -25453,7 +25462,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var PostForm = function PostForm(_ref) {
   var createPost = _ref.createPost,
-    post = _ref.post;
+    post = _ref.post,
+    currentUser = _ref.currentUser;
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(post),
     _useState2 = _slicedToArray(_useState, 2),
     form = _useState2[0],
@@ -25472,7 +25482,8 @@ var PostForm = function PostForm(_ref) {
     className: "post-form__input__wrapper",
     onSubmit: handleSubmit
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    className: "post-form__input__avatar"
+    className: "post-form__input__avatar",
+    src: currentUser.profilepicUrl
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material__WEBPACK_IMPORTED_MODULE_2__["default"], {
     name: "body",
     variant: "filled",
@@ -25507,9 +25518,10 @@ __webpack_require__.r(__webpack_exports__);
 var mSTP = function mSTP(state) {
   return {
     post: {
-      author_id: 2,
+      author_id: state.session.id,
       body: ''
-    }
+    },
+    currentUser: state.session.user
   };
 };
 var mDTP = function mDTP(dispatch) {
@@ -25555,7 +25567,8 @@ var Profile = function Profile(_ref) {
     allPostlikes = _ref.allPostlikes,
     getUser = _ref.getUser,
     currentUserId = _ref.currentUserId,
-    user = _ref.user;
+    currentUser = _ref.currentUser,
+    posts = _ref.posts;
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var fetchUser = /*#__PURE__*/function () {
       var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
@@ -25585,18 +25598,6 @@ var Profile = function Profile(_ref) {
     fetchUser();
     fetchUser();
   }, []);
-  var userProfile = null;
-  var posts = [];
-  var profilepicUrl = '';
-  var bio = '';
-  if (user[0]) {
-    userProfile = user[0];
-    posts = Object.values(userProfile.posts);
-    profilepicUrl = userProfile.profilepicUrl;
-    bio = userProfile.bio;
-  }
-  ;
-  console.log(posts);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "profile-page"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_header_HeaderContainer__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -25608,10 +25609,10 @@ var Profile = function Profile(_ref) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "profile-pic"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ProfileFormContainer__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    profilepicUrl: profilepicUrl
+    profilepicUrl: currentUser.profilepicUrl
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "profile-bio"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, bio))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, currentUser.bio))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "friends-list"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "profile-right"
@@ -25650,26 +25651,23 @@ __webpack_require__.r(__webpack_exports__);
 
 var mSTP = function mSTP(state) {
   return {
-    allPosts: Object.values(state.entities.posts),
+    currentUserId: state.session.id,
+    currentUser: state.session.user,
+    posts: Object.values(state.session.user.posts),
     allComments: Object.values(state.entities.comments),
-    allPostlikes: Object.values(state.entities.postlikes),
-    user: Object.values(state.entities.users),
-    currentUserId: 2
+    allPostlikes: Object.values(state.entities.postlikes)
   };
 };
 var mDTP = function mDTP(dispatch) {
   return {
-    getPosts: function getPosts() {
-      return dispatch((0,_actions_posts_actions__WEBPACK_IMPORTED_MODULE_2__.getPosts)());
-    },
     getComments: function getComments() {
       return dispatch((0,_actions_comment_actions__WEBPACK_IMPORTED_MODULE_4__.getComments)());
     },
     getPostlikes: function getPostlikes() {
       return dispatch((0,_actions_postlike_actions__WEBPACK_IMPORTED_MODULE_3__.getPostlikes)());
     },
-    getUser: function getUser(userId) {
-      return dispatch((0,_actions_user_actions__WEBPACK_IMPORTED_MODULE_5__.getUser)(userId));
+    getUser: function getUser(currentUserId) {
+      return dispatch((0,_actions_user_actions__WEBPACK_IMPORTED_MODULE_5__.getUser)(currentUserId));
     }
   };
 };
@@ -25696,12 +25694,13 @@ __webpack_require__.r(__webpack_exports__);
 
 var ProfileForm = function ProfileForm(_ref) {
   var editUser = _ref.editUser,
-    profilepicUrl = _ref.profilepicUrl;
+    profilepicUrl = _ref.profilepicUrl,
+    currentUserId = _ref.currentUserId;
   var handleChange = function handleChange(e) {
     e.preventDefault;
     var form = new FormData();
     var file = e.currentTarget.files[0];
-    form.append('user[id]', 2);
+    form.append('user[id]', currentUserId);
     form.append('user[profile_pic]', file);
     editUser(form);
   };
@@ -25754,7 +25753,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mSTP = function mSTP(state) {
-  return {};
+  return {
+    currentUserId: state.session.id
+  };
 };
 var mDTP = function mDTP(dispatch) {
   return {
@@ -25820,6 +25821,7 @@ var AuthReducer = function AuthReducer() {
   switch (action.type) {
     case _actions_auth_actions__WEBPACK_IMPORTED_MODULE_0__.LOGIN_CURRENT_USER:
       nextState.id = action.user.id;
+      nextState.user = action.user;
       return nextState;
     case _actions_auth_actions__WEBPACK_IMPORTED_MODULE_0__.LOGOUT_CURRENT_USER:
       nextState.id = null;
