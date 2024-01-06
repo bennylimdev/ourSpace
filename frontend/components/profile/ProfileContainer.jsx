@@ -8,13 +8,14 @@ import { getUser } from "../../actions/user_actions";
 
 const mSTP = state => ({
     currentUserId: state.session.id,
-    currentUser: state.session.user,
-    posts: Object.values(state.session.user.posts),
+    users: state.entities.users,
     allComments: Object.values(state.entities.comments),
-    allPostlikes: Object.values(state.entities.postlikes)
+    allPostlikes: Object.values(state.entities.postlikes),
+    allPosts: Object.values(state.entities.posts)
 });
 
 const mDTP = dispatch => ({
+    getPosts: () => dispatch(getPosts()),
     getComments: () => dispatch(getComments()),
     getPostlikes: () => dispatch(getPostlikes()),
     getUser: currentUserId => dispatch(getUser(currentUserId))

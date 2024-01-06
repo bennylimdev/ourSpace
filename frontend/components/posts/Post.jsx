@@ -9,7 +9,7 @@ import EditMenu from './EditMenu';
 
 const Post = ({ currentUser, profilepicUrl, first_name, last_name, body, createComment, comment, comments, createPostlike, deletePostlike, postlike, postlikes, id }) => {
     const [form, setForm] = useState(comment);
-    // fix overflow styling bug
+    
     const handleChange = (e) => {
         setForm({...form, [e.target.name]: e.target.value});
     };
