@@ -5,7 +5,7 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import AuthContainer from './auth/AuthContainer';
 import HomeContainer from './HomeContainer';
 import ProfileContainer from './profile/ProfileContainer';
-import FriendsContainer from './FriendsContainer';
+import FriendsContainer from './friend/FriendsContainer';
 import ModalContainer from './modal/ModalContainer';
 
 const App = () => {

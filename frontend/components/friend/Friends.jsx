@@ -5,7 +5,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import HeaderContainer from '../header/HeaderContainer';
 import Friend from './Friend';
 
-const Friends = ({ users, getUsers }) => {
+const Friends = ({ currentUser, currentUserId, users, getUsers }) => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -16,6 +16,8 @@ const Friends = ({ users, getUsers }) => {
     };
     fetchUsers();
   }, [getUsers]);
+
+  let otherUsers = users.filter((user) => user.id !== currentUserId);
 
   return (
     <div className='friends-page'>
@@ -30,8 +32,8 @@ const Friends = ({ users, getUsers }) => {
           </Paper>
           <div className='friends__feed'>
             <Stack spacing={{ xs: 1.5 }} >
-              {users.map((user) => (
-                <Friend user={user} key={user.id} />
+              {otherUsers.map((user) => (
+                <Friend currentUser={currentUser} currentUserId={currentUserId} user={user} key={user.id} />
               ))}
             </Stack>
           </div>

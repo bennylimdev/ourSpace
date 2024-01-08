@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import PersonAddAltOutlinedIcon from '@mui/icons-material/PersonAddAltOutlined';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
@@ -6,11 +6,24 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import { blue } from '@mui/material/colors';
 import { Avatar, Tabs, Tab } from '@mui/material';
 
-function Header({ currentUserId, logOut, currentUser }) {
+function Header({ currentUserId, logOut, users, getUsers, currentUser }) {
+    useEffect(() => {
+        const fetchUsers = async () => {
+          try {
+            await getUsers();
+          } catch (error) {
+            console.log('dispatch not working')
+          }
+        };
+        fetchUsers();
+      }, []);
+    
     const handleClick = () => {
         logOut(currentUserId)
     };
 
+    // let currentUser = users[currentUserId];
+    
     return (
         <div className='header'>
             <h3 className='header__start'>o(S)</h3>

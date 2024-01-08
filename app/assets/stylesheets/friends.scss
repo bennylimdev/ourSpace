@@ -32,6 +32,7 @@
     background-color: white;
     max-width: 425px;
     min-width: 425px;
+    position: relative;
 }
 
 .friend__avatar-wrapper {
@@ -52,3 +53,8 @@
     margin-left: 12px;
 }
 
+.friend-wrapper > .friend__req-btn {
+    position: absolute;
+    top: 16px;
+    right: 2vw;
+}

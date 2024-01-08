@@ -13,11 +13,11 @@ class Friendrequest < ApplicationRecord
         case1 || case2
     end
   
-    def self.find_invitation(id1, id2)
+    def self.find_friendrequest(id1, id2)
         if Friendrequest.where(user_id: id1, friend_id: id2, confirmed: true).empty?
-            Friendrequest.where(user_id: id2, friend_id: id1, confirmed: true)[0].id
+            Friendrequest.where(user_id: id2, friend_id: id1, confirmed: true).first.id
         else
-            Friendrequest.where(user_id: id1, friend_id: id2, confirmed: true)[0].id
+            Friendrequest.where(user_id: id1, friend_id: id2, confirmed: true).first.id
         end
     end
   end
