@@ -24855,10 +24855,9 @@ var InvitationButton = function InvitationButton(_ref) {
     _useState6 = _slicedToArray(_useState5, 2),
     isRequestReceived = _useState6[0],
     setIsRequestReceived = _useState6[1];
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
-    _useState8 = _slicedToArray(_useState7, 2),
-    friendShipId = _useState8[0],
-    setFriendShipId = _useState8[1];
+  var currentUserFriend = currentUser.friends.filter(function (friend) {
+    return friend.id === userId;
+  });
   var currentUserFriendReqs = currentUser.friendrequests;
   var requestSent = currentUserFriendReqs.filter(function (friendrequest) {
     return friendrequest.friend_id === userId;
@@ -24867,17 +24866,15 @@ var InvitationButton = function InvitationButton(_ref) {
   var requestReceived = currentUserReceivedReqs.filter(function (friendrequest) {
     return friendrequest.user_id === userId;
   });
+  console.log(currentUserFriend);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    if (requestSent.length !== 0 && requestReceived.length !== 0 && requestSent[0].friendId === userId && requestReceived[0].userId === userId) {
-      setFriendShipId(requestReceived[0].id);
-      (0,_util_friendrequest_util__WEBPACK_IMPORTED_MODULE_1__.updateFriendStatus)({
-        id: friendShipId,
-        confirmed: true
-      });
+    if (currentUserFriend.length !== 0) {
       setIsFriend(true);
-    } else if (requestSent.length !== 0) {
+    }
+    if (requestSent.length !== 0) {
       setIsRequestSent(true);
-    } else if (requestReceived.length !== 0) {
+    }
+    if (requestReceived.length !== 0) {
       setIsRequestReceived(true);
     }
   }, []);
@@ -24885,11 +24882,12 @@ var InvitationButton = function InvitationButton(_ref) {
     id1: currentUserId,
     id2: userId
   };
+  console.log(isRequestReceived);
   var handleButtonClick = function handleButtonClick() {
     if (isFriend) {
       // Logic to handle the case where the user is already a friend
     } else if (isRequestReceived) {
-      (0,_util_friendrequest_util__WEBPACK_IMPORTED_MODULE_1__.sendFriendReq)(ids);
+      (0,_util_friendrequest_util__WEBPACK_IMPORTED_MODULE_1__.updateFriendStatus)(requestReceived[0].id);
       setIsFriend(true);
     } else {
       (0,_util_friendrequest_util__WEBPACK_IMPORTED_MODULE_1__.sendFriendReq)(ids);
@@ -26359,12 +26357,12 @@ var sendFriendReq = function sendFriendReq(ids) {
     }
   });
 };
-var updateFriendStatus = function updateFriendStatus(friendship) {
+var updateFriendStatus = function updateFriendStatus(friendrequestId) {
   return $.ajax({
     method: 'PATCH',
-    url: "api/friendrequests/".concat(friendship.id),
+    url: "api/friendrequests/".concat(friendrequestId),
     data: {
-      friendship: friendship
+      friendrequestId: friendrequestId
     }
   });
 };

@@ -7,32 +7,35 @@ const InvitationButton = ({ currentUser, currentUserId, userId }) => {
   const [isFriend, setIsFriend] = useState(false);
   const [isRequestSent, setIsRequestSent] = useState(false);
   const [isRequestReceived, setIsRequestReceived] = useState(false);
-  const [friendShipId, setFriendShipId] = useState(null);
 
+  let currentUserFriend = currentUser.friends.filter((friend) => friend.id === userId);
   let currentUserFriendReqs = currentUser.friendrequests;
   let requestSent = currentUserFriendReqs.filter((friendrequest) => friendrequest.friend_id === userId);
   let currentUserReceivedReqs = currentUser.pending_friendrequests;
   let requestReceived = currentUserReceivedReqs.filter((friendrequest) => friendrequest.user_id === userId);
 
+  console.log(currentUserFriend);
   useEffect(() => {
-    if(requestSent.length !== 0 && requestReceived.length !== 0 && requestSent[0].friendId === userId && requestReceived[0].userId === userId) {
-      setFriendShipId(requestReceived[0].id);
-      updateFriendStatus({id: friendShipId, confirmed: true});
+    if(currentUserFriend.length !== 0){
       setIsFriend(true);
-    } else if(requestSent.length !== 0){
+    }
+
+    if(requestSent.length !== 0){
       setIsRequestSent(true);
-    } else if(requestReceived.length !== 0) {
+    }
+    
+    if(requestReceived.length !== 0) {
       setIsRequestReceived(true);
     }
   }, []);
 
   let ids = {id1: currentUserId, id2: userId};
-
+  console.log(isRequestReceived);
   const handleButtonClick = () => {
     if (isFriend) {
       // Logic to handle the case where the user is already a friend
     } else if (isRequestReceived) {
-      sendFriendReq(ids);
+      updateFriendStatus(requestReceived[0].id);
       setIsFriend(true);
     } else {
       sendFriendReq(ids);

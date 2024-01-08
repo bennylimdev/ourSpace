@@ -13,7 +13,7 @@ class Api::FriendrequestsController < ApplicationController
     end
 
     def update
-        friendrequest = Friendrequest.find(params(:friendrequest_id))
+        friendrequest = Friendrequest.find(params[:id])
         friendrequest.update(confirmed: true)
     end
     

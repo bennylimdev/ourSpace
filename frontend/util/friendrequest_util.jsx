@@ -6,10 +6,10 @@ export const sendFriendReq = ids => (
     })
 );
 
-export const updateFriendStatus = friendship => (
+export const updateFriendStatus = friendrequestId => (
     $.ajax({
         method: 'PATCH',
-        url: `api/friendrequests/${friendship.id}`,
-        data: { friendship }
+        url: `api/friendrequests/${friendrequestId}`,
+        data: { friendrequestId }
     })
 );
