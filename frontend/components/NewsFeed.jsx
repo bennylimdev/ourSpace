@@ -9,7 +9,7 @@ const NewsFeed = ({ posts, comments, postlikes }) => {
     <div className='news__feed'>
       <Stack spacing={{ xs: 3 }} direction='column-reverse'>
         {posts.map((post) => (
-          <PostContainer comments={comments} postlikes={postlikes} key={post.id} id={post.id} first_name={post.first_name} last_name={post.last_name} body={post.body} profilepicUrl={post.profilepicUrl}/>
+          <PostContainer authorId = {post.author_id} comments={comments} postlikes={postlikes} key={post.id} id={post.id} first_name={post.first_name} last_name={post.last_name} body={post.body} profilepicUrl={post.profilepicUrl}/>
         ))}
       </Stack>
     </div>

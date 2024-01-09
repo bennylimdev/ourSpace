@@ -2,13 +2,19 @@ import React, { useState } from 'react';
 import { Button, Menu, MenuItem } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 
-const EditMenu = () => {
+const EditMenu = ({ deletePost, postId }) => {
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
+
     const handleClick = (e) => {
         setAnchorEl(e.currentTarget);
     };
     const handleClose = () => {
+        setAnchorEl(null);
+    };
+
+    const handleDelete = () => {
+        deletePost(postId);
         setAnchorEl(null);
     };
 
@@ -33,7 +39,7 @@ const EditMenu = () => {
             }}
         >
             <MenuItem onClick={handleClose}>Edit</MenuItem>
-            <MenuItem onClick={handleClose}>Delete</MenuItem>
+            <MenuItem onClick={handleDelete}>Delete</MenuItem>
         </Menu>
     </div>
     );

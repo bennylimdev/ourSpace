@@ -1,6 +1,9 @@
 import { connect } from 'react-redux';
-import { createComment, getComments } from '../../actions/comment_actions';
+
+import { createComment } from '../../actions/comment_actions';
 import { createPostlike, deletePostlike } from '../../actions/postlike_actions';
+import { deletePost } from '../../actions/posts_actions';
+
 import Post from './Post';
 
 const mSTP = (state, ownProps) => ({
@@ -19,7 +22,8 @@ const mSTP = (state, ownProps) => ({
 const mDTP = dispatch => ({
     createComment: comment => dispatch(createComment(comment)),
     createPostlike: postlike => dispatch(createPostlike(postlike)),
-    deletePostlike: postlikeId => dispatch(deletePostlike(postlikeId))
+    deletePostlike: postlikeId => dispatch(deletePostlike(postlikeId)),
+    deletePost: postId => dispatch(deletePost(postId)),
 });
 
 export default connect(mSTP, mDTP)(Post);

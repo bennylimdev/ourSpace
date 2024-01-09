@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import SendIcon from '@mui/icons-material/Send';
 import { Avatar, ButtonGroup, Button, TextField, IconButton } from '@mui/material';
@@ -7,8 +7,17 @@ import Stack from '@mui/material/Stack';
 import Comment from './Comment';
 import EditMenu from './EditMenu';
 
-const Post = ({ currentUser, profilepicUrl, first_name, last_name, body, createComment, comment, comments, createPostlike, deletePostlike, postlike, postlikes, id }) => {
+const Post = ({ authorId, deletePost, currentUser, profilepicUrl, first_name, last_name, body, createComment, comment, comments, createPostlike, deletePostlike, postlike, postlikes, id }) => {
     const [form, setForm] = useState(comment);
+    const [editMenu, setEditMenu] = useState(null);
+
+    useEffect(() => {
+        if(currentUser.id === authorId) {
+            setEditMenu(<EditMenu />);
+        } else {
+            setEditMenu(null);
+        }
+    }, []);
 
     const handleChange = (e) => {
         setForm({...form, [e.target.name]: e.target.value});
@@ -45,7 +54,7 @@ const Post = ({ currentUser, profilepicUrl, first_name, last_name, body, createC
                     />
                 <h5>{first_name} {last_name}</h5>
                 <div className='post__menu'>
-                    <EditMenu />
+                    {editMenu}
                 </div>
             </div>
             <div className='post__content'>
