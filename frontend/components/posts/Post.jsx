@@ -66,7 +66,7 @@ const Post = ({ currentUser, profilepicUrl, first_name, last_name, body, createC
             </ButtonGroup>
             <div className='post__comments-container'>
                 <div className='comment__feed'>
-                <Stack spacing={{ xs: 1 }} >
+                <Stack spacing={{ xs: 0.9 }} >
                 {comments.filter((comment) => (comment.post_id === id)).map((comment) => (
                     <Comment key={comment.id} profilepicUrl={comment.profilepicUrl} id={comment.id} first_name={comment.first_name} last_name={comment.last_name} body={comment.body}/>
                 ))}

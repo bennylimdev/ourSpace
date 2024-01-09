@@ -13,7 +13,6 @@ const Comment = ({ first_name, last_name, body, profilepicUrl }) => {
             <p>{body}</p>
         </div>
         <div className='comment__btns'> 
-            <p>Comment</p>
         </div>
     </div>
   );

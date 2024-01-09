@@ -1,8 +1,7 @@
 import React from 'react';
 import { Avatar } from '@mui/material';
-import InvitationButton from './InvitationButton';
 
-const Friend = ({ currentUser, currentUserId, user }) => {
+const ProfileFriend = ({ user }) => {
   
   return (
     <div className='friend-wrapper'>
@@ -13,9 +12,8 @@ const Friend = ({ currentUser, currentUserId, user }) => {
         <h5>{user.first_name} {user.last_name}</h5>
       </div>
       <p>{user.bio}</p>
-      <InvitationButton currentUser={currentUser} userId={user.id} currentUserId={currentUserId} />
     </div>
   );
 };
 
-export default Friend;
+export default ProfileFriend;

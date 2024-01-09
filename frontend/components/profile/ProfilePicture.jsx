@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Box, Avatar } from '@mui/material/';
 
-const ProfileForm = ({ editUser, profilepicUrl, currentUserId }) => {
+const ProfilePicture = ({ editUser, profilepicUrl, currentUserId }) => {
 
     const handleChange = (e) => {
         e.preventDefault;
@@ -41,4 +41,4 @@ const ProfileForm = ({ editUser, profilepicUrl, currentUserId }) => {
     );
 };  
 
-export default ProfileForm;
+export default ProfilePicture;

@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import { Stack } from '@mui/material';
+
 import HeaderContainer from '../header/HeaderContainer';
 import PostFormContainer from '../posts/PostFormContainer';
-import ProfileFormContainer from './ProfileFormContainer';
-import NewsFeed from '../NewsFeed';
+import ProfilePictureContainer from './ProfilePictureContainer';
+import NewsFeed from './../NewsFeed';
+import ProfileFriend from './ProfileFriend';
 
-const Profile = ({ getComments, allComments, getPostlikes, allPostlikes, getUser, currentUserId, users }) => {
+const Profile = ({ getComments, allComments, getPostlikes, allPostlikes, getUser, currentUserId, users, edituser }) => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
@@ -21,11 +24,13 @@ const Profile = ({ getComments, allComments, getPostlikes, allPostlikes, getUser
   let posts = [];
   let profilepicUrl = '';
   let bio = '';
+  let friends = [];
 
   if(users[currentUserId]){
     userProfile = users[currentUserId];
     profilepicUrl = userProfile.profilepicUrl;
     posts = Object.values(userProfile.posts);
+    friends = userProfile.friends;
     bio = userProfile.bio;
   };
 
@@ -36,14 +41,20 @@ const Profile = ({ getComments, allComments, getPostlikes, allPostlikes, getUser
         <div className='profile-left'>
           <div className='profile-info'>
             <div className='profile-pic'>
-                <ProfileFormContainer profilepicUrl={profilepicUrl}/>
+                <ProfilePictureContainer profilepicUrl={profilepicUrl}/>
             </div>
             <div className='profile-bio'>
               <p>{bio}</p>
             </div>
           </div>  
-          <div className='friends-list'>
-
+          <div className='friends__list'>
+            <h3>Friends</h3>
+            <p>{friends.length} friend (s)</p>
+            <Stack spacing={{ xs: 1.5 }} >
+              {friends.map((user) => (
+                <ProfileFriend user={user} key={user.id} />
+              ))}
+            </Stack>
           </div>
         </div>
         <div className='profile-right'>

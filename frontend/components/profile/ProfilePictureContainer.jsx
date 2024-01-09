@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import ProfileForm from './ProfileForm';
+import ProfilePicture from './ProfilePicture';
 import { editUser, getUser } from '../../actions/user_actions';
 
 const mSTP = state => ({
@@ -11,4 +11,4 @@ const mDTP = dispatch => ({
     editUser: user => dispatch(editUser(user))
 });
 
-export default connect(mSTP, mDTP)(ProfileForm);
+export default connect(mSTP, mDTP)(ProfilePicture);
