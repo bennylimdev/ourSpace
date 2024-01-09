@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Stack } from '@mui/material';
+import { Stack, Button } from '@mui/material';
 
 import HeaderContainer from '../header/HeaderContainer';
 import PostFormContainer from '../posts/PostFormContainer';
@@ -44,7 +44,9 @@ const Profile = ({ getComments, allComments, getPostlikes, allPostlikes, getUser
                 <ProfilePictureContainer profilepicUrl={profilepicUrl}/>
             </div>
             <div className='profile-bio'>
+              <h3>Bio</h3>
               <p>{bio}</p>
+              <Button>Edit</Button>
             </div>
           </div>  
           <div className='friends__list'>
