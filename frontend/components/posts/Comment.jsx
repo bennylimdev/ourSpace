@@ -1,19 +1,24 @@
 import React from 'react'
 import { Avatar } from '@mui/material';
+import { Link } from 'react-router-dom';
 
-const Comment = ({ first_name, last_name, body, profilepicUrl }) => {
+const Comment = ({ authorId, first_name, last_name, body, profilepicUrl }) => {
   return (
     <div className='comment__wrapper'>
+      <Link to={`/profile/${authorId}`}>
         <Avatar 
           className='comment__pic'
           src={profilepicUrl}
         />
-        <div className='comment__content'>
-            <p className='comment__author'>{first_name} {last_name}</p>
-            <p>{body}</p>
-        </div>
-        <div className='comment__btns'> 
-        </div>
+      </Link>
+      <div className='comment__content'>
+        <Link className='comment-link' to={`/profile/${authorId}`}>
+          <p className='comment__author'>{first_name} {last_name}</p>
+        </Link>
+        <p>{body}</p>
+      </div>
+      <div className='comment__btns'> 
+      </div>
     </div>
   );
 };

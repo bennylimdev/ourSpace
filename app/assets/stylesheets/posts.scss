@@ -33,6 +33,10 @@
     align-items: center;
 }
 
+.post__link:hover {
+    text-decoration: underline;
+}
+
 .post__header > .post__menu {
     position: absolute;
     top: 11px;
