@@ -15,16 +15,16 @@ class Home extends React.Component {
         this.props.getComments();
         this.props.getPostlikes();
     };
-
+    
     render(){
         return(
-            <div className='home'>
-            <HeaderContainer />
-            <LeftNav currentUserId={this.props.currentUserId}/>
-            <PostFormContainer />
-            <NewsFeed posts={this.props.posts} comments={this.props.comments} postlikes={this.props.postlikes} />
-            <div className='right__nav__bar'>
-            </div>
+            <div className='home-page'>
+                <HeaderContainer />
+                <div className='home'>
+                    <LeftNav currentUserId={this.props.currentUserId}/>
+                    <PostFormContainer />
+                    <NewsFeed posts={this.props.posts} comments={this.props.comments} postlikes={this.props.postlikes} />
+                </div>
           </div> 
         );
     };
