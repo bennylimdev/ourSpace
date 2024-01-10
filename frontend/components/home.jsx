@@ -12,6 +12,8 @@ class Home extends React.Component {
 
     componentDidMount(){
         this.props.getPosts();
+        this.props.getComments();
+        this.props.getPostlikes();
     };
 
     render(){

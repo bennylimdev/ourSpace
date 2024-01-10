@@ -4,6 +4,7 @@
     grid-template-rows: 1fr .1fr;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
+    position: relative;
 }
 
 .comment__pic {
@@ -45,4 +46,11 @@
 .comment__btns p:hover {
     cursor: pointer;
     text-decoration: underline;
+}
+
+.comment__menu {
+    position: absolute;
+    top: 11px;
+    right: 1vw;
+    font-size: 9px;
 }

@@ -2,7 +2,9 @@ import React from 'react'
 import { Avatar } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-const Comment = ({ authorId, first_name, last_name, body, profilepicUrl }) => {
+import CommentMenu from './CommentMenu';
+
+const Comment = ({ id, authorId, first_name, last_name, body, profilepicUrl }) => {
   return (
     <div className='comment__wrapper'>
       <Link to={`/profile/${authorId}`}>
@@ -16,6 +18,9 @@ const Comment = ({ authorId, first_name, last_name, body, profilepicUrl }) => {
           <p className='comment__author'>{first_name} {last_name}</p>
         </Link>
         <p>{body}</p>
+      </div>
+      <div className='comment__menu'>
+        <CommentMenu />
       </div>
       <div className='comment__btns'> 
       </div>
