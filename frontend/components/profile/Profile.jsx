@@ -7,10 +7,17 @@ import ProfilePictureContainer from './ProfilePictureContainer';
 import NewsFeed from './../NewsFeed';
 import ProfileFriend from './ProfileFriend';
 
-const Profile = ({ user, editForm, getComments, allComments, getPostlikes, allPostlikes, getUser, currentUserId, users, editUserBio }) => {
+const Profile = ({ user, editForm, getComments, allComments, getPostlikes, allPostlikes, getUser, currentUserId, editUserBio }) => {
   const [editBioForm, setEditBioForm] = useState(editForm);
+  const [postInput, setPostInput] = useState(null);
 
   useEffect(() => {
+    if(user.id === currentUserId){
+      setPostInput(<PostFormContainer />);
+    } else {
+      setPostInput(null);
+    };
+
     const fetchUser = async () => {
       try {
         await Promise.all([getComments(), getPostlikes(), getUser(currentUserId)]);
@@ -76,7 +83,8 @@ const Profile = ({ user, editForm, getComments, allComments, getPostlikes, allPo
           </div>
         </div>
         <div className='profile-right'>
-          <PostFormContainer />
+          {postInput}
+          <p></p>
           <NewsFeed posts={posts} comments={allComments} postlikes={allPostlikes}/>
         </div>
       </div>
