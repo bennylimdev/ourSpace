@@ -42,9 +42,12 @@ const Profile = ({ user, editForm, getComments, allComments, getPostlikes, allPo
   if(user){
     userProfile = user;
     profilepicUrl = userProfile.profilepicUrl;
-    posts = Object.values(userProfile.posts);
     friends = userProfile.friends;
     bio = userProfile.bio;
+  };
+
+  if(user.posts){
+    posts = Object.values(userProfile.posts);
   };
 
   return (

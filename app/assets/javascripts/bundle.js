@@ -24655,8 +24655,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Avatar/Avatar.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Avatar/Avatar.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _InvitationButton__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./InvitationButton */ "./frontend/components/friend/InvitationButton.jsx");
+
 
 
 
@@ -24668,9 +24670,14 @@ var Friend = function Friend(_ref) {
     className: "friend-wrapper"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "friend__avatar-wrapper"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+    to: "/profile/".concat(user.id)
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material__WEBPACK_IMPORTED_MODULE_3__["default"], {
     src: user.profilepicUrl
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h5", null, user.first_name, " ", user.last_name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, user.bio), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_InvitationButton__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+    className: "comment-link",
+    to: "/profile/".concat(user.id)
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h5", null, user.first_name, " ", user.last_name))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, user.bio), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_InvitationButton__WEBPACK_IMPORTED_MODULE_1__["default"], {
     currentUser: currentUser,
     userId: user.id,
     currentUserId: currentUserId
@@ -25784,9 +25791,12 @@ var Profile = function Profile(_ref) {
   if (user) {
     userProfile = user;
     profilepicUrl = userProfile.profilepicUrl;
-    posts = Object.values(userProfile.posts);
     friends = userProfile.friends;
     bio = userProfile.bio;
+  }
+  ;
+  if (user.posts) {
+    posts = Object.values(userProfile.posts);
   }
   ;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
