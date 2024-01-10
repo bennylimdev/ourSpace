@@ -24943,7 +24943,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var Comment = function Comment(_ref) {
-  var currentUserId = _ref.currentUserId,
+  var deleteComment = _ref.deleteComment,
+    currentUserId = _ref.currentUserId,
     id = _ref.id,
     authorId = _ref.authorId,
     first_name = _ref.first_name,
@@ -24957,7 +24958,7 @@ var Comment = function Comment(_ref) {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (currentUserId === authorId) {
       setMenu( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_CommentMenu__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        deleteComment: '',
+        deleteComment: deleteComment,
         commentId: id
       }));
     } else {
@@ -25164,7 +25165,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var Post = function Post(_ref) {
-  var authorId = _ref.authorId,
+  var deleteComment = _ref.deleteComment,
+    authorId = _ref.authorId,
     deletePost = _ref.deletePost,
     currentUser = _ref.currentUser,
     profilepicUrl = _ref.profilepicUrl,
@@ -25268,6 +25270,7 @@ var Post = function Post(_ref) {
     return comment.post_id === id;
   }).map(function (comment) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Comment__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      deleteComment: deleteComment,
       currentUserId: currentUser.id,
       key: comment.id,
       authorId: comment.author_id,
@@ -25322,6 +25325,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 var mSTP = function mSTP(state, ownProps) {
   return {
     comment: {
@@ -25349,6 +25353,9 @@ var mDTP = function mDTP(dispatch) {
     },
     deletePost: function deletePost(postId) {
       return dispatch((0,_actions_posts_actions__WEBPACK_IMPORTED_MODULE_3__.deletePost)(postId));
+    },
+    deleteComment: function deleteComment(commentId) {
+      return dispatch((0,_actions_comment_actions__WEBPACK_IMPORTED_MODULE_1__.deleteComment)(commentId));
     }
   };
 };

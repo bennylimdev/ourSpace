@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom';
 
 import CommentMenu from './CommentMenu';
 
-const Comment = ({ currentUserId, id, authorId, first_name, last_name, body, profilepicUrl }) => {
+const Comment = ({ deleteComment, currentUserId, id, authorId, first_name, last_name, body, profilepicUrl }) => {
   const [menu, setMenu] = useState(null);
 
   useEffect(() => {
     if(currentUserId === authorId) {
-        setMenu(<CommentMenu deleteComment={''} commentId={id} />);
+        setMenu(<CommentMenu deleteComment={deleteComment} commentId={id} />);
     } else {
         setMenu(null);
     }

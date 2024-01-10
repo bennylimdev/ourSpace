@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import Comment from './Comment';
 import EditMenu from './EditMenu';
 
-const Post = ({ authorId, deletePost, currentUser, profilepicUrl, first_name, last_name, body, createComment, comment, comments, createPostlike, deletePostlike, postlike, postlikes, id }) => {
+const Post = ({ deleteComment, authorId, deletePost, currentUser, profilepicUrl, first_name, last_name, body, createComment, comment, comments, createPostlike, deletePostlike, postlike, postlikes, id }) => {
     const [form, setForm] = useState(comment);
     const [editMenu, setEditMenu] = useState(null);
 
@@ -80,7 +80,7 @@ const Post = ({ authorId, deletePost, currentUser, profilepicUrl, first_name, la
                 <div className='comment__feed'>
                 <Stack spacing={{ xs: 0.9 }} >
                 {comments.filter((comment) => (comment.post_id === id)).map((comment) => (
-                    <Comment currentUserId={currentUser.id} key={comment.id} authorId={comment.author_id} profilepicUrl={comment.profilepicUrl} id={comment.id} first_name={comment.first_name} last_name={comment.last_name} body={comment.body}/>
+                    <Comment deleteComment={deleteComment} currentUserId={currentUser.id} key={comment.id} authorId={comment.author_id} profilepicUrl={comment.profilepicUrl} id={comment.id} first_name={comment.first_name} last_name={comment.last_name} body={comment.body}/>
                 ))}
                 </Stack>
             </div>

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { createComment } from '../../actions/comment_actions';
 import { createPostlike, deletePostlike } from '../../actions/postlike_actions';
 import { deletePost } from '../../actions/posts_actions';
+import { deleteComment } from '../../actions/comment_actions';
 
 import Post from './Post';
 
@@ -24,6 +25,7 @@ const mDTP = dispatch => ({
     createPostlike: postlike => dispatch(createPostlike(postlike)),
     deletePostlike: postlikeId => dispatch(deletePostlike(postlikeId)),
     deletePost: postId => dispatch(deletePost(postId)),
+    deleteComment: commentId => dispatch(deleteComment(commentId))
 });
 
 export default connect(mSTP, mDTP)(Post);
