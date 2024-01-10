@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Auth = ({ errors, user, signUp, logIn, showModal }) => {
+const Auth = ({ user, signUp, logIn }) => {
     const [form, setForm] = useState(user);
     const [isSignup, setIsSignup] = useState(false); 
     
