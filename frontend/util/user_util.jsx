@@ -20,3 +20,11 @@ export const updateUser = user => (
         processData: false
     })
 )
+
+export const editUserBio = user => (
+    $.ajax({
+        method: 'PATCH',
+        url: `api/users/${user.id}`,
+        data: { user }
+    })
+);

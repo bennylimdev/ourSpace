@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// dependencies: EditPost, CreatePost, DeletePost, EditComment, EditProfile, EditCoverPhoto
+// dependencies: EditPost, CreatePost EditComment, EditProfile, EditCoverPhoto
 import Errors from './Errors';
 
 const Modal = ({ errors, modal, hideModal }) => {

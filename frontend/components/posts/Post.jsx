@@ -13,7 +13,7 @@ const Post = ({ authorId, deletePost, currentUser, profilepicUrl, first_name, la
 
     useEffect(() => {
         if(currentUser.id === authorId) {
-            setEditMenu(<EditMenu />);
+            setEditMenu(<EditMenu deletePost={deletePost} postId={id} />);
         } else {
             setEditMenu(null);
         }

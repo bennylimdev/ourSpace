@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Stack, Button } from '@mui/material';
+import { Stack, Button, TextField } from '@mui/material';
 
 import HeaderContainer from '../header/HeaderContainer';
 import PostFormContainer from '../posts/PostFormContainer';
@@ -7,7 +7,9 @@ import ProfilePictureContainer from './ProfilePictureContainer';
 import NewsFeed from './../NewsFeed';
 import ProfileFriend from './ProfileFriend';
 
-const Profile = ({ getComments, allComments, getPostlikes, allPostlikes, getUser, currentUserId, users, edituser }) => {
+const Profile = ({ editForm, getComments, allComments, getPostlikes, allPostlikes, getUser, currentUserId, users, editUserBio }) => {
+  const [editBioForm, setEditBioForm] = useState(editForm);
+
   useEffect(() => {
     const fetchUser = async () => {
       try {
@@ -19,6 +21,16 @@ const Profile = ({ getComments, allComments, getPostlikes, allPostlikes, getUser
     fetchUser();
     fetchUser();
   }, []);
+
+  const handleChange = (e) => {
+    setEditBioForm({...editBioForm, [e.target.name]: e.target.value});
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    editUserBio(editBioForm);
+    e.target.reset();
+  }
 
   let userProfile = null;
   let posts = [];
@@ -46,7 +58,14 @@ const Profile = ({ getComments, allComments, getPostlikes, allPostlikes, getUser
             <div className='profile-bio'>
               <h3>Bio</h3>
               <p>{bio}</p>
-              <Button>Edit</Button>
+              <form onSubmit={handleSubmit} >
+                <TextField 
+                  name='bio'
+                  label='Do you want to edit your bio?'
+                  onChange={handleChange}
+                />
+                <Button type='submit'>Edit</Button>
+              </form>
             </div>
           </div>  
           <div className='friends__list'>
