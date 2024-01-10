@@ -4,7 +4,7 @@ import PostFormContainer from './posts/PostFormContainer';
 import LeftNav from './LeftNav';
 import NewsFeed from './NewsFeed';
 
-const Home = ({ getComments, allComments, getPosts, allPosts, getPostlikes, allPostlikes }) => {
+const Home = ({ currentUserId, getComments, allComments, getPosts, allPosts, getPostlikes, allPostlikes }) => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
@@ -19,7 +19,7 @@ const Home = ({ getComments, allComments, getPosts, allPosts, getPostlikes, allP
   return (
     <div className='home'>
       <HeaderContainer />
-      <LeftNav />
+      <LeftNav currentUserId={currentUserId}/>
       <PostFormContainer />
       <NewsFeed posts={allPosts} comments={allComments} postlikes={allPostlikes} />
       <div className='right__nav__bar'>

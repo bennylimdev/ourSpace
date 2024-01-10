@@ -30,7 +30,7 @@ function Header({ currentUserId, logOut, users, getUsers, currentUser }) {
             <Tabs value={false} className='header__nav'>
                 <Tab href='/#/home'icon={<HomeOutlinedIcon fontSize='large' />} />
                 <Tab href='/#/friends' icon={<PersonAddAltOutlinedIcon fontSize='large' />} />
-                <Tab href='/#/profile' icon={<AccountCircleOutlinedIcon fontSize='large' />} />
+                <Tab href={`/#/profile/${currentUserId}`} icon={<AccountCircleOutlinedIcon fontSize='large' />} />
             </Tabs>
             <div className='header__end'>
                 <Avatar sx={{ bgcolor: blue[900] }}>

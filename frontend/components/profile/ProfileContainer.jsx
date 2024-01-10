@@ -6,7 +6,8 @@ import { getPostlikes } from "../../actions/postlike_actions";
 import { getComments } from "../../actions/comment_actions";
 import { getUser, editUserBio } from "../../actions/user_actions";
 
-const mSTP = state => ({
+const mSTP = (state, ownProps) => ({
+    user: state.entities.users[ownProps.match.params.userId],
     currentUserId: state.session.id,
     users: state.entities.users,
     allComments: Object.values(state.entities.comments),

@@ -3,6 +3,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import SendIcon from '@mui/icons-material/Send';
 import { Avatar, ButtonGroup, Button, TextField, IconButton } from '@mui/material';
 import Stack from '@mui/material/Stack';
+import { Link } from 'react-router-dom';
 
 import Comment from './Comment';
 import EditMenu from './EditMenu';
@@ -48,11 +49,13 @@ const Post = ({ authorId, deletePost, currentUser, profilepicUrl, first_name, la
     return (
         <div className='post'>
             <div className='post__header'>
-                <Avatar 
-                    sx={{ width: 24, height: 24 }} 
-                    src={profilepicUrl}
-                    />
-                <h5>{first_name} {last_name}</h5>
+                <Link className='post__link' to={`/profile/${authorId}`}>
+                    <Avatar 
+                        sx={{ width: 24, height: 24 }} 
+                        src={profilepicUrl}
+                        />
+                    <h5>{first_name} {last_name}</h5>
+                </Link>
                 <div className='post__menu'>
                     {editMenu}
                 </div>

@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Box, Avatar } from '@mui/material/';
 
-const ProfilePicture = ({ editUser, profilepicUrl, currentUserId }) => {
+const ProfilePicture = ({ userId, editUser, profilepicUrl, currentUserId }) => {
+    const [editPictureBtn, setEditPictureBtn] = useState(null);
+
+    useEffect(() => {
+        if(currentUserId === userId) {
+            setEditPictureBtn(<Button variant='contained' color='primary' component='span'>Upload Picture</Button>);
+        } else {
+            setEditPictureBtn(null);
+        }
+    }, []);
 
     const handleChange = (e) => {
         e.preventDefault;
@@ -33,9 +42,7 @@ const ProfilePicture = ({ editUser, profilepicUrl, currentUserId }) => {
                 onChange={handleChange}
             />
             <label htmlFor='select-avatar'>
-                <Button variant='contained' color='primary' component='span'>
-                    Upload Picture
-                </Button>
+                {editPictureBtn}
             </label>
         </div>
     );

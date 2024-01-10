@@ -7,7 +7,7 @@ import ProfilePictureContainer from './ProfilePictureContainer';
 import NewsFeed from './../NewsFeed';
 import ProfileFriend from './ProfileFriend';
 
-const Profile = ({ editForm, getComments, allComments, getPostlikes, allPostlikes, getUser, currentUserId, users, editUserBio }) => {
+const Profile = ({ user, editForm, getComments, allComments, getPostlikes, allPostlikes, getUser, currentUserId, users, editUserBio }) => {
   const [editBioForm, setEditBioForm] = useState(editForm);
 
   useEffect(() => {
@@ -37,9 +37,10 @@ const Profile = ({ editForm, getComments, allComments, getPostlikes, allPostlike
   let profilepicUrl = '';
   let bio = '';
   let friends = [];
+  let editBio = null;
 
-  if(users[currentUserId]){
-    userProfile = users[currentUserId];
+  if(user){
+    userProfile = user;
     profilepicUrl = userProfile.profilepicUrl;
     posts = Object.values(userProfile.posts);
     friends = userProfile.friends;
@@ -53,19 +54,12 @@ const Profile = ({ editForm, getComments, allComments, getPostlikes, allPostlike
         <div className='profile-left'>
           <div className='profile-info'>
             <div className='profile-pic'>
-                <ProfilePictureContainer profilepicUrl={profilepicUrl}/>
+                <ProfilePictureContainer userId={user.id} profilepicUrl={profilepicUrl}/>
             </div>
             <div className='profile-bio'>
               <h3>Bio</h3>
               <p>{bio}</p>
-              <form onSubmit={handleSubmit} >
-                <TextField 
-                  name='bio'
-                  label='Do you want to edit your bio?'
-                  onChange={handleChange}
-                />
-                <Button type='submit'>Edit</Button>
-              </form>
+
             </div>
           </div>  
           <div className='friends__list'>

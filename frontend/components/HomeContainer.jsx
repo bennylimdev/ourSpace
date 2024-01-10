@@ -7,7 +7,8 @@ import { getPostlikes } from "../actions/postlike_actions";
 const mSTP = state => ({
     allPosts: Object.values(state.entities.posts),
     allComments: Object.values(state.entities.comments),
-    allPostlikes: Object.values(state.entities.postlikes)
+    allPostlikes: Object.values(state.entities.postlikes),
+    currentUserId: state.session.id
 });
 
 const mDTP = dispatch => ({

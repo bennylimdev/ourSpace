@@ -19,8 +19,6 @@
 .post__header {
     grid-area: 1 / 1 / 2 / 6;
     margin-left: 12px;
-    display: flex;
-    align-items: center;
     position: relative;
 }
 
@@ -28,9 +26,16 @@
     margin-left: 10px;
 }
 
+.post__link {
+    text-decoration: none;
+    color: black;
+    display: flex;
+    align-items: center;
+}
+
 .post__header > .post__menu {
     position: absolute;
-    top: 5;
+    top: 11px;
     right: 1vw;
     font-size: 9px;
 }
