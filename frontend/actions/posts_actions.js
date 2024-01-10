@@ -25,8 +25,8 @@ export const getPosts = () => dispatch => (
 export const fetchPost = () => dispatch => (
     PostUtil.fetchPost().then(post => dispatch(receivePost(post)))
 );
-export const updatePost = () => dispatch => (
-    PostUtil.updatePost().then(post => dispatch(receivePost(post)))
+export const updatePost = post => dispatch => (
+    PostUtil.updatePost(post).then(post => dispatch(receivePost(post)))
 );
 export const createPost = post => dispatch => (
     PostUtil.createPost(post).then(post => dispatch(receivePost(post)))

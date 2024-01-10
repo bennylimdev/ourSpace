@@ -1,39 +1,42 @@
-import React, { useState } from 'react';
-// dependencies: EditPost, CreatePost EditComment, EditProfile, EditCoverPhoto
-import Errors from './Errors';
+import React from 'react';
 
-const Modal = ({ errors, modal, hideModal }) => {
-  const [isErrors, setIsErrors] = useState(false);
+import EditPostFormContainer from './EditPostFormContainer';
 
-  if(errors.length !== 0 && !isErrors) {
-    setIsErrors((prevIsErrors => !prevIsErrors));
-  }
-
-  if(!modal && !isErrors) {
-    return null;
-  }
-
-  let form;
-
-  if(isErrors) {
-    form = <Errors errors={errors}/>;
-  }
-
-  const closeModal = (func) => {
-    hideModal();
-    setIsErrors((prevIsErrors => !prevIsErrors));
+class Modal extends React.Component {
+  constructor(props) {
+    super(props);
+    this.close = this.close.bind(this);
   };
 
-  return (
-    <div className='modal-overlay'>
+  close(){
+    this.props.hideModal();
+  }
+
+  render(){
+    const { modal } = this.props;
+
+    if(!modal) {
+      return null;
+    };
+
+    let form;
+    
+    switch(modal) {
+      case 'editpost':
+        form = <EditPostFormContainer />
+        break;
+      default:
+        return null;
+    };
+
+    return (
+      <div className='modal-overlay' onClick={this.close}>
         <div className='modal'>
-          <span className="modal-close" onClick={closeModal}>
-            &#10005; {/* HTML code for a multiplication sign */}
-          </span>
-          { form }
+            { form }
         </div>
-    </div>
-  )
+      </div>
+    );
+  }
 };
 
 export default Modal;

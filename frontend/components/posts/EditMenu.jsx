@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, Menu, MenuItem } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 
-const EditMenu = ({ deletePost, postId }) => {
+const EditMenu = ({ showModal, deletePost, postId }) => {
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
 
@@ -18,6 +18,10 @@ const EditMenu = ({ deletePost, postId }) => {
         setAnchorEl(null);
     };
 
+    const handleEdit = () => {
+        showModal('editpost');
+    };
+    
     return (
     <div>
         <Button
@@ -38,7 +42,7 @@ const EditMenu = ({ deletePost, postId }) => {
             'aria-labelledby': 'basic-button',
             }}
         >
-            <MenuItem onClick={handleClose}>Edit</MenuItem>
+            <MenuItem onClick={handleEdit}>Edit</MenuItem>
             <MenuItem onClick={handleDelete}>Delete</MenuItem>
         </Menu>
     </div>

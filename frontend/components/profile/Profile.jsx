@@ -28,6 +28,7 @@ class Profile extends React.Component {
 
   render(){
     let postInput = null;
+    let bioBtn = null;
 
     if(this.props.user.id === this.props.currentUserId){
       postInput = <PostFormContainer />;
