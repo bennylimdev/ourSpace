@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Paper, Divider, InputBase, IconButton, Stack } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 
-import HeaderContainer from '../header/HeaderContainer';
+import HeaderContainer from '../HeaderContainer';
 import Friend from './Friend';
 
 const Friends = ({ currentUser, currentUserId, users, getUsers }) => {
@@ -15,7 +15,7 @@ const Friends = ({ currentUser, currentUserId, users, getUsers }) => {
       }
     };
     fetchUsers();
-  }, [getUsers]);
+  }, []);
 
   let otherUsers = users.filter((user) => user.id !== currentUserId);
 

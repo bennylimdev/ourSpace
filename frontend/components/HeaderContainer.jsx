@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 
 import Header from './Header';
-import { logOut } from '../../actions/auth_actions';
-import { getUsers } from '../../actions/user_actions';
+import { logOut } from '../actions/auth_actions';
+import { getUsers } from '../actions/user_actions';
 
 // for error handling in future
 const mSTP = state => ({

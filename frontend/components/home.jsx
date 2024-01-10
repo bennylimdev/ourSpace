@@ -1,31 +1,31 @@
-import React, { useEffect } from 'react';
-import HeaderContainer from './header/HeaderContainer';
+import React from 'react';
+
+import HeaderContainer from './HeaderContainer';
 import PostFormContainer from './posts/PostFormContainer';
 import LeftNav from './LeftNav';
 import NewsFeed from './NewsFeed';
 
-const Home = ({ currentUserId, getComments, allComments, getPosts, allPosts, getPostlikes, allPostlikes }) => {
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        await Promise.all([getComments(), getPosts(), getPostlikes()]);
-      } catch (error) {
-        console.log('dispatch not working')
-      }
+class Home extends React.Component {
+    constructor(props){
+        super(props);
     };
-    fetchPosts();
-  }, [getPosts]);
 
-  return (
-    <div className='home'>
-      <HeaderContainer />
-      <LeftNav currentUserId={currentUserId}/>
-      <PostFormContainer />
-      <NewsFeed posts={allPosts} comments={allComments} postlikes={allPostlikes} />
-      <div className='right__nav__bar'>
-      </div>
-    </div> 
-  );
+    componentDidMount(){
+        this.props.getPosts();
+    };
+
+    render(){
+        return(
+            <div className='home'>
+            <HeaderContainer />
+            <LeftNav currentUserId={this.props.currentUserId}/>
+            <PostFormContainer />
+            <NewsFeed posts={this.props.posts} comments={this.props.comments} postlikes={this.props.postlikes} />
+            <div className='right__nav__bar'>
+            </div>
+          </div> 
+        );
+    };
 };
 
 export default Home;

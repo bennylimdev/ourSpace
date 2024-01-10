@@ -1,10 +1,9 @@
-import  React from 'react';
+import React from 'react';
 import Stack from '@mui/material/Stack';
 import PostContainer from './posts/PostContainer';
 
 // get posts create post with each post put them in stack
 const NewsFeed = ({ posts, comments, postlikes }) => {
-
   return (
     <div className='news__feed'>
       <Stack spacing={{ xs: 3 }} direction='column-reverse'>
