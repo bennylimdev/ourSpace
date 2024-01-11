@@ -114,7 +114,9 @@ const Auth = ({ user, signUp, logIn, errors, removeErrors, receiveErrors }) => {
                     </div>
                 </div>
             </div>
-            <footer className='footer'>Benny Lim</footer>
+            <footer className='footer'>
+                Benny Lim &#169; 
+            </footer>
         </div>
     );
 };
