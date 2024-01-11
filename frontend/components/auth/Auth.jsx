@@ -4,8 +4,6 @@ const Auth = ({ user, signUp, logIn, errors, removeErrors, receiveErrors }) => {
     const [form, setForm] = useState(user);
     const [isSignup, setIsSignup] = useState(false);
 
-    console.log(errors);
-
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value});
     };

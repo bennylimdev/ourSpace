@@ -25,12 +25,16 @@ const LeftNav = ({ currentUserId }) => {
         iconPosition='start'
         label="Benny's Github"
         href="https://github.com/bennylimdev"
+        target="_blank" 
+        rel="noopener noreferrer" // prevents tabnabbing
       />
       <Tab
         icon={<LinkedInIcon />}
         iconPosition='start'
         label="Benny's Linkedin"
-        href="www.linkedin.com/in/bennylimdev"
+        href="https://www.linkedin.com/in/bennylimdev"
+        target="_blank" 
+        rel="noopener noreferrer"
       />
     </Tabs>
   );

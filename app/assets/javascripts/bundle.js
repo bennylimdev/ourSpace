@@ -24366,12 +24366,16 @@ var LeftNav = function LeftNav(_ref) {
     icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_icons_material_GitHub__WEBPACK_IMPORTED_MODULE_5__["default"], null),
     iconPosition: "start",
     label: "Benny's Github",
-    href: "https://github.com/bennylimdev"
+    href: "https://github.com/bennylimdev",
+    target: "_blank",
+    rel: "noopener noreferrer" // prevents tabnabbing
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material__WEBPACK_IMPORTED_MODULE_2__["default"], {
     icon: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_icons_material_LinkedIn__WEBPACK_IMPORTED_MODULE_6__["default"], null),
     iconPosition: "start",
     label: "Benny's Linkedin",
-    href: "www.linkedin.com/in/bennylimdev"
+    href: "https://www.linkedin.com/in/bennylimdev",
+    target: "_blank",
+    rel: "noopener noreferrer"
   }));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (LeftNav);
@@ -24466,7 +24470,6 @@ var Auth = function Auth(_ref) {
     _useState4 = _slicedToArray(_useState3, 2),
     isSignup = _useState4[0],
     setIsSignup = _useState4[1];
-  console.log(errors);
   var handleChange = function handleChange(e) {
     setForm(_objectSpread(_objectSpread({}, form), {}, _defineProperty({}, e.target.name, e.target.value)));
   };
