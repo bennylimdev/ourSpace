@@ -1,5 +1,5 @@
 import React from 'react';
-import { Stack, Button, TextField } from '@mui/material';
+import { Stack, Button } from '@mui/material';
 
 import HeaderContainer from '../HeaderContainer';
 import PostFormContainer from '../posts/PostFormContainer';
@@ -29,6 +29,7 @@ class Profile extends React.Component {
   render(){
     let postInput = null;
     let bioBtn = null;
+    let removeFriendBtn = null;
 
     if(this.props.user.id === this.props.currentUserId){
       postInput = <PostFormContainer />;
@@ -48,7 +49,7 @@ class Profile extends React.Component {
               <div className='profile-bio'>
                 <h3>Bio</h3>
                 <p>{this.props.user.bio}</p>
-
+                <Button>Edit Bio</Button> 
               </div>
             </div>  
             <div className='friends__list'>

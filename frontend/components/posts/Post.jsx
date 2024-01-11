@@ -8,13 +8,13 @@ import { Link } from 'react-router-dom';
 import Comment from './Comment';
 import EditMenu from './EditMenu';
 
-const Post = ({ showModal, deleteComment, authorId, deletePost, currentUser, profilepicUrl, first_name, last_name, body, createComment, comment, comments, createPostlike, deletePostlike, postlike, postlikes, id }) => {
+const Post = ({ givePostId, showModal, deleteComment, authorId, deletePost, currentUser, profilepicUrl, first_name, last_name, body, createComment, comment, comments, createPostlike, deletePostlike, postlike, postlikes, id }) => {
     const [form, setForm] = useState(comment);
     const [editMenu, setEditMenu] = useState(null);
 
     useEffect(() => {
         if(currentUser.id === authorId) {
-            setEditMenu(<EditMenu showModal={showModal} deletePost={deletePost} postId={id} />);
+            setEditMenu(<EditMenu givePostId={givePostId} showModal={showModal} deletePost={deletePost} postId={id} />);
         } else {
             setEditMenu(null);
         }

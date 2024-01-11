@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, Menu, MenuItem } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 
-const EditMenu = ({ showModal, deletePost, postId }) => {
+const EditMenu = ({ givePostId, showModal, deletePost, postId }) => {
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
 
@@ -19,6 +19,7 @@ const EditMenu = ({ showModal, deletePost, postId }) => {
     };
 
     const handleEdit = () => {
+        givePostId(postId);
         showModal('editpost');
     };
     

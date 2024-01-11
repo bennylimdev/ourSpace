@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Avatar, TextField, IconButton } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 
-const EditPostForm = ({ editPost, post, currentUser}) => {
+const EditPostForm = ({ hideModal, editPost, currentUser, post }) => {
     const [form, setForm] = useState(post);
 
     const handleChange = (e) => {
@@ -11,7 +11,7 @@ const EditPostForm = ({ editPost, post, currentUser}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        editPost(form);
+        editPost(form).then(hideModal());
         e.target.reset();
     };
 
