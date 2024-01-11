@@ -24990,7 +24990,10 @@ var Modal = /*#__PURE__*/function (_React$Component) {
         className: "modal-overlay",
         onClick: this.close
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-        className: "modal"
+        className: "modal",
+        onClick: function onClick(e) {
+          return e.stopPropagation();
+        }
       }, form));
     }
   }]);

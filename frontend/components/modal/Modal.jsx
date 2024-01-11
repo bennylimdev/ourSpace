@@ -31,7 +31,7 @@ class Modal extends React.Component {
 
     return (
       <div className='modal-overlay' onClick={this.close}>
-        <div className='modal'>
+        <div className='modal' onClick={e => e.stopPropagation()}>
             { form }
         </div>
       </div>
