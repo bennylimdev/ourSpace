@@ -25021,7 +25021,7 @@ __webpack_require__.r(__webpack_exports__);
 var mSTP = function mSTP(state) {
   return {
     errors: state.errors,
-    modal: state.modal
+    modal: state.ui.modal
   };
 };
 var mDTP = function mDTP(dispatch) {

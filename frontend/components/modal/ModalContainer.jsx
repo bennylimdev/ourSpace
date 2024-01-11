@@ -4,7 +4,7 @@ import { hideModal } from '../../actions/modal_actions';
 
 const mSTP = state => ({
     errors: state.errors,
-    modal: state.modal
+    modal: state.ui.modal
 });
 
 const mDTP = dispatch => ({
