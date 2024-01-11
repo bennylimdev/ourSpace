@@ -23676,11 +23676,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   HIDE_MODAL: () => (/* binding */ HIDE_MODAL),
 /* harmony export */   SHOW_MODAL: () => (/* binding */ SHOW_MODAL),
-/* harmony export */   hideModaltest: () => (/* binding */ hideModaltest),
+/* harmony export */   hideModal: () => (/* binding */ hideModal),
 /* harmony export */   showModal: () => (/* binding */ showModal)
 /* harmony export */ });
-/* harmony import */ var _auth_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./auth_actions */ "./frontend/actions/auth_actions.js");
-
 var SHOW_MODAL = 'SHOW_MODAL';
 var HIDE_MODAL = 'HIDE_MODAL';
 var showModal = function showModal(form) {
@@ -23694,10 +23692,35 @@ var hideModal = function hideModal() {
     type: HIDE_MODAL
   };
 };
-var hideModaltest = function hideModaltest() {
-  return function (dispatch) {
-    dispatch(hideModal());
-    dispatch((0,_auth_actions__WEBPACK_IMPORTED_MODULE_0__.removeErrors)());
+
+/***/ }),
+
+/***/ "./frontend/actions/modal_info_actions.js":
+/*!************************************************!*\
+  !*** ./frontend/actions/modal_info_actions.js ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   GIVE_COMMENT_ID: () => (/* binding */ GIVE_COMMENT_ID),
+/* harmony export */   GIVE_POST_ID: () => (/* binding */ GIVE_POST_ID),
+/* harmony export */   giveCommentId: () => (/* binding */ giveCommentId),
+/* harmony export */   givePostId: () => (/* binding */ givePostId)
+/* harmony export */ });
+var GIVE_POST_ID = "GIVE_POST_ID";
+var GIVE_COMMENT_ID = "GIVE_COMMENT_ID";
+var givePostId = function givePostId(postId) {
+  return {
+    type: GIVE_POST_ID,
+    postId: postId
+  };
+};
+var giveCommentId = function giveCommentId(commentId) {
+  return {
+    type: GIVE_COMMENT_ID,
+    commentId: commentId
   };
 };
 
@@ -26105,6 +26128,62 @@ var LikesReducer = function LikesReducer() {
 
 /***/ }),
 
+/***/ "./frontend/reducers/modal_comment_info_reducer.js":
+/*!*********************************************************!*\
+  !*** ./frontend/reducers/modal_comment_info_reducer.js ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _actions_modal_info_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/modal_info_actions */ "./frontend/actions/modal_info_actions.js");
+
+var ModalCommentInfoReducer = function ModalCommentInfoReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+  switch (action.type) {
+    case _actions_modal_info_actions__WEBPACK_IMPORTED_MODULE_0__.GIVE_COMMENT_ID:
+      return action.commentId;
+    default:
+      return state;
+  }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ModalCommentInfoReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/modal_post_info_reducer.js":
+/*!******************************************************!*\
+  !*** ./frontend/reducers/modal_post_info_reducer.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _actions_modal_info_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/modal_info_actions */ "./frontend/actions/modal_info_actions.js");
+
+var ModalPostInfoReducer = function ModalPostInfoReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+  switch (action.type) {
+    case _actions_modal_info_actions__WEBPACK_IMPORTED_MODULE_0__.GIVE_POST_ID:
+      return action.postId;
+    default:
+      return state;
+  }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ModalPostInfoReducer);
+
+/***/ }),
+
 /***/ "./frontend/reducers/modal_reducer.js":
 /*!********************************************!*\
   !*** ./frontend/reducers/modal_reducer.js ***!
@@ -26193,7 +26272,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _entities_reducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./entities_reducer */ "./frontend/reducers/entities_reducer.js");
 /* harmony import */ var _errors_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./errors_reducer */ "./frontend/reducers/errors_reducer.js");
 /* harmony import */ var _auth_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./auth_reducer */ "./frontend/reducers/auth_reducer.js");
-/* harmony import */ var _modal_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modal_reducer */ "./frontend/reducers/modal_reducer.js");
+/* harmony import */ var _ui_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ui_reducer */ "./frontend/reducers/ui_reducer.js");
 
 
 
@@ -26203,9 +26282,37 @@ var RootReducer = (0,redux__WEBPACK_IMPORTED_MODULE_4__.combineReducers)({
   entities: _entities_reducer__WEBPACK_IMPORTED_MODULE_0__["default"],
   session: _auth_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
   errors: _errors_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
-  modal: _modal_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
+  ui: _ui_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (RootReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/ui_reducer.js":
+/*!*****************************************!*\
+  !*** ./frontend/reducers/ui_reducer.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var _modal_post_info_reducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modal_post_info_reducer */ "./frontend/reducers/modal_post_info_reducer.js");
+/* harmony import */ var _modal_comment_info_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modal_comment_info_reducer */ "./frontend/reducers/modal_comment_info_reducer.js");
+/* harmony import */ var _modal_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modal_reducer */ "./frontend/reducers/modal_reducer.js");
+
+
+
+
+var UIReducer = (0,redux__WEBPACK_IMPORTED_MODULE_3__.combineReducers)({
+  modal: _modal_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
+  postId: _modal_post_info_reducer__WEBPACK_IMPORTED_MODULE_0__["default"],
+  commentId: _modal_comment_info_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
+});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (UIReducer);
 
 /***/ }),
 
