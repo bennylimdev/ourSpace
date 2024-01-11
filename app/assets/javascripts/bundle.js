@@ -24489,6 +24489,13 @@ var Auth = function Auth(_ref) {
       }).then(removeErrors());
     }
   };
+  var handleDemo = function handleDemo() {
+    var demo = {
+      email: 'tonystark@ourspace.com',
+      password: 'password'
+    };
+    logIn(demo);
+  };
   var switchMode = function switchMode() {
     setIsSignup(function (prevIsSignup) {
       return !prevIsSignup;
@@ -24566,7 +24573,10 @@ var Auth = function Auth(_ref) {
     className: "auth__form-container_fields-account"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, isSignup ? 'Already have an account? ' : "Don't have an account? ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
     onClick: switchMode
-  }, isSignup ? 'Sign In' : 'Sign Up'))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("footer", {
+  }, isSignup ? 'Sign In' : 'Sign Up'))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
+    className: "demo__link",
+    onClick: handleDemo
+  }, "Demo Login!"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("footer", {
     className: "footer"
   }, "Benny Lim \xA9"));
 };

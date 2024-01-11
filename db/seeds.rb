@@ -13,37 +13,30 @@ Postlike.destroy_all
 
 User.create!([
     {
-        first_name: 'Demo', 
-        last_name: 'Account', 
-        email: 'demo@ourspace.com', 
+        first_name: 'Tony', 
+        last_name: 'Stark', 
+        email: 'tonystark@ourspace.com', 
         password: 'password', 
         bio: 'I love ourSpace, Benny Lim is a great dev'
     },
     {
-        first_name: 'Benny', 
-        last_name: 'Lim', 
-        email: 'bennylimthedev@gmail.com', 
-        password: 'password', 
-        bio: 'Hello, Lets Connect, Add me!'
-    },
-    {
-        first_name: 'Startup', 
+        first_name: 'Edgar Codd', 
         last_name: 'Employee', 
         email: 'employee@ourspace.com', 
         password: 'password', 
-        bio: 'I love ourSpace, Benny Lim is a great boss'
+        bio: 'I love ourSpace, great use of my invention. I love relational databases.'
     },
 ])
 
-# 50.times do |index|
-#     User.create!(
-#         first_name: Faker::Name.first_name, 
-#         last_name: Faker::Name.last_name, 
-#         email: Faker::Name.unique.first_name + '@email.com',
-#         password: 'password', 
-#         bio: Faker::Lorem.paragraph 
-#     )
-# end
+29.times do |index|
+    User.create!(
+        first_name: Faker::Name.first_name, 
+        last_name: Faker::Name.last_name, 
+        email: Faker::Name.unique.first_name + '@email.com',
+        password: 'password', 
+        bio: Faker::Lorem.paragraph 
+    )
+end
 
 20.times do |index|
     Post.create!(

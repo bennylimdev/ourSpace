@@ -22,6 +22,15 @@ const Auth = ({ user, signUp, logIn, errors, removeErrors, receiveErrors }) => {
         }
     };
 
+    const handleDemo = () => {
+        const demo = {
+            email: 'tonystark@ourspace.com',
+            password: 'password'
+        }
+
+        logIn(demo);
+    };
+
     const switchMode = () => {
         setIsSignup((prevIsSignup) => !prevIsSignup);
     };
@@ -110,6 +119,9 @@ const Auth = ({ user, signUp, logIn, errors, removeErrors, receiveErrors }) => {
                             </span>
                         </p>
                     </div>
+                    <span className='demo__link' onClick={handleDemo}> 
+                        Demo Login!
+                    </span>
                 </div>
             </div>
             <footer className='footer'>

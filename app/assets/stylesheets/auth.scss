@@ -41,7 +41,6 @@
     display: flex;
     flex-direction: column;
     position: relative;
-  
     margin: 1rem 0rem;
 }
 
@@ -78,7 +77,7 @@
 }
 
 .auth__form-container_fields-content_button button:hover {
-background: #004699;
+    background: #004699;
 }
 
 .auth__form-container_fields-account {
@@ -97,7 +96,7 @@ background: #004699;
 .auth__form-container_fields-account span {
     color: #05245a;
     cursor: pointer;
-    font-weight: 700;
+    font-weight: 500;
 }
 
 .footer {
@@ -112,4 +111,20 @@ background: #004699;
     font-style: italic;
     font-size: 14px;
     place-self: center;
+}
+
+.auth__form-container_fields-account span:hover {
+    text-decoration: underline;
+}
+
+.demo__link {
+    place-self: center;
+    font-size: 14px;
+    cursor: pointer;
+    color: #05245a;
+    font-weight: 500;
+}
+
+.demo__link:hover {
+    text-decoration: underline;
 }
