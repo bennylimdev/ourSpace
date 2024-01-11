@@ -165,6 +165,8 @@ GEM
     nokogiri (1.12.5)
       mini_portile2 (~> 2.6.1)
       racc (~> 1.4)
+    nokogiri (1.12.5-arm64-darwin)
+      racc (~> 1.4)
     pg (1.5.4)
     pry (0.14.2)
       coderay (~> 1.1)
@@ -257,6 +259,7 @@ GEM
 
 PLATFORMS
   -darwin-21
+  arm64-darwin-21
 
 DEPENDENCIES
   active_model_serializers (~> 0.10.14)
@@ -287,7 +290,7 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 RUBY VERSION
-   ruby 2.5.1p57
+   ruby 2.7.8p225
 
 BUNDLED WITH
-   2.3.22
+   2.4.22
