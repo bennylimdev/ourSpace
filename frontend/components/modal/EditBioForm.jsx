@@ -2,15 +2,16 @@ import React, { useState } from 'react';
 import { Avatar, TextField, IconButton } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 
-const EditBioForm = ({ editUser, currentUser}) => {
-  
+const EditBioForm = ({ hideModal, editUserBio, user, currentUser}) => {
+  const [form, setForm] = useState(user);
+
   const handleChange = (e) => {
       setForm({...form, [e.target.name]: e.target.value});
   };
 
   const handleSubmit = (e) => {
       e.preventDefault();
-      editPost(form);
+      editUserBio(form).then(hideModal());
       e.target.reset();
   };
 
@@ -22,10 +23,10 @@ const EditBioForm = ({ editUser, currentUser}) => {
               src={currentUser.profilepicUrl}
               />
               <TextField
-                  name='body'
+                  name='bio'
                   variant='filled'
                   size='small'
-                  label="How would you like to edit your post?"
+                  label="How would you like to edit your Bio?"
                   onChange={handleChange}
               />
               <IconButton type='submit'>

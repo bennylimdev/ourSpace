@@ -10,21 +10,17 @@ import ProfileFriend from './ProfileFriend';
 class Profile extends React.Component {
   constructor(props){
     super(props);
+    this.bioHandler = this.bioHandler.bind(this);
   };
 
   componentDidMount(){
     this.props.getPosts();  
   };
 
-  handleChange = (e) => {
-    setEditBioForm({...editBioForm, [e.target.name]: e.target.value});
+  bioHandler() {
+    this.props.giveUserId(this.props.user.id);
+    this.props.showModal('editbio');
   };
-
-  handleSubmit = (e) => {
-    e.preventDefault();
-    editUserBio(editBioForm);
-    e.target.reset();
-  }
 
   render(){
     let postInput = null;
@@ -33,6 +29,7 @@ class Profile extends React.Component {
 
     if(this.props.user.id === this.props.currentUserId){
       postInput = <PostFormContainer />;
+      bioBtn = <Button onClick={this.bioHandler}>Edit Bio</Button>;
     }
 
     let posts = this.props.posts.filter((post) => post.author_id === this.props.user.id)
@@ -49,7 +46,7 @@ class Profile extends React.Component {
               <div className='profile-bio'>
                 <h3>Bio</h3>
                 <p>{this.props.user.bio}</p>
-                <Button>Edit Bio</Button> 
+                {bioBtn}
               </div>
             </div>  
             <div className='friends__list'>

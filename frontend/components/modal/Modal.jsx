@@ -1,6 +1,7 @@
 import React from 'react';
 
 import EditPostFormContainer from './EditPostFormContainer';
+import EditBioFormContainer from './EditBioFormContainer';
 
 class Modal extends React.Component {
   constructor(props) {
@@ -24,6 +25,9 @@ class Modal extends React.Component {
     switch(modal) {
       case 'editpost':
         form = <EditPostFormContainer />
+        break;
+      case 'editbio':
+        form = <EditBioFormContainer />
         break;
       default:
         return null;

@@ -6,6 +6,8 @@ import { getPostlikes } from "../../actions/postlike_actions";
 import { getComments } from "../../actions/comment_actions";
 import { getUser, editUserBio, getUsers } from "../../actions/user_actions";
 import { logOut } from '../../actions/auth_actions';
+import { giveUserId } from "../../actions/modal_info_actions";
+import { showModal } from "../../actions/modal_actions";
 
 const mSTP = (state, ownProps) => ({
     user: state.entities.users[ownProps.match.params.userId],
@@ -14,10 +16,6 @@ const mSTP = (state, ownProps) => ({
     comments: Object.values(state.entities.comments),
     postlikes: Object.values(state.entities.postlikes),
     posts: Object.values(state.entities.posts),
-    editForm: {
-        id: state.session.id,
-        bio: state.session.user.bio,
-    }
 });
 
 const mDTP = dispatch => ({
@@ -27,7 +25,9 @@ const mDTP = dispatch => ({
     getPostlikes: () => dispatch(getPostlikes()),
     getUser: userId => dispatch(getUser(userId)),
     editUserBio: user => dispatch(editUserBio(user)),
-    logOut: currentUserId => dispatch(logOut(currentUserId))
+    logOut: currentUserId => dispatch(logOut(currentUserId)),
+    giveUserId: userId => dispatch(giveUserId(userId)),
+    showModal: form => dispatch(showModal(form))
 });
 
 export default connect(mSTP, mDTP)(Profile);
