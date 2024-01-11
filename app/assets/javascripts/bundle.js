@@ -26367,34 +26367,6 @@ var LikesReducer = function LikesReducer() {
 
 /***/ }),
 
-/***/ "./frontend/reducers/modal_comment_info_reducer.js":
-/*!*********************************************************!*\
-  !*** ./frontend/reducers/modal_comment_info_reducer.js ***!
-  \*********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _actions_modal_info_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/modal_info_actions */ "./frontend/actions/modal_info_actions.js");
-
-var ModalCommentInfoReducer = function ModalCommentInfoReducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-  var action = arguments.length > 1 ? arguments[1] : undefined;
-  Object.freeze(state);
-  switch (action.type) {
-    case _actions_modal_info_actions__WEBPACK_IMPORTED_MODULE_0__.GIVE_COMMENT_ID:
-      return action.commentId;
-    default:
-      return state;
-  }
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ModalCommentInfoReducer);
-
-/***/ }),
-
 /***/ "./frontend/reducers/modal_post_info_reducer.js":
 /*!******************************************************!*\
   !*** ./frontend/reducers/modal_post_info_reducer.js ***!
@@ -26567,21 +26539,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _modal_post_info_reducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modal_post_info_reducer */ "./frontend/reducers/modal_post_info_reducer.js");
-/* harmony import */ var _modal_comment_info_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modal_comment_info_reducer */ "./frontend/reducers/modal_comment_info_reducer.js");
-/* harmony import */ var _modal_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modal_reducer */ "./frontend/reducers/modal_reducer.js");
-/* harmony import */ var _modal_user_info_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modal_user_info_reducer */ "./frontend/reducers/modal_user_info_reducer.js");
+/* harmony import */ var _modal_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modal_reducer */ "./frontend/reducers/modal_reducer.js");
+/* harmony import */ var _modal_user_info_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modal_user_info_reducer */ "./frontend/reducers/modal_user_info_reducer.js");
 
 
 
 
-
-var UIReducer = (0,redux__WEBPACK_IMPORTED_MODULE_4__.combineReducers)({
-  modal: _modal_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
+var UIReducer = (0,redux__WEBPACK_IMPORTED_MODULE_3__.combineReducers)({
+  modal: _modal_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
   postId: _modal_post_info_reducer__WEBPACK_IMPORTED_MODULE_0__["default"],
-  commentId: _modal_comment_info_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
-  userId: _modal_user_info_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
+  userId: _modal_user_info_reducer__WEBPACK_IMPORTED_MODULE_2__["default"]
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (UIReducer);
 
