@@ -21,6 +21,7 @@ const EditMenu = ({ givePostId, showModal, deletePost, postId }) => {
     const handleEdit = () => {
         givePostId(postId);
         showModal('editpost');
+        setAnchorEl(null);
     };
     
     return (

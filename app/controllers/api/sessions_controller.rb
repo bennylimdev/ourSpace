@@ -8,7 +8,7 @@ class Api::SessionsController < ApplicationController
             login!(@user)
             redirect_to api_user_url(@user)
         else
-            render json: ['Wrong email and/or password', status: 401]
+            render json: ['Wrong email and/or password'], status: 401
         end
     end
 
@@ -17,7 +17,7 @@ class Api::SessionsController < ApplicationController
         if @user
             logout! 
         else
-            render json: ['No one is signed in', status: 404]
+            render json: ['No one is signed in'], status: 404
         end
     end
 end

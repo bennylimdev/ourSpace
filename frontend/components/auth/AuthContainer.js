@@ -1,7 +1,9 @@
 import { connect } from 'react-redux';
-import { signUp, logIn } from '../../actions/auth_actions';
-import { showModal } from '../../actions/modal_actions';
+
 import Auth from './Auth';
+
+import { signUp, logIn } from '../../actions/auth_actions';
+import { removeErrors, receiveErrors } from '../../actions/auth_actions';
 
 // for error handling in future
 const mSTP = state => ({
@@ -18,7 +20,8 @@ const mSTP = state => ({
 const mDTP = dispatch => ({
     signUp: user => dispatch(signUp(user)),
     logIn: user => dispatch(logIn(user)),
-    showModal: (form) => dispatch(showModal(form))
+    removeErrors: () => dispatch(removeErrors()),
+    receiveErrors: error => dispatch(receiveErrors(error))
 });
 
 export default connect(mSTP, mDTP)(Auth);

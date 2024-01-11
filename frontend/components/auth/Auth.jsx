@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 
-const Auth = ({ user, signUp, logIn }) => {
+const Auth = ({ user, signUp, logIn, errors, removeErrors, receiveErrors }) => {
     const [form, setForm] = useState(user);
-    const [isSignup, setIsSignup] = useState(false); 
-    
+    const [isSignup, setIsSignup] = useState(false);
+
+    console.log(errors);
+
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value});
     };
@@ -13,12 +15,12 @@ const Auth = ({ user, signUp, logIn }) => {
         // make sure confirm password is not posted
         if(isSignup) {
             if(form.password === form.confirmPassword) {
-                signUp(form);
+                signUp(form).then(removeErrors());
             } else {
-                // showModal();
+                receiveErrors(['Passwords do not match']);
             }
         } else {
-            logIn({ email: form.email, password: form.password });
+            logIn({ email: form.email, password: form.password }).then(removeErrors());
         }
     };
 
@@ -29,6 +31,13 @@ const Auth = ({ user, signUp, logIn }) => {
     return (
         <div className='auth__form-container'>
             <h1 className='logo'>ourSpace</h1>
+            <div className='auth__errors'>
+                <ul>
+                    {errors.map((error, i) => (
+                        <li key={`${i}`}>{error}</li>
+                    ))}
+                </ul>
+            </div>
             <div className='auth__form-container_fields'>
                 <div className='auth__form-container_fields-content'>
                     <form onSubmit={handleSubmit}>

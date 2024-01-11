@@ -105,3 +105,11 @@ background: #004699;
     display: grid;
     place-items: center;
 }
+
+.auth__errors {
+    grid-area: 2 / 1 / 3 / 2;
+    color: red;
+    font-style: italic;
+    font-size: 14px;
+    place-self: center;
+}

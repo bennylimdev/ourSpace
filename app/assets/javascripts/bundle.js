@@ -23525,6 +23525,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   REMOVE_SESSION_ERRORS: () => (/* binding */ REMOVE_SESSION_ERRORS),
 /* harmony export */   logIn: () => (/* binding */ logIn),
 /* harmony export */   logOut: () => (/* binding */ logOut),
+/* harmony export */   receiveErrors: () => (/* binding */ receiveErrors),
 /* harmony export */   removeErrors: () => (/* binding */ removeErrors),
 /* harmony export */   signUp: () => (/* binding */ signUp)
 /* harmony export */ });
@@ -24385,7 +24386,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var Auth = function Auth(_ref) {
   var user = _ref.user,
     signUp = _ref.signUp,
-    logIn = _ref.logIn;
+    logIn = _ref.logIn,
+    errors = _ref.errors,
+    removeErrors = _ref.removeErrors,
+    receiveErrors = _ref.receiveErrors;
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(user),
     _useState2 = _slicedToArray(_useState, 2),
     form = _useState2[0],
@@ -24394,6 +24398,7 @@ var Auth = function Auth(_ref) {
     _useState4 = _slicedToArray(_useState3, 2),
     isSignup = _useState4[0],
     setIsSignup = _useState4[1];
+  console.log(errors);
   var handleChange = function handleChange(e) {
     setForm(_objectSpread(_objectSpread({}, form), {}, _defineProperty({}, e.target.name, e.target.value)));
   };
@@ -24402,15 +24407,15 @@ var Auth = function Auth(_ref) {
     // make sure confirm password is not posted
     if (isSignup) {
       if (form.password === form.confirmPassword) {
-        signUp(form);
+        signUp(form).then(removeErrors());
       } else {
-        // showModal();
+        receiveErrors(['Passwords do not match']);
       }
     } else {
       logIn({
         email: form.email,
         password: form.password
-      });
+      }).then(removeErrors());
     }
   };
   var switchMode = function switchMode() {
@@ -24423,6 +24428,12 @@ var Auth = function Auth(_ref) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", {
     className: "logo"
   }, "ourSpace"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "auth__errors"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", null, errors.map(function (error, i) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+      key: "".concat(i)
+    }, error);
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "auth__form-container_fields"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "auth__form-container_fields-content"
@@ -24504,9 +24515,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _actions_auth_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/auth_actions */ "./frontend/actions/auth_actions.js");
-/* harmony import */ var _actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/modal_actions */ "./frontend/actions/modal_actions.js");
-/* harmony import */ var _Auth__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Auth */ "./frontend/components/auth/Auth.jsx");
+/* harmony import */ var _Auth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Auth */ "./frontend/components/auth/Auth.jsx");
+/* harmony import */ var _actions_auth_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/auth_actions */ "./frontend/actions/auth_actions.js");
 
 
 
@@ -24528,17 +24538,20 @@ var mSTP = function mSTP(state) {
 var mDTP = function mDTP(dispatch) {
   return {
     signUp: function signUp(user) {
-      return dispatch((0,_actions_auth_actions__WEBPACK_IMPORTED_MODULE_1__.signUp)(user));
+      return dispatch((0,_actions_auth_actions__WEBPACK_IMPORTED_MODULE_2__.signUp)(user));
     },
     logIn: function logIn(user) {
-      return dispatch((0,_actions_auth_actions__WEBPACK_IMPORTED_MODULE_1__.logIn)(user));
+      return dispatch((0,_actions_auth_actions__WEBPACK_IMPORTED_MODULE_2__.logIn)(user));
     },
-    showModal: function showModal(form) {
-      return dispatch((0,_actions_modal_actions__WEBPACK_IMPORTED_MODULE_2__.showModal)(form));
+    removeErrors: function removeErrors() {
+      return dispatch((0,_actions_auth_actions__WEBPACK_IMPORTED_MODULE_2__.removeErrors)());
+    },
+    receiveErrors: function receiveErrors(error) {
+      return dispatch((0,_actions_auth_actions__WEBPACK_IMPORTED_MODULE_2__.receiveErrors)(error));
     }
   };
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mSTP, mDTP)(_Auth__WEBPACK_IMPORTED_MODULE_3__["default"]));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_0__.connect)(mSTP, mDTP)(_Auth__WEBPACK_IMPORTED_MODULE_1__["default"]));
 
 /***/ }),
 
@@ -25352,6 +25365,7 @@ var EditMenu = function EditMenu(_ref) {
   var handleEdit = function handleEdit() {
     givePostId(postId);
     showModal('editpost');
+    setAnchorEl(null);
   };
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material__WEBPACK_IMPORTED_MODULE_1__["default"], {
     id: "basic-button",

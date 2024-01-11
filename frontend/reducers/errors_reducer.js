@@ -5,9 +5,9 @@ const ErrorsReducer = (state = [], action) => {
 
     switch(action.type) {
         case RECEIVE_SESSION_ERRORS:
-            return action.errors
+            return action.errors;
         case REMOVE_SESSION_ERRORS:
-            return []
+            return [];
         default:
             return state;
     };
