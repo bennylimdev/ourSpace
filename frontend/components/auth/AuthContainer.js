@@ -14,7 +14,7 @@ const mSTP = state => ({
         password: '',
         confirmPassword: '',
     },
-    errors: state.errors
+    errors: Object.values(state.errors)
 });
 
 const mDTP = dispatch => ({
