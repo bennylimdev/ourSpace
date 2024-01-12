@@ -24,7 +24,7 @@ const Auth = ({ user, signUp, logIn, errors, removeErrors, receiveErrors }) => {
 
     const handleDemo = () => {
         const demo = {
-            email: 'tonystark@ourspace.com',
+            email: 'demo@ourspace.com',
             password: 'password'
         }
 
