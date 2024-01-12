@@ -25998,6 +25998,7 @@ var mSTP = function mSTP(state, ownProps) {
     user: state.entities.users[ownProps.match.params.userId],
     currentUserId: state.session.id,
     currentUser: state.session.user,
+    users: state.entities.users,
     comments: Object.values(state.entities.comments),
     postlikes: Object.values(state.entities.postlikes),
     posts: Object.values(state.entities.posts)
@@ -26050,7 +26051,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Avatar/Avatar.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Avatar/Avatar.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
 
 
 var ProfileFriend = function ProfileFriend(_ref) {
@@ -26059,9 +26062,14 @@ var ProfileFriend = function ProfileFriend(_ref) {
     className: "friend-wrapper"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "friend__avatar-wrapper"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+    to: "/profile/".concat(user.id)
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_mui_material__WEBPACK_IMPORTED_MODULE_2__["default"], {
     src: user.profilepicUrl
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h5", null, user.first_name, " ", user.last_name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, user.bio));
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link, {
+    className: "comment-link",
+    to: "/profile/".concat(user.id)
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h5", null, user.first_name, " ", user.last_name))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, user.bio));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ProfileFriend);
 

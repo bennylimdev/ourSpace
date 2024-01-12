@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import InvitationButton from './InvitationButton';
 
 const Friend = ({ currentUser, currentUserId, user }) => {
-  
   return (
     <div className='friend-wrapper'>
       <div className='friend__avatar-wrapper'>

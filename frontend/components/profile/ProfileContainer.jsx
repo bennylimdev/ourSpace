@@ -13,6 +13,7 @@ const mSTP = (state, ownProps) => ({
     user: state.entities.users[ownProps.match.params.userId],
     currentUserId: state.session.id,
     currentUser: state.session.user,
+    users: state.entities.users,
     comments: Object.values(state.entities.comments),
     postlikes: Object.values(state.entities.postlikes),
     posts: Object.values(state.entities.posts),
