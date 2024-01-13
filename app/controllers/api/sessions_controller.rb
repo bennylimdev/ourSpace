@@ -6,6 +6,7 @@ class Api::SessionsController < ApplicationController
         )
         if @user
             login!(@user)
+            redirect_to api_user_url(@user)
         else
             render json: ['Wrong email and/or password'], status: 401
         end
