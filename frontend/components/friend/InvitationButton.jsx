@@ -14,7 +14,6 @@ const InvitationButton = ({ currentUser, currentUserId, userId }) => {
   let currentUserReceivedReqs = currentUser.pending_friendrequests;
   let requestReceived = currentUserReceivedReqs.filter((friendrequest) => friendrequest.user_id === userId);
 
-  console.log(currentUserFriend);
   useEffect(() => {
     if(currentUserFriend.length !== 0){
       setIsFriend(true);
@@ -30,7 +29,7 @@ const InvitationButton = ({ currentUser, currentUserId, userId }) => {
   }, []);
 
   let ids = {id1: currentUserId, id2: userId};
-  console.log(isRequestReceived);
+  
   const handleButtonClick = () => {
     if (isFriend) {
       // Logic to handle the case where the user is already a friend
