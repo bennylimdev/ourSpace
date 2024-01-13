@@ -49,10 +49,8 @@ class Profile extends React.Component {
                 {bioBtn}
               </div>
             </div>  
-            <div>
-              <h3>Friends</h3>
-              <p>{this.props.user.friends.length} friend (s)</p>
-            </div>
+            <h3>Friends</h3>
+            <p>{this.props.user.friends.length} friend (s)</p>
             <Stack spacing={{ xs: 1.5 }} >
             {this.props.user.friends.map((user) => (
               <ProfileFriend user={user} key={user.id} />
