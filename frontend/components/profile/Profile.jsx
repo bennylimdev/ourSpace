@@ -49,7 +49,7 @@ class Profile extends React.Component {
                 {bioBtn}
               </div>
             </div>  
-            <div className='friends__list'>
+            <div>
               <h3>Friends</h3>
               <p>{this.props.user.friends.length} friend (s)</p>
             </div>
