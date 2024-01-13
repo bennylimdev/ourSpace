@@ -14,15 +14,11 @@
     min-width: 100vh;
 }
 
-.friends-search__bar {
-    grid-area: 1 / 2 / 2 / 3;
-    min-height: 50px;
-    max-height: 50px;
-    align-self: center;
-}
-
 .friends__feed {
     grid-area: 2 / 2 / 2 / 3;
+    justify-self: center;
+    max-width: 600px;
+    min-width: 600px;
 }
 
 .friend-wrapper {

@@ -45,6 +45,46 @@ end
     )
 end
 
+Friendrequest.create!([
+    { 
+        user_id: 1,
+        friend_id: 5,
+        confirmed: true 
+    },
+    {
+        user_id: 1,
+        friend_id: 2,
+        confirmed: true 
+    },
+    {
+        user_id: 1,
+        friend_id: 3,
+        confirmed: true 
+    },
+    {
+        user_id: 1,
+        friend_id: 7,
+        confirmed: true 
+    },
+    {
+        user_id: 1,
+        friend_id: 8,
+        confirmed: true 
+    },
+    {
+        user_id: 1,
+        friend_id: 9,
+        confirmed: true 
+    },
+    {
+        user_id: 1,
+        friend_id: 10,
+        confirmed: true 
+    },
+],
+)
+
+
 p "Created #{User.count} users"
 p "Created #{Post.count} posts"
 

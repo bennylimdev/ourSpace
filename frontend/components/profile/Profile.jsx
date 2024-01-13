@@ -52,12 +52,12 @@ class Profile extends React.Component {
             <div className='friends__list'>
               <h3>Friends</h3>
               <p>{this.props.user.friends.length} friend (s)</p>
-              <Stack spacing={{ xs: 1.5 }} >
-                {this.props.user.friends.map((user) => (
-                  <ProfileFriend user={user} key={user.id} />
-                ))}
-              </Stack>
             </div>
+            <Stack spacing={{ xs: 1.5 }} >
+            {this.props.user.friends.map((user) => (
+              <ProfileFriend user={user} key={user.id} />
+            ))}
+            </Stack>
           </div>
           <div className='profile-right'>
             {postInput}
